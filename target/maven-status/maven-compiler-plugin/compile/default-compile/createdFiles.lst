@@ -1,0 +1,9 @@
+com\basic\proto\aws\service\AwsS3Service.class
+com\basic\proto\form\RegistartionDetailsForm.class
+com\basic\proto\SpringBootWebApplication.class
+com\basic\proto\controller\RegistartionDetailsController.class
+com\basic\proto\config\TransactionEventCleanupInterceptor.class
+com\basic\proto\WelcomeController.class
+com\basic\proto\config\RequestFilter.class
+com\basic\proto\config\ServicesConfig.class
+com\basic\proto\aws\service\AmazonSnsTest.class
