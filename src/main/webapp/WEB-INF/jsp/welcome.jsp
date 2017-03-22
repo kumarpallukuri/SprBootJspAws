@@ -24,7 +24,7 @@
 
 		<div class="starter-template">
 <!-- 			<h1>Registration Form for Marthon</h1> -->
-			<h2>Please Enter Details</h2>
+			<h2>Please Enter Details of workers</h2>
 
 			<form:form modelAttribute="registartionDetailsForm"
 				action="/registartion">
@@ -42,6 +42,23 @@
 					<tr>
 						<td>Email Address</td>
 						<td><form:input path="emailAdress" /></td>
+					</tr>
+					<tr>
+						<td>Mobile Number</td>
+						<td><form:input path="mobileNumber" /></td>
+					</tr>
+					<tr>
+						<td>Worker Type</td>
+						<td><form:input path="workerType" /></td>
+					</tr>
+					
+					<tr>
+						<td>Experience</td>
+						<td><form:input path="experience" /></td>
+					</tr>
+					<tr>
+						<td>Rate</td>
+						<td><form:input path="rate" /></td>
 					</tr>
 					<tr>
 						<td colspan="2"><input type="submit" value="Add/Edit Person" />

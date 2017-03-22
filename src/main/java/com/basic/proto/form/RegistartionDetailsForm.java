@@ -6,12 +6,51 @@ import org.springframework.stereotype.Component;
 public class RegistartionDetailsForm {
 
 	private String firstName;
-	
-	private String  emailAdress;
-	
-	
+
+	private String emailAdress;
 
 	private String lastName;
+
+	private String mobileNumber;
+
+	private String workerType;
+
+	private String experience;
+
+	private int rate;
+
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+
+	public String getWorkerType() {
+		return workerType;
+	}
+
+	public void setWorkerType(String workerType) {
+		this.workerType = workerType;
+	}
+
+	public String getExperience() {
+		return experience;
+	}
+
+	public void setExperience(String experience) {
+		this.experience = experience;
+	}
+
+	public int getRate() {
+		return rate;
+	}
+
+	public void setRate(int rate) {
+		this.rate = rate;
+	}
+
 	/**
 	 * @return the firstName
 	 */
@@ -20,7 +59,8 @@ public class RegistartionDetailsForm {
 	}
 
 	/**
-	 * @param firstName the firstName to set
+	 * @param firstName
+	 *            the firstName to set
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
@@ -34,7 +74,8 @@ public class RegistartionDetailsForm {
 	}
 
 	/**
-	 * @param lastName the lastName to set
+	 * @param lastName
+	 *            the lastName to set
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
@@ -48,11 +89,11 @@ public class RegistartionDetailsForm {
 	}
 
 	/**
-	 * @param emailAdress the emailAdress to set
+	 * @param emailAdress
+	 *            the emailAdress to set
 	 */
 	public void setEmailAdress(String emailAdress) {
 		this.emailAdress = emailAdress;
 	}
-	
 
 }

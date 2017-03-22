@@ -18,18 +18,23 @@ public class RegistartionDetailsController {
 	// inject via application.properties
 	@Value("${welcome.message:test}")
 	private String message = "Hello World";
-	
-	@Autowired
-	private AwsS3Service s3Service;
+//	
+//	@Autowired
+//	private AwsS3Service s3Service;
 	
 	@RequestMapping("/registartion")
 	public String welcome(@ModelAttribute("registartionDetailsForm") RegistartionDetailsForm registartionDetailsForm,Map<String, Object> model) throws Exception {
-		model.put("message", registartionDetailsForm.getFirstName());
-		s3Service.test();
-		AmazonSnsTest sns = new AmazonSnsTest();
+		model.put("FirstName", registartionDetailsForm.getFirstName());
+		model.put("LastName", registartionDetailsForm.getLastName());
+		model.put("EmailAdress", registartionDetailsForm.getEmailAdress());
+		model.put("MobileNumber", registartionDetailsForm.getMobileNumber());
+		model.put("WorkerType", registartionDetailsForm.getWorkerType());
+		model.put("Rate", registartionDetailsForm.getRate());
+		//s3Service.test();
+		//AmazonSnsTest sns = new AmazonSnsTest();
 		//sns.createTopic("Marthon Event");
-		sns.createSNSService(registartionDetailsForm.getEmailAdress(), "MarthonEvent");
-		sns.sendNotification("MarthonEvent");
+		//sns.createSNSService(registartionDetailsForm.getEmailAdress(), "MarthonEvent");
+		//sns.sendNotification("MarthonEvent");
 		return "welcomeTest";
 	}
 
