@@ -2,14 +2,11 @@ package com.basic.proto.controller;
 
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.basic.proto.aws.service.AmazonSnsTest;
-import com.basic.proto.aws.service.AwsS3Service;
 import com.basic.proto.form.RegistartionDetailsForm;
 
 @Controller
@@ -22,7 +19,7 @@ public class RegistartionDetailsController {
 //	@Autowired
 //	private AwsS3Service s3Service;
 	
-	@RequestMapping("/registartion")
+	@RequestMapping("/registartionSucess")
 	public String welcome(@ModelAttribute("registartionDetailsForm") RegistartionDetailsForm registartionDetailsForm,Map<String, Object> model) throws Exception {
 		model.put("FirstName", registartionDetailsForm.getFirstName());
 		model.put("LastName", registartionDetailsForm.getLastName());

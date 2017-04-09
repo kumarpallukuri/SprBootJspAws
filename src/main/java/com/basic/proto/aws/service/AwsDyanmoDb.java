@@ -1,9 +1,7 @@
-package com.test;
+package com.basic.proto.aws.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import com.amazonaws.auth.AWSCredentials;
@@ -25,8 +23,8 @@ import com.amazonaws.services.dynamodbv2.model.ReturnValue;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
 
-public class AwsDyanmoDb {
-	public static void main(String[] args) {
+ class AwsDyanmoDb {
+	public  void  dynamoDB() {
 		AWSCredentials credentials = new BasicAWSCredentials("",
 				"");
 		// This client will default to US West (Oregon)

@@ -1,4 +1,4 @@
-package com.basic.proto;
+package com.basic.proto.controller;
 
 import java.util.Map;
 
@@ -19,7 +19,7 @@ public class WelcomeController {
 	
 	
 
-	@RequestMapping("/test")
+	@RequestMapping("/register")
 	public String welcome(@ModelAttribute("registartionDetailsForm") RegistartionDetailsForm registartionDetailsForm,Map<String, Object> model) {
 		model.put("message", this.message);
 		return "welcome";
