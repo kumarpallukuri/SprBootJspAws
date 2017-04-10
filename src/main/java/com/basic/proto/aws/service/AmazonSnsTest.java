@@ -21,7 +21,7 @@ public class AmazonSnsTest {
 
 	public AmazonSnsTest() {
 		// TODO Auto-generated constructor stub
-		AWSCredentials credentials = new BasicAWSCredentials("adfa",
+		AWSCredentials credentials = new BasicAWSCredentials("adfass",
 				"dasfsda");
 
 		// create a client connection based on credentials
