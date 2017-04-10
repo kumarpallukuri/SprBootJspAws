@@ -20,28 +20,28 @@ public class PortoServicesConfig extends WebMvcConfigurerAdapter {
 	
 	
 	/**
-	 * Bean for the poperties filter
+	 * Bean for the  filter
 	 * @return
 	 */
-	@Bean
-	public Filter propertiesFilter() {
-		System.out.println("propertiesFilter ..!");
-		return new RequestFilter();
-	}
-	
-	/**
-	 * Add the beans and the order for Filters
-	 * @return
-	 */
-	@Bean
-	public FilterRegistrationBean registerFilter() {
-		System.out.println("registerFilter ..!");
-		FilterRegistrationBean registration = new FilterRegistrationBean();
-		registration.setFilter(propertiesFilter());
-		registration.setOrder(1);
-		return registration;
-	}
-	
+//	@Bean
+//	public Filter propertiesFilter() {
+//		System.out.println("propertiesFilter ..!");
+//		return new RequestFilter();
+//	}
+//	
+//	/**
+//	 * Add the beans and the order for Filters
+//	 * @return
+//	 */
+//	@Bean
+//	public FilterRegistrationBean registerFilter() {
+//		System.out.println("registerFilter ..!");
+//		FilterRegistrationBean registration = new FilterRegistrationBean();
+//		//registration.setFilter(propertiesFilter());
+//		registration.setOrder(1);
+//		return registration;
+//	}
+//	
 
 	@Bean
 	public TransactionEventCleanupInterceptor cleanUp(){

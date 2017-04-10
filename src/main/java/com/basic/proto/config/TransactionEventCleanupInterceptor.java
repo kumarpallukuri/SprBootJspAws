@@ -12,7 +12,7 @@ public class TransactionEventCleanupInterceptor extends HandlerInterceptorAdapte
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 
-		System.out.println("preHandle");
+		System.out.println("preHandle-->");
 		
 		return true;
 	}

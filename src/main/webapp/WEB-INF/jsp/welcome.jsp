@@ -27,7 +27,7 @@
 			<h2>Please Enter Details of workers</h2>
 
 			<form:form modelAttribute="registartionDetailsForm"
-				action="/registartion">
+				action="/registartionSucess">
 				<%--     <form:hidden path="id"/>  --%>
 				<table>
 					<tr>

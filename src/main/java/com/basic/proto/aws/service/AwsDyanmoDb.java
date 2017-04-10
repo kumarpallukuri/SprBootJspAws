@@ -1,8 +1,14 @@
 package com.basic.proto.aws.service;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
@@ -22,11 +28,22 @@ import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ReturnValue;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
+import com.basic.proto.form.RegistartionDetailsForm;
+import com.basic.proto.form.Workers;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+@Component
+public class AwsDyanmoDb {
+	 
+	 @Value("${cloud.aws.credentials.accessKey}")
+		private String accessKey;
 
- class AwsDyanmoDb {
-	public  void  dynamoDB() {
-		AWSCredentials credentials = new BasicAWSCredentials("",
-				"");
+		@Value("${cloud.aws.credentials.secretKey}")
+		private String secretKey;
+	public  void  detailsAdd(RegistartionDetailsForm registartionDetailsForm) {
+		AWSCredentials credentials = new BasicAWSCredentials(accessKey,
+				secretKey);
 		// This client will default to US West (Oregon)
 		AmazonDynamoDBClient client = new AmazonDynamoDBClient(credentials);
 		// Modify the client so that it accesses a different region.
@@ -34,10 +51,10 @@ import com.amazonaws.services.dynamodbv2.model.ScanResult;
 		client.setEndpoint("dynamodb.us-east-2.amazonaws.com");
 		DynamoDB dynamoDB = new DynamoDB(client);
 		Table table = dynamoDB.getTable("WorkersTableTest");
-		addItem(table);
+		addItem(table,registartionDetailsForm);
 		// updateExistingAttributeConditionally(table);
 		retrieveItem(table);
-		fetchAllItems(table);
+		
 		// deleteITem(table);
 		ScanRequest scanRequest = new ScanRequest().withTableName("WorkersTableTest");
 
@@ -48,11 +65,11 @@ import com.amazonaws.services.dynamodbv2.model.ScanResult;
 
 	}
 
-	private static void addItem(Table table) {
+	private static void addItem(Table table,RegistartionDetailsForm registartionDetailsForm) {
 		// Build the item
-		Item item = new Item().withPrimaryKey("workertID", 3).withString("workerEmailID", "iks@gmail.com")
-				.withString("workerField", "Carpenterd").withString("workerName", "kumarss")
-				.withNumber("workerPhoneNumber", 500);
+		Item item = new Item().withPrimaryKey("workertID", 3).withString("workerEmailID", registartionDetailsForm.getEmailAdress())
+				.withString("workerField", registartionDetailsForm.getWorkerType()).withString("workerName", registartionDetailsForm.getFirstName())
+				.withNumber("workerPhoneNumber", registartionDetailsForm.getRate());
 		// Write the item to the table
 		PutItemOutcome outcome = table.putItem(item);
 	}
@@ -103,7 +120,17 @@ import com.amazonaws.services.dynamodbv2.model.ScanResult;
 		}
 	}
 
-	private static void fetchAllItems(Table table) {
+	public  List<Workers> fetchAllItems() throws JsonParseException, JsonMappingException, IOException {
+		AWSCredentials credentials = new BasicAWSCredentials(accessKey,
+				secretKey);
+		// This client will default to US West (Oregon)
+		AmazonDynamoDBClient client = new AmazonDynamoDBClient(credentials);
+		// Modify the client so that it accesses a different region.
+		client.withRegion(Regions.US_EAST_1);
+		client.setEndpoint("dynamodb.us-east-2.amazonaws.com");
+		DynamoDB dynamoDB = new DynamoDB(client);
+		Table table = dynamoDB.getTable("WorkersTableTest");
+		List<Workers> allWorkers = new ArrayList<Workers>();
 		Map<String, Object> expressionAttributeValues = new HashMap<String, Object>();
 		expressionAttributeValues.put(":pr", 1002);
 
@@ -115,8 +142,18 @@ import com.amazonaws.services.dynamodbv2.model.ScanResult;
 		System.out.println("Scan of " + "WorkersTableTest" + " for items with a price less than 2.");
 		Iterator<Item> iterator = items.iterator();
 		while (iterator.hasNext()) {
-			System.out.println(iterator.next().toJSONPretty());
+			ObjectMapper mapper = new ObjectMapper();
+			String json = iterator.next().toJSONPretty();
+			Workers worker = null;
+			worker = new ObjectMapper().readValue(json, Workers.class);
+			allWorkers.add(worker);
+//			Workers staff1 = null;
+//			 staff1 = mapper.readValue(iterator.next().toJSONPretty(), Workers.class);
+//			allWorkers.add(staff1);
 		}
+		
+		
+		return allWorkers;
 
 	}	 
 
