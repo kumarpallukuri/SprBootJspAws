@@ -1,5 +1,6 @@
 package com.basic.proto.aws.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -11,15 +12,10 @@ import com.amazonaws.services.s3.model.Bucket;
 @Component
 public class AwsS3Service {
 
-	@Value("${cloud.aws.credentials.accessKey}")
-	private String accessKey;
-
-	@Value("${cloud.aws.credentials.secretKey}")
-	private String secretKey;
-
+	@Autowired
+	AwsIntializerService awsIntializerService;
 	public void test() {
-		AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
-		AmazonS3Client s3Client = new AmazonS3Client(credentials);
+		AmazonS3Client s3Client = new AmazonS3Client(awsIntializerService.credentialsForAwsClients());
 		// create bucket - name must be unique for all S3 users
 		try {
 			for (Bucket bucket : s3Client.listBuckets()) {

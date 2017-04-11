@@ -3,8 +3,8 @@ package com.basic.proto.aws.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.BasicAWSCredentials;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.amazonaws.services.sns.AmazonSNS;
 import com.amazonaws.services.sns.AmazonSNSClient;
 import com.amazonaws.services.sns.model.CreateTopicRequest;
@@ -18,14 +18,14 @@ import com.amazonaws.services.sns.model.Topic;
 
 public class AmazonSnsTest {
 	AmazonSNS snsService;
-
+	
+	@Autowired
+	AwsIntializerService awsIntializerService;
 	public AmazonSnsTest() {
 		// TODO Auto-generated constructor stub
-		AWSCredentials credentials = new BasicAWSCredentials("adfass",
-				"dasfsda");
 
 		// create a client connection based on credentials
-		snsService = new AmazonSNSClient(credentials);
+		snsService = new AmazonSNSClient(awsIntializerService.credentialsForAwsClients());
 	}
 
 	public void createSNSService(String emailId, String topicName) throws Exception {

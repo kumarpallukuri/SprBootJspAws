@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -35,17 +36,13 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 @Component
 public class AwsDyanmoDb {
-	 
-	 @Value("${cloud.aws.credentials.accessKey}")
-		private String accessKey;
-
-		@Value("${cloud.aws.credentials.secretKey}")
-		private String secretKey;
+	
+	@Autowired
+	AwsIntializerService awsIntializerService;
+	
 	public  void  detailsAdd(RegistartionDetailsForm registartionDetailsForm) {
-		AWSCredentials credentials = new BasicAWSCredentials(accessKey,
-				secretKey);
 		// This client will default to US West (Oregon)
-		AmazonDynamoDBClient client = new AmazonDynamoDBClient(credentials);
+		AmazonDynamoDBClient client = new AmazonDynamoDBClient(awsIntializerService.credentialsForAwsClients());
 		// Modify the client so that it accesses a different region.
 		client.withRegion(Regions.US_EAST_1);
 		client.setEndpoint("dynamodb.us-east-2.amazonaws.com");
@@ -121,10 +118,8 @@ public class AwsDyanmoDb {
 	}
 
 	public  List<Workers> fetchAllItems() throws JsonParseException, JsonMappingException, IOException {
-		AWSCredentials credentials = new BasicAWSCredentials(accessKey,
-				secretKey);
 		// This client will default to US West (Oregon)
-		AmazonDynamoDBClient client = new AmazonDynamoDBClient(credentials);
+		AmazonDynamoDBClient client = new AmazonDynamoDBClient(awsIntializerService.credentialsForAwsClients());
 		// Modify the client so that it accesses a different region.
 		client.withRegion(Regions.US_EAST_1);
 		client.setEndpoint("dynamodb.us-east-2.amazonaws.com");

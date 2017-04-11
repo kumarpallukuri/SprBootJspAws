@@ -15,32 +15,36 @@
 
 <div class="container" ng-controller="AppCtrl">
 
-	<h1>Contact list app</h1>
+<!-- 	<h1>Worker details</h1> -->
+	<button class="btn btn-primary"  ng-click="/register" >Add Contacts.. </button>
 	<table class="table">
 		<thead>
 			<tr>
-				<th> Name </th>
+				<th>First Name </th>
+				<th>Last Name </th>
 				<th> Email </th>
 				<th> Phone number </th>
-				<th> Action </th>
+				<th> WorkerField </th>
 				<th>&nbsp</th>
 				<th>&nbsp</th>
 			 </tr>
 		</thead>
 		<tbody>
 		<tr>
-			<td><input class="form-control" ng-model="contact.name"> </td>
-			<td><input class="form-control" ng-model="contact.email"> </td>
-			<td><input class="form-control" ng-model="contact.number"> </td>
-			<td><button class="btn btn-primary"  ng-click="addContact()" >Add Contacts.. </button> </td>
-			<td><button class="btn btn-info"  ng-click="update()" >Update</button> </td>
-			<td><button class="btn btn-info"  ng-click="clear()" >Clear</button> </td>
-			<tr ng-repeat="contact in contactsArr">
-					<td>{{contact.name}}</td>
-					<td>{{contact.email}}</td>
-					<td>{{contact.number}}</td>
+<!-- 			<td><input class="form-control" ng-model="contact.name"> </td> -->
+<!-- 			<td><input class="form-control" ng-model="contact.email"> </td> -->
+<!-- 			<td><input class="form-control" ng-model="contact.number"> </td> -->
+<!-- 			<td><button class="btn btn-primary"  ng-click="addContact()" >Add Contacts.. </button> </td> -->
+<!-- 			<td><button class="btn btn-info"  ng-click="update()" >Update</button> </td> -->
+<!-- 			<td><button class="btn btn-info"  ng-click="clear()" >Clear</button> </td> -->
+			<tr ng-repeat="worker in Workers">
+					<td>{{worker.workerName}}</td>
+					<td>{{worker.workerName}}</td>
+					<td>{{worker.workerEmailID}}</td>
+					<td>{{worker.workerPhoneNumber}}</td>
+					<td>{{worker.workerField}}</td>
 					<td><button class="btn btn-danger"  ng-click="remove(contact._id)" ng-model="contact.name">Remove</button> </td>
-					<td><button class="btn btn-warning"  ng-click="edit(contact._id)" >Edit</button> </td>
+					<td><button class="btn btn-warning"  ng-click="edit(worker.workertID)" >Edit</button> </td>
 			</tr>
 		</tbody>
 		

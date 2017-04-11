@@ -24,7 +24,7 @@
 
 		<div class="starter-template">
 <!-- 			<h1>Registration Form for Marthon</h1> -->
-			<h2>Please Enter Details of workers</h2>
+			<h2>Please Enter Details of </h2>
 
 			<form:form modelAttribute="registartionDetailsForm"
 				action="/registartionSucess">
