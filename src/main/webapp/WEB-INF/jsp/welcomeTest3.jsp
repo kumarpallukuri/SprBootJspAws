@@ -21,7 +21,11 @@
 
 	<div class="container">
 
-		
+		<div class="starter-template">
+			Registration Sucess for below User..! </br> Details: ${FirstName}</br>
+			${LastName} </br> ${EmailAdress} </br> ${MobileNumber} </br> ${WorkerType} </br> ${Rate} </br>
+
+		</div>
 	</div>
 
 	<script type="text/javascript"
