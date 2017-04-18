@@ -8,11 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
@@ -34,44 +31,49 @@ import com.basic.proto.form.Workers;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 @Component
 public class AwsDyanmoDb {
-	
+
 	@Autowired
 	AwsIntializerService awsIntializerService;
-	
-	public  void  detailsAdd(RegistartionDetailsForm registartionDetailsForm) {
-		// This client will default to US West (Oregon)
-		AmazonDynamoDBClient client = new AmazonDynamoDBClient(awsIntializerService.credentialsForAwsClients());
-		// Modify the client so that it accesses a different region.
-		client.withRegion(Regions.US_EAST_1);
-		client.setEndpoint("dynamodb.us-east-2.amazonaws.com");
-		DynamoDB dynamoDB = new DynamoDB(client);
-		Table table = dynamoDB.getTable("WorkersTableTest");
-		addItem(table,registartionDetailsForm);
-		// updateExistingAttributeConditionally(table);
-		retrieveItem(table);
-		
-		// deleteITem(table);
-		ScanRequest scanRequest = new ScanRequest().withTableName("WorkersTableTest");
+	 AmazonDynamoDBClient client = null;
+	 Table table = null;
 
+	public  void intiliazeTable() {
+		if(table == null){
+			// This client will default to US West (Oregon)
+			client = new AmazonDynamoDBClient(awsIntializerService.credentialsForAwsClients());
+			// Modify the client so that it accesses a different region.
+			client.withRegion(Regions.US_EAST_1);
+			client.setEndpoint("dynamodb.us-east-2.amazonaws.com");
+			DynamoDB dynamoDB = new DynamoDB(client);
+			table = dynamoDB.getTable("WorkersTableTest");
+		}
+	}
+
+
+
+	public  void addItem( RegistartionDetailsForm registartionDetailsForm) {
+		intiliazeTable();
+		ScanRequest scanRequest = new ScanRequest().withTableName("WorkersTableTest");
 		ScanResult result = client.scan(scanRequest);
+		int lastValue = 0;
 		for (Map<String, AttributeValue> item : result.getItems()) {
 			System.out.println(item.get("workertID"));
 		}
-
-	}
-
-	private static void addItem(Table table,RegistartionDetailsForm registartionDetailsForm) {
 		// Build the item
-		Item item = new Item().withPrimaryKey("workertID", 3).withString("workerEmailID", registartionDetailsForm.getEmailAdress())
-				.withString("workerField", registartionDetailsForm.getWorkerType()).withString("workerName", registartionDetailsForm.getFirstName())
+		Item item = new Item().withPrimaryKey("workertID", 3)
+				.withString("workerEmailID", registartionDetailsForm.getEmailAdress())
+				.withString("workerField", registartionDetailsForm.getWorkerType())
+				.withString("workerName", registartionDetailsForm.getFirstName())
 				.withNumber("workerPhoneNumber", registartionDetailsForm.getRate());
 		// Write the item to the table
 		PutItemOutcome outcome = table.putItem(item);
 	}
 
-	private static void retrieveItem(Table table) {
+	public  void retrieveItem() {
+		intiliazeTable();
 		try {
 			Item item = table.getItem("workertID", 1);
 			System.out.println("Printing item after retrieving it....");
@@ -84,7 +86,8 @@ public class AwsDyanmoDb {
 
 	}
 
-	private static void updateExistingAttributeConditionally(Table table) {
+	public  void updateExistingAttributeConditionally() {
+		intiliazeTable();
 		try {
 			UpdateItemSpec updateItemSpec = new UpdateItemSpec().withPrimaryKey("workerID", "1234")
 					.withUpdateExpression("set workerPhoneNumber =  :val")
@@ -98,7 +101,8 @@ public class AwsDyanmoDb {
 		}
 	}
 
-	private static void deleteITem(Table table) {
+	public  void deleteITem() {
+		intiliazeTable();
 		try {
 			DeleteItemSpec deleteItemSpec = new DeleteItemSpec().withPrimaryKey("workerID", "1234")
 					.withConditionExpression("workerPhoneNumber <= :val")
@@ -117,14 +121,9 @@ public class AwsDyanmoDb {
 		}
 	}
 
-	public  List<Workers> fetchAllItems() throws JsonParseException, JsonMappingException, IOException {
+	public List<Workers> fetchAllItems() throws JsonParseException, JsonMappingException, IOException {
 		// This client will default to US West (Oregon)
-		AmazonDynamoDBClient client = new AmazonDynamoDBClient(awsIntializerService.credentialsForAwsClients());
-		// Modify the client so that it accesses a different region.
-		client.withRegion(Regions.US_EAST_1);
-		client.setEndpoint("dynamodb.us-east-2.amazonaws.com");
-		DynamoDB dynamoDB = new DynamoDB(client);
-		Table table = dynamoDB.getTable("WorkersTableTest");
+		intiliazeTable();
 		List<Workers> allWorkers = new ArrayList<Workers>();
 		Map<String, Object> expressionAttributeValues = new HashMap<String, Object>();
 		expressionAttributeValues.put(":pr", 1002);
@@ -142,14 +141,14 @@ public class AwsDyanmoDb {
 			Workers worker = null;
 			worker = new ObjectMapper().readValue(json, Workers.class);
 			allWorkers.add(worker);
-//			Workers staff1 = null;
-//			 staff1 = mapper.readValue(iterator.next().toJSONPretty(), Workers.class);
-//			allWorkers.add(staff1);
+			// Workers staff1 = null;
+			// staff1 = mapper.readValue(iterator.next().toJSONPretty(),
+			// Workers.class);
+			// allWorkers.add(staff1);
 		}
-		
-		
+
 		return allWorkers;
 
-	}	 
+	}
 
 }

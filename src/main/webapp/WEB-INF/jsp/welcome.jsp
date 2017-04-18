@@ -25,9 +25,9 @@
 		<div class="starter-template">
 <!-- 			<h1>Registration Form for Marthon</h1> -->
 			<h2>Please Enter Details of </h2>
-
+<li><a  class="btn btn-default" href="/register">Back. </a></li>
 			<form:form modelAttribute="registartionDetailsForm"
-				action="/registartionSucess">
+				action="/addWorkerDetailsValues">
 				<%--     <form:hidden path="id"/>  --%>
 				<table>
 					<tr>

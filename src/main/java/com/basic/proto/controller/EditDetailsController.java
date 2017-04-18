@@ -25,7 +25,7 @@ public class EditDetailsController {
 
 	@RequestMapping(value = "/workerDetails/{id}", method = RequestMethod.GET)
 	public String welcome(@PathVariable("id") long id) throws Exception {
-		System.out.println("iddddd");
+		System.out.println("idddddd");
 
 		return "welcomeTest2";
 	}
