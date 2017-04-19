@@ -22,7 +22,7 @@
 	<div class="container">
 
 		<div class="starter-template">
-			Registration Sucess for below User..! </br> Details: ${FirstName}</br>
+			Registration Sucess for below User..! </br> Details: ${FirstNames}</br>
 			${LastName} </br> ${EmailAdress} </br> ${MobileNumber} </br> ${WorkerType} </br> ${Rate} </br>
 
 		</div>

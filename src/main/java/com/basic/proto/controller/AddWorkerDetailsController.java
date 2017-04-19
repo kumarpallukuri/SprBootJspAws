@@ -1,5 +1,7 @@
 package com.basic.proto.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.basic.proto.aws.service.AwsDyanmoDb;
 import com.basic.proto.form.RegistartionDetailsForm;
+import com.basic.proto.form.Workers;
 
 @Controller
 public class AddWorkerDetailsController {
@@ -31,16 +34,21 @@ public class AddWorkerDetailsController {
 	@RequestMapping(value ="/addWorkerDetailsValues")
 	public ModelAndView addWorkerDetails(@ModelAttribute RegistartionDetailsForm registartionDetailsForm) throws Exception {
 		System.out.println("add worker details...");
-		//awsdynamoDb.addItem(registartionDetailsForm);
+		awsdynamoDb.addItem(registartionDetailsForm);
 		System.out.println(registartionDetailsForm.getEmailAdress());
 		return  new ModelAndView("redirect:/register");
 	}
 	
 	@RequestMapping(value ="/fullWorkerDetail/{id}")
-	public String workerDetails(@PathVariable("id") String id) throws Exception {
-		System.out.println("add worker details..");
-		//awsdynamoDb.addItem(registartionDetailsForm);
-		System.out.println(id);
+	public String workerDetails(@PathVariable("id") String id,Map<String, Object> model) throws Exception {
+		System.out.println("add worker detailszz.."+id +"ff");
+		int idValue = Integer.parseInt(id);
+		Workers worker = awsdynamoDb.retrieveItem(idValue);
+		model.put("FirstNames", worker.getWorkerName());
+		model.put("EmailAdress", worker.getWorkerEmailID());
+		model.put("MobileNumber", worker.getWorkerPhoneNumber());
+		model.put("WorkerType", worker.getWorkerField());
+		//model.put("Rate", worker.getRate());
 		return  "fullWorkerDetails";
 	}
 

@@ -1,6 +1,8 @@
 package com.basic.proto.aws.service;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -63,7 +65,10 @@ public class AwsDyanmoDb {
 			System.out.println(item.get("workertID"));
 		}
 		// Build the item
-		Item item = new Item().withPrimaryKey("workertID", 3)
+		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+		 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		 System.out.println(timestamp.getTime());
+		Item item = new Item().withPrimaryKey("workertID", timestamp.getTime())
 				.withString("workerEmailID", registartionDetailsForm.getEmailAdress())
 				.withString("workerField", registartionDetailsForm.getWorkerType())
 				.withString("workerName", registartionDetailsForm.getFirstName())
@@ -72,24 +77,26 @@ public class AwsDyanmoDb {
 		PutItemOutcome outcome = table.putItem(item);
 	}
 
-	public  void retrieveItem() {
+	public  Workers retrieveItem(int id) {
 		intiliazeTable();
+		Workers worker = null;
 		try {
-			Item item = table.getItem("workertID", 1);
+			Item item = table.getItem("workertID", id);
 			System.out.println("Printing item after retrieving it....");
 			System.out.println(item.toJSONPretty());
-
+			ObjectMapper mapper = new ObjectMapper();
+			worker = new ObjectMapper().readValue(item.toJSONPretty(), Workers.class);
 		} catch (Exception e) {
 			System.err.println("GetItem failed.");
 			System.err.println(e.getMessage());
 		}
-
+		return worker;
 	}
 
-	public  void updateExistingAttributeConditionally() {
+	public  void updateExistingAttributeConditionally(int id) {
 		intiliazeTable();
 		try {
-			UpdateItemSpec updateItemSpec = new UpdateItemSpec().withPrimaryKey("workerID", "1234")
+			UpdateItemSpec updateItemSpec = new UpdateItemSpec().withPrimaryKey("workertID", id)
 					.withUpdateExpression("set workerPhoneNumber =  :val")
 					.withValueMap(new ValueMap().withNumber(":val", 5)).withReturnValues(ReturnValue.UPDATED_NEW);
 			UpdateItemOutcome outcome = table.updateItem(updateItemSpec);
@@ -101,10 +108,10 @@ public class AwsDyanmoDb {
 		}
 	}
 
-	public  void deleteITem() {
+	public  void deleteITem(int id) {
 		intiliazeTable();
 		try {
-			DeleteItemSpec deleteItemSpec = new DeleteItemSpec().withPrimaryKey("workerID", "1234")
+			DeleteItemSpec deleteItemSpec = new DeleteItemSpec().withPrimaryKey("workertID", id)
 					.withConditionExpression("workerPhoneNumber <= :val")
 					.withValueMap(new ValueMap().withNumber(":val", 5));
 			try {
@@ -124,9 +131,12 @@ public class AwsDyanmoDb {
 	public List<Workers> fetchAllItems() throws JsonParseException, JsonMappingException, IOException {
 		// This client will default to US West (Oregon)
 		intiliazeTable();
+		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+		 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		 System.out.println(timestamp.getTime());
 		List<Workers> allWorkers = new ArrayList<Workers>();
 		Map<String, Object> expressionAttributeValues = new HashMap<String, Object>();
-		expressionAttributeValues.put(":pr", 1002);
+		expressionAttributeValues.put(":pr", timestamp.getTime());
 
 		ItemCollection<ScanOutcome> items = table.scan("workertID  < :pr", // FilterExpression
 				"workertID, workerEmailID, workerField, workerName,workerPhoneNumber", // ProjectionExpression
