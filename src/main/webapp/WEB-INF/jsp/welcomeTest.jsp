@@ -54,7 +54,7 @@ Optional theme
 					<td>{{worker.workerEmailID}}</td>
 					<td>{{worker.workerPhoneNumber}}</td>
 					<td>{{worker.workerField}}</td>
-					<td><button class="btn btn-danger"  ng-click="remove(contact._id)" ng-model="contact.name">Remove</button> </td>
+					<td><button class="btn btn-danger"  ng-click="remove(worker.workertID)" ng-model="contact.name">Remove</button> </td>
 					<td><button class="btn btn-warning"  ng-click="edit(worker.workertID,worker.workerName,worker.workerEmailID,worker.workerPhoneNumber,worker.workerField)" >Edit</button> </td>
 			</tr>
 		</tbody>

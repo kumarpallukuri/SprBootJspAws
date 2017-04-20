@@ -42,7 +42,7 @@
 		<tbody>
 		
 			<tr ng-repeat="worker in Workers">
-					<td><a  href="/fullWorkerDetail/id={{worker.workertID}}">{{worker.workerName}}</a></td>
+					<td><a  href="/fullWorkerDetail/{{worker.workertID}}">{{worker.workerName}}</a></td>
 					<td>{{worker.workerName}}</td>
 					<td>{{worker.workerEmailID}}</td>
 					<td>{{worker.workerPhoneNumber}}</td>

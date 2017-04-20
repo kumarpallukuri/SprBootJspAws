@@ -77,7 +77,7 @@ public class AwsDyanmoDb {
 		PutItemOutcome outcome = table.putItem(item);
 	}
 
-	public  Workers retrieveItem(int id) {
+	public  Workers retrieveItem(double id) {
 		intiliazeTable();
 		Workers worker = null;
 		try {
@@ -108,9 +108,10 @@ public class AwsDyanmoDb {
 		}
 	}
 
-	public  void deleteITem(int id) {
+	public  void deleteITem(double id) {
 		intiliazeTable();
 		try {
+			System.out.println("delete sucessfully enter");
 			DeleteItemSpec deleteItemSpec = new DeleteItemSpec().withPrimaryKey("workertID", id)
 					.withConditionExpression("workerPhoneNumber <= :val")
 					.withValueMap(new ValueMap().withNumber(":val", 5));
@@ -121,7 +122,7 @@ public class AwsDyanmoDb {
 			} catch (Exception e) {
 				System.err.println(e.getMessage());
 			}
-
+			System.out.println("delete sucessfully");
 		} catch (Exception e) {
 			System.err.println("Error updating item in " + table);
 			System.err.println(e.getMessage());

@@ -34,7 +34,13 @@ myApp.controller('AppCtrl', [ '$scope', '$http', function($scope, $http) {
 //				//refresh();
 //			});
 	}
-	
+	$scope.remove =  function(workerId){
+		$http.get('/workerDetailRemove/'+workerId).success(function(response){
+			 $scope.contact = response;
+				console.log(response);
+				//refresh();
+			});
+	}
 	$scope.update = function(workerName,workerEmailID,workerPhoneNumber,workerField){
 		alert(workerName);
 		var id  = $scope.id;

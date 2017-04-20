@@ -59,10 +59,11 @@ public class WorkerDetails {
         System.out.println(users );
         return new ResponseEntity<List<Workers>>(users, HttpStatus.OK);
     }
-    @RequestMapping(value = "/workerDetailRemove/{id}/{workerName}", method = RequestMethod.GET)
-    public ResponseEntity<List<Workers>> eidtWorkerDetails(@PathVariable("id") long id,@PathVariable("id") String workerName) throws JsonParseException, JsonMappingException, IOException {
+    @RequestMapping(value = "/workerDetailRemove/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Workers>> eidtWorkerDetails(@PathVariable("id") double id,@PathVariable("id") String workerName) throws JsonParseException, JsonMappingException, IOException {
     	System.out.println("idss -->"+id);
     	System.out.println("workerName -->"+workerName);
+    	userService.deleteITem(id);
         List<Workers> users = userService.fetchAllItems();
         if (users.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);

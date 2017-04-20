@@ -42,7 +42,7 @@ public class AddWorkerDetailsController {
 	@RequestMapping(value ="/fullWorkerDetail/{id}")
 	public String workerDetails(@PathVariable("id") String id,Map<String, Object> model) throws Exception {
 		System.out.println("add worker detailszz.."+id +"ff");
-		int idValue = Integer.parseInt(id);
+		double idValue = Double.parseDouble(id);
 		Workers worker = awsdynamoDb.retrieveItem(idValue);
 		model.put("FirstNames", worker.getWorkerName());
 		model.put("EmailAdress", worker.getWorkerEmailID());
