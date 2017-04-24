@@ -18,39 +18,38 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
-<script src="/js/workerDetails.js"></script>
+<script src="/js/homepage/workerDetails.js"></script>
 
 
 <div class="container" ng-controller="AppCtrl">
 
 	<h1>Worker details</h1> 
-	<li><a  class="btn btn-default" href="/addWorkerDetails">Add workerDetails.. </a></li>
-	<li><a  class="btn btn-default" href="/registartionSucess">Update/Delete workerDetails.. </a></li>
-	
+	<div>
+		<li><a  class="btn btn-default" href="/addWorkerDetails">Add workerDetails.. </a></li>
+		<li><a  class="btn btn-default" href="/registartionSucess">Update/Delete workerDetails.. </a></li>
+	</div>
 	
 	<table class="table">
 		<thead>
 			<tr>
-				<th>First Name </th>
-				<th>Last Name </th>
+				<th>Worker Name </th>
 				<th> Email </th>
 				<th> Phone number </th>
-				<th> WorkerField </th>
+				<th> Proffession </th>
+				<th> City </th>
 				
 			 </tr>
 		</thead>
 		<tbody>
 		
 			<tr ng-repeat="worker in Workers">
-					<td><a  href="/fullWorkerDetail/{{worker.workertID}}">{{worker.workerName}}</a></td>
-					<td>{{worker.workerName}}</td>
-					<td>{{worker.workerEmailID}}</td>
+					<td><a  href="/fullWorkerDetail/{{worker.workerId}}">{{worker.workerName}}</a></td>
+					<td>{{worker.workerEmail}}</td>
 					<td>{{worker.workerPhoneNumber}}</td>
-					<td>{{worker.workerField}}</td>
-					
+					<td><b>{{worker.workerProffession}}</b></td>
+					<td>{{worker.workerCity}}</td>
 			</tr>
 		</tbody>
-		
 	</table>
 </div>
 

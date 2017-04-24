@@ -25,40 +25,52 @@
 		<div class="starter-template">
 <!-- 			<h1>Registration Form for Marthon</h1> -->
 			<h2>Please Enter Details of </h2>
-<li><a  class="btn btn-default" href="/register">Back. </a></li>
+			<li><a  class="btn btn-default" href="/register">Home page/Worker details. </a></li>
 			<form:form modelAttribute="registartionDetailsForm"
 				action="/addWorkerDetailsValues">
-				<%--     <form:hidden path="id"/>  --%>
 				<table>
 					<tr>
-						<td>First Name</td> &nbsp;
-						<td><form:input path="firstName" /></td>
+						<td> Name</td> &nbsp;&nbsp;
+						<td><form:input path="workerName" /></td>
 					</tr>
 					<tr>
-						<td>Last Name</td>
-						<td><form:input path="lastName" /></td>
-					</tr>
-					
-					<tr>
-						<td>Email Address</td>
-						<td><form:input path="emailAdress" /></td>
-					</tr>
-					<tr>
-						<td>Mobile Number</td>
-						<td><form:input path="mobileNumber" /></td>
-					</tr>
-					<tr>
-						<td>Worker Type</td>
-						<td><form:input path="workerType" /></td>
+						<td>Proffession</td> &nbsp;&nbsp;
+						<td><form:input path="workerProffession" /></td>
 					</tr>
 					
 					<tr>
-						<td>Experience</td>
-						<td><form:input path="experience" /></td>
+						<td>Email Address</td>&nbsp;&nbsp;
+						<td><form:input path="workerEmail" /></td>
 					</tr>
 					<tr>
-						<td>Rate</td>
-						<td><form:input path="rate" /></td>
+						<td>Mobile Number</td>&nbsp;&nbsp;
+						<td><form:input path="workerPhoneNumber" /></td>
+					</tr>
+					<tr>
+						<td> Address</td>&nbsp;&nbsp;
+						<td><form:input path="workerAddress" /></td>
+					</tr>
+					
+					<tr>
+						<td>City</td>&nbsp;&nbsp;
+						<td><form:input path="workerCity" /></td>
+					</tr>
+					
+					<tr>
+						<td>District</td>&nbsp;&nbsp;
+						<td><form:input path="workerDistrict" /></td>
+					</tr>
+					<tr>
+						<td>State</td>&nbsp;&nbsp;
+						<td><form:input path="workerState" /></td>
+					</tr>
+					<tr>
+						<td>Rate</td>&nbsp;&nbsp;
+						<td><form:input path="workerRate" /></td>
+					</tr>
+					<tr>
+						<td>Availablity</td>&nbsp;&nbsp;
+						<td><form:input path="workerAvailablity" /></td>
 					</tr>
 					<tr>
 						<td colspan="2"><input type="submit" value="Add/Edit Person" />

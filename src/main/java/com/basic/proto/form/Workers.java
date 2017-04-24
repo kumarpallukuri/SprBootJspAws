@@ -2,72 +2,180 @@ package com.basic.proto.form;
 
 public class Workers {
 	
-	 private String workerPhoneNumber;
-	 private String workertID; 
-	 private String workerField;  
-	 private String workerName;
-	 private String workerEmailID;
+	private long workerId;
+	
+	private String workerAddress;
+	 
+	private String workerAvailablity;
+	
+	private String workerCity;
+	
+	private String workerDistrict;
+	
+	private String workerEmail;
+	
+	private String workerName;
+	
+	private long workerPhoneNumber;
+	
+	private String workerProffession;
+	
+	private String workerRate;
+	
+	private String workerState;
+
 	/**
-	 * @return the workerPhoneNumber
+	 * @return the workerId
 	 */
-	public String getWorkerPhoneNumber() {
-		return workerPhoneNumber;
+	public long getWorkerId() {
+		return workerId;
 	}
+
 	/**
-	 * @param workerPhoneNumber the workerPhoneNumber to set
+	 * @param workerId the workerId to set
 	 */
-	public void setWorkerPhoneNumber(String workerPhoneNumber) {
-		this.workerPhoneNumber = workerPhoneNumber;
+	public void setWorkerId(long workerId) {
+		this.workerId = workerId;
 	}
+
 	/**
-	 * @return the workertID
+	 * @return the workerAddress
 	 */
-	public String getWorkertID() {
-		return workertID;
+	public String getWorkerAddress() {
+		return workerAddress;
 	}
+
 	/**
-	 * @param workertID the workertID to set
+	 * @param workerAddress the workerAddress to set
 	 */
-	public void setWorkertID(String workertID) {
-		this.workertID = workertID;
+	public void setWorkerAddress(String workerAddress) {
+		this.workerAddress = workerAddress;
 	}
+
 	/**
-	 * @return the workerField
+	 * @return the workerAvailablity
 	 */
-	public String getWorkerField() {
-		return workerField;
+	public String getWorkerAvailablity() {
+		return workerAvailablity;
 	}
+
 	/**
-	 * @param workerField the workerField to set
+	 * @param workerAvailablity the workerAvailablity to set
 	 */
-	public void setWorkerField(String workerField) {
-		this.workerField = workerField;
+	public void setWorkerAvailablity(String workerAvailablity) {
+		this.workerAvailablity = workerAvailablity;
 	}
+
+	/**
+	 * @return the workerCity
+	 */
+	public String getWorkerCity() {
+		return workerCity;
+	}
+
+	/**
+	 * @param workerCity the workerCity to set
+	 */
+	public void setWorkerCity(String workerCity) {
+		this.workerCity = workerCity;
+	}
+
+	/**
+	 * @return the workerDistrict
+	 */
+	public String getWorkerDistrict() {
+		return workerDistrict;
+	}
+
+	/**
+	 * @param workerDistrict the workerDistrict to set
+	 */
+	public void setWorkerDistrict(String workerDistrict) {
+		this.workerDistrict = workerDistrict;
+	}
+
+	/**
+	 * @return the workerEmail
+	 */
+	public String getWorkerEmail() {
+		return workerEmail;
+	}
+
+	/**
+	 * @param workerEmail the workerEmail to set
+	 */
+	public void setWorkerEmail(String workerEmail) {
+		this.workerEmail = workerEmail;
+	}
+
 	/**
 	 * @return the workerName
 	 */
 	public String getWorkerName() {
 		return workerName;
 	}
+
 	/**
 	 * @param workerName the workerName to set
 	 */
 	public void setWorkerName(String workerName) {
 		this.workerName = workerName;
 	}
+
 	/**
-	 * @return the workerEmailID
+	 * @return the workerPhoneNumber
 	 */
-	public String getWorkerEmailID() {
-		return workerEmailID;
+	public long getWorkerPhoneNumber() {
+		return workerPhoneNumber;
 	}
+
 	/**
-	 * @param workerEmailID the workerEmailID to set
+	 * @param workerPhoneNumber the workerPhoneNumber to set
 	 */
-	public void setWorkerEmailID(String workerEmailID) {
-		this.workerEmailID = workerEmailID;
+	public void setWorkerPhoneNumber(long workerPhoneNumber) {
+		this.workerPhoneNumber = workerPhoneNumber;
 	}
-	 
-	 
+
+	/**
+	 * @return the workerProffession
+	 */
+	public String getWorkerProffession() {
+		return workerProffession;
+	}
+
+	/**
+	 * @param workerProffession the workerProffession to set
+	 */
+	public void setWorkerProffession(String workerProffession) {
+		this.workerProffession = workerProffession;
+	}
+
+	/**
+	 * @return the workerRate
+	 */
+	public String getWorkerRate() {
+		return workerRate;
+	}
+
+	/**
+	 * @param workerRate the workerRate to set
+	 */
+	public void setWorkerRate(String workerRate) {
+		this.workerRate = workerRate;
+	}
+
+	/**
+	 * @return the workerState
+	 */
+	public String getWorkerState() {
+		return workerState;
+	}
+
+	/**
+	 * @param workerState the workerState to set
+	 */
+	public void setWorkerState(String workerState) {
+		this.workerState = workerState;
+	}
 
 }

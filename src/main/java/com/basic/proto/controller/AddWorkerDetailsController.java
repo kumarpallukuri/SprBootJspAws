@@ -16,40 +16,51 @@ import com.basic.proto.form.Workers;
 
 @Controller
 public class AddWorkerDetailsController {
-
+	// Write the item to the table
+	// workerId (N) workerAddress (S) workerAvailablity (S) workerCity (S)
+	// workerDistrict (S)
+	// workerEmail (S) workerName (S) workerPhoneNumber (N) workerProffession
+	// (S) workerRate (N) workerState (S)
 	// inject via application.properties
 	@Value("${welcome.message:test}")
 	private String message = "Hello World";
-//	
+	//
 	@Autowired
-		private AwsDyanmoDb awsdynamoDb;
-	
-	@RequestMapping(value ="/addWorkerDetails")
+	private AwsDyanmoDb awsdynamoDb;
+
+	@RequestMapping(value = "/addWorkerDetails")
 	public String welcome(@ModelAttribute RegistartionDetailsForm registartionDetailsForm) throws Exception {
 		System.out.println("add worker details...");
-		//awsdynamoDb.addItem(registartionDetailsForm);
-		return "welcome";
+		// awsdynamoDb.addItem(registartionDetailsForm);
+		return "details/addDetails";
 	}
-	
-	@RequestMapping(value ="/addWorkerDetailsValues")
-	public ModelAndView addWorkerDetails(@ModelAttribute RegistartionDetailsForm registartionDetailsForm) throws Exception {
+
+	@RequestMapping(value = "/addWorkerDetailsValues")
+	public ModelAndView addWorkerDetails(@ModelAttribute RegistartionDetailsForm registartionDetailsForm)
+			throws Exception {
 		System.out.println("add worker details...");
 		awsdynamoDb.addItem(registartionDetailsForm);
-		System.out.println(registartionDetailsForm.getEmailAdress());
-		return  new ModelAndView("redirect:/register");
+		System.out.println(registartionDetailsForm.getWorkerEmail());
+		return new ModelAndView("redirect:/register");
 	}
-	
-	@RequestMapping(value ="/fullWorkerDetail/{id}")
-	public String workerDetails(@PathVariable("id") String id,Map<String, Object> model) throws Exception {
-		System.out.println("add worker detailszz.."+id +"ff");
+
+	@RequestMapping(value = "/fullWorkerDetail/{id}")
+	public String workerDetails(@PathVariable("id") String id, Map<String, Object> model) throws Exception {
+		System.out.println("add worker detailszz.." + id + "ff");
 		double idValue = Double.parseDouble(id);
 		Workers worker = awsdynamoDb.retrieveItem(idValue);
-		model.put("FirstNames", worker.getWorkerName());
-		model.put("EmailAdress", worker.getWorkerEmailID());
-		model.put("MobileNumber", worker.getWorkerPhoneNumber());
-		model.put("WorkerType", worker.getWorkerField());
-		//model.put("Rate", worker.getRate());
-		return  "fullWorkerDetails";
+		model.put("workerPhoneNumber", worker.getWorkerPhoneNumber());
+		model.put("workerProffession", worker.getWorkerProffession());
+		model.put("workerEmail", worker.getWorkerEmail());
+		model.put("workerAddress", worker.getWorkerAddress());
+		model.put("workerCity", worker.getWorkerCity());
+		model.put("workerAvailablity", worker.getWorkerAvailablity());
+		model.put("workerDistrict", worker.getWorkerDistrict());
+		model.put("workerName", worker.getWorkerName());
+		model.put("workerRate", worker.getWorkerRate());
+		model.put("workerState", worker.getWorkerState());
+
+		return "details/workerInfo";
 	}
 
 }

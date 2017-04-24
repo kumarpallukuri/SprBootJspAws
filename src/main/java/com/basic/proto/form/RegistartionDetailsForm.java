@@ -4,96 +4,183 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class RegistartionDetailsForm {
+	
+	private long workerId;
+	
+	private String workerAddress;
+	 
+	private String workerAvailablity;
+	
+	private String workerCity;
+	
+	private String workerDistrict;
+	
+	private String workerEmail;
+	
+	private String workerName;
+	
+	private long workerPhoneNumber;
+	
+	private String workerProffession;
+	
+	private String workerRate;
+	
+	private String workerState;
 
-	private String firstName;
-
-	private String emailAdress;
-
-	private String lastName;
-
-	private String mobileNumber;
-
-	private String workerType;
-
-	private String experience;
-
-	private int rate;
-
-	public String getMobileNumber() {
-		return mobileNumber;
-	}
-
-	public void setMobileNumber(String mobileNumber) {
-		this.mobileNumber = mobileNumber;
-	}
-
-	public String getWorkerType() {
-		return workerType;
-	}
-
-	public void setWorkerType(String workerType) {
-		this.workerType = workerType;
-	}
-
-	public String getExperience() {
-		return experience;
-	}
-
-	public void setExperience(String experience) {
-		this.experience = experience;
-	}
-
-	public int getRate() {
-		return rate;
-	}
-
-	public void setRate(int rate) {
-		this.rate = rate;
+	/**
+	 * @return the workerId
+	 */
+	public long getWorkerId() {
+		return workerId;
 	}
 
 	/**
-	 * @return the firstName
+	 * @param workerId the workerId to set
 	 */
-	public String getFirstName() {
-		return firstName;
+	public void setWorkerId(long workerId) {
+		this.workerId = workerId;
 	}
 
 	/**
-	 * @param firstName
-	 *            the firstName to set
+	 * @return the workerAddress
 	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public String getWorkerAddress() {
+		return workerAddress;
 	}
 
 	/**
-	 * @return the lastName
+	 * @param workerAddress the workerAddress to set
 	 */
-	public String getLastName() {
-		return lastName;
+	public void setWorkerAddress(String workerAddress) {
+		this.workerAddress = workerAddress;
 	}
 
 	/**
-	 * @param lastName
-	 *            the lastName to set
+	 * @return the workerAvailablity
 	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public String getWorkerAvailablity() {
+		return workerAvailablity;
 	}
 
 	/**
-	 * @return the emailAdress
+	 * @param workerAvailablity the workerAvailablity to set
 	 */
-	public String getEmailAdress() {
-		return emailAdress;
+	public void setWorkerAvailablity(String workerAvailablity) {
+		this.workerAvailablity = workerAvailablity;
 	}
 
 	/**
-	 * @param emailAdress
-	 *            the emailAdress to set
+	 * @return the workerCity
 	 */
-	public void setEmailAdress(String emailAdress) {
-		this.emailAdress = emailAdress;
+	public String getWorkerCity() {
+		return workerCity;
 	}
+
+	/**
+	 * @param workerCity the workerCity to set
+	 */
+	public void setWorkerCity(String workerCity) {
+		this.workerCity = workerCity;
+	}
+
+	/**
+	 * @return the workerDistrict
+	 */
+	public String getWorkerDistrict() {
+		return workerDistrict;
+	}
+
+	/**
+	 * @param workerDistrict the workerDistrict to set
+	 */
+	public void setWorkerDistrict(String workerDistrict) {
+		this.workerDistrict = workerDistrict;
+	}
+
+	/**
+	 * @return the workerEmail
+	 */
+	public String getWorkerEmail() {
+		return workerEmail;
+	}
+
+	/**
+	 * @param workerEmail the workerEmail to set
+	 */
+	public void setWorkerEmail(String workerEmail) {
+		this.workerEmail = workerEmail;
+	}
+
+	/**
+	 * @return the workerName
+	 */
+	public String getWorkerName() {
+		return workerName;
+	}
+
+	/**
+	 * @param workerName the workerName to set
+	 */
+	public void setWorkerName(String workerName) {
+		this.workerName = workerName;
+	}
+
+	/**
+	 * @return the workerPhoneNumber
+	 */
+	public long getWorkerPhoneNumber() {
+		return workerPhoneNumber;
+	}
+
+	/**
+	 * @param workerPhoneNumber the workerPhoneNumber to set
+	 */
+	public void setWorkerPhoneNumber(long workerPhoneNumber) {
+		this.workerPhoneNumber = workerPhoneNumber;
+	}
+
+	/**
+	 * @return the workerProffession
+	 */
+	public String getWorkerProffession() {
+		return workerProffession;
+	}
+
+	/**
+	 * @param workerProffession the workerProffession to set
+	 */
+	public void setWorkerProffession(String workerProffession) {
+		this.workerProffession = workerProffession;
+	}
+
+	/**
+	 * @return the workerRate
+	 */
+	public String getWorkerRate() {
+		return workerRate;
+	}
+
+	/**
+	 * @param workerRate the workerRate to set
+	 */
+	public void setWorkerRate(String workerRate) {
+		this.workerRate = workerRate;
+	}
+
+	/**
+	 * @return the workerState
+	 */
+	public String getWorkerState() {
+		return workerState;
+	}
+
+	/**
+	 * @param workerState the workerState to set
+	 */
+	public void setWorkerState(String workerState) {
+		this.workerState = workerState;
+	}
+	
+	
 
 }

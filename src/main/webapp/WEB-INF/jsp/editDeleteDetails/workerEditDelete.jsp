@@ -17,22 +17,22 @@ Optional theme
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
-<script src="/js/controllers.js"></script>
+<script src="/js/editDeleteDetails/workerEditDelete.js"></script>
 
 
 <div class="container" ng-controller="AppCtrl">
 
 	<h1>Worker detailsss</h1> 
 	<li><a  class="btn btn-primary"  href="/addWorkerDetails" >Add Contact.. </a></li>
-	<li><a  class="btn btn-primary" href="/register">Back. </a></li>
+	<li><a  class="btn btn-primary" href="/register">Home/Worker Details .. </a></li>
 	<table class="table">
 		<thead>
 			<tr>
-				<th>First Name </th>
-				<th>Last Name </th>
-				<th> Email </th>
+				<th>Worker Name</th>
+				<th>Email </th>
 				<th> Phone number </th>
-				<th> WorkerField </th>
+				<th> Proffession </th>
+				<th> City </th>
 				<th>&nbsp</th>
 				<th>&nbsp</th>
 			 </tr>
@@ -40,25 +40,24 @@ Optional theme
 		<tbody>
 		<tr id="editValue"  ng-show ="showAll">
 		<td><input class="form-control" ng-model="workerName" value="Bob" text ="ddf"> </td> 
-			<td><input class="form-control" ng-model="workerName"> </td> 
-			<td><input class="form-control" ng-model="workerEmailID"> </td> 
+			<td><input class="form-control" ng-model="workerEmail"> </td> 
 			<td><input class="form-control" ng-model="workerPhoneNumber"> </td> 
-			<td><input class="form-control" ng-model="workerField"> </td> 
-			<td><button class="btn btn-info"  ng-click="update(workerName,workerEmailID,workerPhoneNumber,workerField)" >update</button> </td> 
+			<td><input class="form-control" ng-model="workerProffession"> </td> 
+			<td><input class="form-control" ng-model="workerCity"> </td> 
+			<td><button class="btn btn-info"  ng-click="update(workerName,workerEmail,workerPhoneNumber,workerProffession,workerCity)" >update</button> </td> 
 			<td><button class="btn btn-info"  ng-click="clear()" >Clear</button> </td> 
 			<td><button class="btn btn-info"  ng-click="close()" >Close</button> </td> 
 			</tr>
 			<tr ng-repeat="worker in Workers">
 					<td>{{worker.workerName}}</td>
-					<td>{{worker.workerName}}</td>
-					<td>{{worker.workerEmailID}}</td>
+					<td>{{worker.workerEmail}}</td>
 					<td>{{worker.workerPhoneNumber}}</td>
-					<td>{{worker.workerField}}</td>
-					<td><button class="btn btn-danger"  ng-click="remove(worker.workertID)" ng-model="contact.name">Remove</button> </td>
-					<td><button class="btn btn-warning"  ng-click="edit(worker.workertID,worker.workerName,worker.workerEmailID,worker.workerPhoneNumber,worker.workerField)" >Edit</button> </td>
+					<td>{{worker.workerProffession}}</td>
+					<td>{{worker.workerCity}}</td>
+					<td><button class="btn btn-danger"  ng-click="remove(worker.workerId,worker.workerPhoneNumber)" ng-model="contact.name">Remove</button> </td>
+					<td><button class="btn btn-warning"  ng-click="edit(worker.workerId,worker.workerName,worker.workerEmail,worker.workerPhoneNumber,worker.workerProffession,worker.workerCity)" >Edit</button> </td>
 			</tr>
 		</tbody>
-		
 	</table>
 </div>
 </body>

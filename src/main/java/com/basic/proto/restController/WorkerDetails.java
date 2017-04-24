@@ -35,12 +35,12 @@ public class WorkerDetails {
     // -------------------Retrieve All Users---------------------------------------------
 	
 	@RequestMapping(value = "/workerDetail", method = RequestMethod.POST)	
-	public  ResponseEntity<List<Workers>>  updateDetails( @RequestBody Workers workers ) throws JsonParseException, JsonMappingException, IOException   {		
+	public  ResponseEntity<List<Workers>>  updateDetails( @RequestBody Workers worker ) throws JsonParseException, JsonMappingException, IOException   {		
 		//
 		// Code processing the input parameters
-		System.out.println(workers.getWorkerName());
-		System.out.println(workers.getWorkerEmailID());
-		//	
+		System.out.println(worker.getWorkerName());
+		System.out.println(worker.getWorkerEmail());
+			 userService.updateExistingAttributeConditionally(worker);
 		List<Workers> users = userService.fetchAllItems();
         if (users.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
@@ -59,11 +59,11 @@ public class WorkerDetails {
         System.out.println(users );
         return new ResponseEntity<List<Workers>>(users, HttpStatus.OK);
     }
-    @RequestMapping(value = "/workerDetailRemove/{id}", method = RequestMethod.GET)
-    public ResponseEntity<List<Workers>> eidtWorkerDetails(@PathVariable("id") double id,@PathVariable("id") String workerName) throws JsonParseException, JsonMappingException, IOException {
+    @RequestMapping(value = "/workerDetailRemove/{id}/{phoneNumber}", method = RequestMethod.GET)
+    public ResponseEntity<List<Workers>> eidtWorkerDetails(@PathVariable("id") long id,@PathVariable("phoneNumber") long phoneNumber) throws JsonParseException, JsonMappingException, IOException {
     	System.out.println("idss -->"+id);
-    	System.out.println("workerName -->"+workerName);
-    	userService.deleteITem(id);
+    	System.out.println("phoneNumber -->"+phoneNumber);
+    	userService.deleteITem(id,phoneNumber);
         List<Workers> users = userService.fetchAllItems();
         if (users.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);

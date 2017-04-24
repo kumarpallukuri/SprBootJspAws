@@ -50,7 +50,7 @@ public class AwsDyanmoDb {
 			client.withRegion(Regions.US_EAST_1);
 			client.setEndpoint("dynamodb.us-east-2.amazonaws.com");
 			DynamoDB dynamoDB = new DynamoDB(client);
-			table = dynamoDB.getTable("WorkersTableTest");
+			table = dynamoDB.getTable("WorkersDetails");
 		}
 	}
 
@@ -68,12 +68,21 @@ public class AwsDyanmoDb {
 		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 		 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		 System.out.println(timestamp.getTime());
-		Item item = new Item().withPrimaryKey("workertID", timestamp.getTime())
-				.withString("workerEmailID", registartionDetailsForm.getEmailAdress())
-				.withString("workerField", registartionDetailsForm.getWorkerType())
-				.withString("workerName", registartionDetailsForm.getFirstName())
-				.withNumber("workerPhoneNumber", registartionDetailsForm.getRate());
+		Item item = new Item().withPrimaryKey("workerId", timestamp.getTime())
+				.withString("workerEmail", registartionDetailsForm.getWorkerEmail())
+				.withString("workerProffession", registartionDetailsForm.getWorkerProffession())
+				.withString("workerName", registartionDetailsForm.getWorkerName())
+				.withNumber("workerPhoneNumber", registartionDetailsForm.getWorkerPhoneNumber())
+				.withString("workerAddress", registartionDetailsForm.getWorkerAddress())
+				.withString("workerDistrict", registartionDetailsForm.getWorkerDistrict())
+				.withString("workerCity", registartionDetailsForm.getWorkerCity())
+				.withString("workerState", registartionDetailsForm.getWorkerState())
+				.withString("workerAvailablity", registartionDetailsForm.getWorkerAvailablity())
+				.withString("workerRate", registartionDetailsForm.getWorkerRate());
+				
 		// Write the item to the table
+		//workerId (N)	workerAddress (S)	workerAvailablity (S)	workerCity (S)	workerDistrict (S)	
+		//workerEmail (S)	workerName (S)	workerPhoneNumber (N)	workerProffession (S)	workerRate (N)	workerState (S)
 		PutItemOutcome outcome = table.putItem(item);
 	}
 
@@ -81,7 +90,7 @@ public class AwsDyanmoDb {
 		intiliazeTable();
 		Workers worker = null;
 		try {
-			Item item = table.getItem("workertID", id);
+			Item item = table.getItem("workerId", id);
 			System.out.println("Printing item after retrieving it....");
 			System.out.println(item.toJSONPretty());
 			ObjectMapper mapper = new ObjectMapper();
@@ -93,12 +102,21 @@ public class AwsDyanmoDb {
 		return worker;
 	}
 
-	public  void updateExistingAttributeConditionally(int id) {
+	public  void updateExistingAttributeConditionally(Workers worker) {
+		//workerId (N)	workerAddress (S)	workerAvailablity (S)	workerCity (S)	workerDistrict (S)	
+		//workerEmail (S)	workerName (S)	workerPhoneNumber (N)	workerProffession (S)	workerRate (N)	workerState (S)
 		intiliazeTable();
 		try {
-			UpdateItemSpec updateItemSpec = new UpdateItemSpec().withPrimaryKey("workertID", id)
-					.withUpdateExpression("set workerPhoneNumber =  :val")
-					.withValueMap(new ValueMap().withNumber(":val", 5)).withReturnValues(ReturnValue.UPDATED_NEW);
+			UpdateItemSpec updateItemSpec = new UpdateItemSpec().withPrimaryKey("workerId", worker.getWorkerId())
+					.withUpdateExpression("set workerPhoneNumber =  :phoneNumber")
+					.withUpdateExpression("set workerEmail =  :email")
+					.withUpdateExpression("set workerName =  :name")
+					.withUpdateExpression("set workerCity =  :city")
+					.withValueMap(new ValueMap().withNumber(":phoneNumber", worker.getWorkerPhoneNumber()))
+					.withValueMap(new ValueMap().withString(":email", worker.getWorkerEmail()))
+					.withValueMap(new ValueMap().withString(":name", worker.getWorkerName()))
+					.withValueMap(new ValueMap().withString(":city",worker.getWorkerCity()))
+					.withReturnValues(ReturnValue.UPDATED_NEW);
 			UpdateItemOutcome outcome = table.updateItem(updateItemSpec);
 			System.out.println("UpdateItem succeeded:\n" + outcome.getItem().toJSONPretty());
 
@@ -108,13 +126,18 @@ public class AwsDyanmoDb {
 		}
 	}
 
-	public  void deleteITem(double id) {
+	public  void deleteITem(double id,double phoneNumber) {
+		// Write the item to the table
+		
 		intiliazeTable();
 		try {
 			System.out.println("delete sucessfully enter");
-			DeleteItemSpec deleteItemSpec = new DeleteItemSpec().withPrimaryKey("workertID", id)
+			 SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+			 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+			 System.out.println(timestamp.getTime());
+			DeleteItemSpec deleteItemSpec = new DeleteItemSpec().withPrimaryKey("workerId", id)
 					.withConditionExpression("workerPhoneNumber <= :val")
-					.withValueMap(new ValueMap().withNumber(":val", 5));
+					.withValueMap(new ValueMap().withNumber(":val", phoneNumber));
 			try {
 				System.out.println("Attempting a conditional delete...");
 				table.deleteItem(deleteItemSpec);
@@ -131,6 +154,7 @@ public class AwsDyanmoDb {
 
 	public List<Workers> fetchAllItems() throws JsonParseException, JsonMappingException, IOException {
 		// This client will default to US West (Oregon)
+		
 		intiliazeTable();
 		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 		 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -139,11 +163,12 @@ public class AwsDyanmoDb {
 		Map<String, Object> expressionAttributeValues = new HashMap<String, Object>();
 		expressionAttributeValues.put(":pr", timestamp.getTime());
 
-		ItemCollection<ScanOutcome> items = table.scan("workertID  < :pr", // FilterExpression
-				"workertID, workerEmailID, workerField, workerName,workerPhoneNumber", // ProjectionExpression
+		ItemCollection<ScanOutcome> items = table.scan("workerId  < :pr", // FilterExpression
+				"workerId, workerEmail, workerProffession, workerName,workerPhoneNumber,"
+				+ "workerAddress,workerAvailablity,workerCity,workerDistrict,workerRate,workerState",// ProjectionExpression
 				null, // ExpressionAttributeNames - not used in this example
 				expressionAttributeValues);
-
+		
 		System.out.println("Scan of " + "WorkersTableTest" + " for items with a price less than 2.");
 		Iterator<Item> iterator = items.iterator();
 		while (iterator.hasNext()) {

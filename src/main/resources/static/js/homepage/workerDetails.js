@@ -11,10 +11,6 @@ myApp.controller('AppCtrl', [ '$scope', '$http', function($scope, $http) {
 		$scope.Workers = response;
 	}).error(function(response, status, headers, config) {
 		alert('cannot find resource');
-//		console.log(response);
-//		console.log(status);
-//		console.log(headers);
-//		console.log(confiq);
 	});
 	
 

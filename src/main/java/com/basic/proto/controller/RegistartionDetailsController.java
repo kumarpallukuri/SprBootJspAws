@@ -19,21 +19,8 @@ public class RegistartionDetailsController {
 	
 	@RequestMapping(value ="/registartionSucess")
 	public String welcome() throws Exception {
-//		model.put("FirstNames", registartionDetailsForm.getFirstName());
-//		model.put("LastNames", registartionDetailsForm.getLastName());
-//		model.put("EmailAdress", registartionDetailsForm.getEmailAdress());
-//		model.put("MobileNumber", registartionDetailsForm.getMobileNumber());
-//		model.put("WorkerType", registartionDetailsForm.getWorkerType());
-//		model.put("Rate", registartionDetailsForm.getRate());
-//		//s3Service.test();
-//		//AmazonSnsTest sns = new AmazonSnsTest();
-//		//sns.createTopic("Marthon Event");
-//		//sns.createSNSService(registartionDetailsForm.getEmailAdress(), "MarthonEvent");
-//		//sns.sendNotification("MarthonEvent");
-//		awsdynamoDb.detailsAdd(registartionDetailsForm);
-	//	awsdynamoDb.fetchAllItems();
-		System.out.println("testtttt...");
-		return "welcomeTest";
+		System.out.println("update / delete page...");
+		return "editDeleteDetails/workerEditDelete";
 	}
 
 }

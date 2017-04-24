@@ -22,15 +22,24 @@
 	<div class="container">
 
 		<div class="starter-template">
-			Registration Sucess for below User..! </br> Details: ${FirstNames}</br>
-			${LastName} </br> ${EmailAdress} </br> ${MobileNumber} </br> ${WorkerType} </br> ${Rate} </br>
+			</br><b> Worker Details  for:</b></br> 
+			 <b>Proffession :   </b>${workerName}</br>
+			<b>Proffession :   </b>${workerProffession} </br> 
+			<b>Rate :   </b>${workerRate} </br> 
+			<b>Availablity :   </b>${workerAvailablity} </br> 
+			<b>MobileNumber :   </b>${MobileNumber} </br> 
+			<b>Email :   </b>${workerEmail} </br> 
+			<b>PhoneNumber :   </b>${workerPhoneNumber} </br>
+			<b>Address :   </b>${workerAddress} </br>
+			<b>City :   </b>${workerCity} </br>
+			<b>District :   </b>${workerDistrict} </br>
+			<b>State :   </b>${workerState} </br>
 
 		</div>
 	</div>
 <li><a  class="btn btn-default" href="/register">Back. </a></li>
 	<script type="text/javascript"
 		src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>
