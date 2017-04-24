@@ -106,20 +106,32 @@ public class AwsDyanmoDb {
 		//workerId (N)	workerAddress (S)	workerAvailablity (S)	workerCity (S)	workerDistrict (S)	
 		//workerEmail (S)	workerName (S)	workerPhoneNumber (N)	workerProffession (S)	workerRate (N)	workerState (S)
 		intiliazeTable();
+		ValueMap workerFields = new ValueMap();
+		workerFields.withNumber(":phoneNumber", worker.getWorkerPhoneNumber());
+		workerFields.withString(":email", worker.getWorkerEmail());
+		workerFields.withString(":name", worker.getWorkerName());
+		workerFields.withString(":city",worker.getWorkerCity());
 		try {
-			UpdateItemSpec updateItemSpec = new UpdateItemSpec().withPrimaryKey("workerId", worker.getWorkerId())
-					.withUpdateExpression("set workerPhoneNumber =  :phoneNumber")
-					.withUpdateExpression("set workerEmail =  :email")
-					.withUpdateExpression("set workerName =  :name")
-					.withUpdateExpression("set workerCity =  :city")
-					.withValueMap(new ValueMap().withNumber(":phoneNumber", worker.getWorkerPhoneNumber()))
-					.withValueMap(new ValueMap().withString(":email", worker.getWorkerEmail()))
-					.withValueMap(new ValueMap().withString(":name", worker.getWorkerName()))
-					.withValueMap(new ValueMap().withString(":city",worker.getWorkerCity()))
-					.withReturnValues(ReturnValue.UPDATED_NEW);
-			UpdateItemOutcome outcome = table.updateItem(updateItemSpec);
-			System.out.println("UpdateItem succeeded:\n" + outcome.getItem().toJSONPretty());
-
+//			UpdateItemSpec updateItemSpec = new UpdateItemSpec().withPrimaryKey("workerId", worker.getWorkerId())
+//					.withUpdateExpression("set workerPhoneNumber =  :phoneNumber")
+////					.withUpdateExpression("set workerEmail =  :email")
+////					.withUpdateExpression("set workerName =  :name")
+////					.withUpdateExpression("set workerCity =  :city")
+//					.withValueMap(workerFieldssd)
+//					.withReturnValues(ReturnValue.UPDATED_NEW);
+////					.withValueMap(new ValueMap().withString(":email", worker.getWorkerEmail()))
+////					.withValueMap(new ValueMap().withString(":name", worker.getWorkerName()))
+////					.withValueMap(new ValueMap().withString(":city",worker.getWorkerCity()))
+			//UpdateItemOutcome outcome = table.updateItem(updateItemSpec);
+		//	System.out.println("UpdateItem succeeded:\n" + outcome.getItem().toJSONPretty());
+			Item item = new Item().withPrimaryKey("workerId", worker.getWorkerId())
+					.withString("workerEmail", worker.getWorkerEmail())
+					.withString("workerProffession", worker.getWorkerProffession())
+					.withString("workerName", worker.getWorkerName())
+					.withNumber("workerPhoneNumber", worker.getWorkerPhoneNumber())
+					.withString("workerCity", worker.getWorkerCity());
+			PutItemOutcome outcome = table.putItem(item);
+		System.out.println("UpdateItem succeeded:\n" + outcome.getItem().toJSONPretty());
 		} catch (Exception e) {
 			System.err.println("Error updating item in " + table);
 			System.err.println(e.getMessage());
@@ -185,6 +197,46 @@ public class AwsDyanmoDb {
 
 		return allWorkers;
 
+	}
+	
+	public List<Workers> filterItems(String filterString) throws JsonParseException, JsonMappingException, IOException {
+		// This client will default to US West (Oregon)
+		
+		intiliazeTable();
+		System.out.println("filterItems service");
+		List<Workers> allWorkers = new ArrayList<Workers>();
+	  	Map<String, AttributeValue> expressionAttributeValues = new HashMap<String, AttributeValue>();
+		expressionAttributeValues.put(":val", new AttributeValue().withS(filterString));
+	//	ScanRequest scanRequest = new ScanRequest().withTableName("WorkersTableTest");
+	//	ScanResult result = client.scan(scanRequest);
+		ScanRequest scanRequest = new ScanRequest().withTableName("WorkersTableTest")
+				.withFilterExpression("workerProffession < :val").withProjectionExpression("workerId")
+				.withExpressionAttributeValues(expressionAttributeValues);
+
+		ScanResult result = client.scan(scanRequest);
+		
+		Map<String, Object> expressionAttributeValues2 = new HashMap<String, Object>();
+        expressionAttributeValues2.put(":pr", filterString);
+        
+        ItemCollection<ScanOutcome> items = table.scan(
+            "workerProffession = :pr",
+            "workerId, workerEmail, workerName, workerPhoneNumber,workerCity,workerProffession", 
+            null, 
+            expressionAttributeValues2);
+        //"workerId, workerEmail, workerProffession, workerName,workerPhoneNumber,"
+	//	+ "workerAddress,workerAvailablity,workerCity,workerDistrict,workerRate,workerState"
+        System.out.println("Scan of for items with a price less than 100.");
+        Iterator<Item> iterator = items.iterator();
+        while (iterator.hasNext()) {
+           // System.out.println(iterator.next().toJSONPretty());
+            ObjectMapper mapper = new ObjectMapper();
+			String json = iterator.next().toJSONPretty();
+			Workers worker = null;
+			worker = new ObjectMapper().readValue(json, Workers.class);
+			System.out.println(json);
+			allWorkers.add(worker);
+        }    
+		return allWorkers;
 	}
 
 }

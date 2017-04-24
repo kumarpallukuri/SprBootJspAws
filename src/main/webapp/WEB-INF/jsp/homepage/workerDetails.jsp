@@ -24,9 +24,11 @@
 <div class="container" ng-controller="AppCtrl">
 
 	<h1>Worker details</h1> 
-	<div>
-		<li><a  class="btn btn-default" href="/addWorkerDetails">Add workerDetails.. </a></li>
-		<li><a  class="btn btn-default" href="/registartionSucess">Update/Delete workerDetails.. </a></li>
+	<div style ="display:inline-block;">
+		<li style ="display:inline-block;"><a  class="btn btn-info" href="/addWorkerDetails">Add workerDetails.. </a></li>
+		<li style ="display:inline-block;"><a  class="btn btn-info" href="/registartionSucess">Update/Delete workerDetails.. </a></li>
+		<li style ="display:inline-block;"><a  class="btn btn-info" href="#" ng-click="filterDetails('painter')">Filter workerDetails.. </a></li>
+		<li style ="display:inline-block;"><a  class="btn btn-info" href="#" ng-click="reset()">Reset.. </a></li>
 	</div>
 	
 	<table class="table">

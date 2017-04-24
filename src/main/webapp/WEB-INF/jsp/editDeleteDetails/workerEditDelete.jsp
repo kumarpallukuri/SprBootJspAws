@@ -40,10 +40,10 @@ Optional theme
 		<tbody>
 		<tr id="editValue"  ng-show ="showAll">
 		<td><input class="form-control" ng-model="workerName" value="Bob" text ="ddf"> </td> 
-			<td><input class="form-control" ng-model="workerEmail"> </td> 
-			<td><input class="form-control" ng-model="workerPhoneNumber"> </td> 
-			<td><input class="form-control" ng-model="workerProffession"> </td> 
-			<td><input class="form-control" ng-model="workerCity"> </td> 
+			<td><input class="form-control" ng-model="workerEmail"> </td> </br>
+			<td><input class="form-control" ng-model="workerPhoneNumber"> </td> </br>
+			<td><input class="form-control" ng-model="workerProffession"> </td> </br>
+			<td><input class="form-control" ng-model="workerCity"> </td> </br>
 			<td><button class="btn btn-info"  ng-click="update(workerName,workerEmail,workerPhoneNumber,workerProffession,workerCity)" >update</button> </td> 
 			<td><button class="btn btn-info"  ng-click="clear()" >Clear</button> </td> 
 			<td><button class="btn btn-info"  ng-click="close()" >Close</button> </td> 
@@ -54,8 +54,9 @@ Optional theme
 					<td>{{worker.workerPhoneNumber}}</td>
 					<td>{{worker.workerProffession}}</td>
 					<td>{{worker.workerCity}}</td>
+					<input type="hidden" value={worker} id="workerObject"/>
 					<td><button class="btn btn-danger"  ng-click="remove(worker.workerId,worker.workerPhoneNumber)" ng-model="contact.name">Remove</button> </td>
-					<td><button class="btn btn-warning"  ng-click="edit(worker.workerId,worker.workerName,worker.workerEmail,worker.workerPhoneNumber,worker.workerProffession,worker.workerCity)" >Edit</button> </td>
+					<td><button class="btn btn-warning"  ng-click="edit(worker,worker.workerId,worker.workerName,worker.workerEmail,worker.workerPhoneNumber,worker.workerProffession,worker.workerCity)" >Edit</button> </td>
 			</tr>
 		</tbody>
 	</table>

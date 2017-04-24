@@ -1,7 +1,9 @@
 package com.basic.proto.restController;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import com.amazonaws.services.dynamodbv2.model.ScanRequest;
+import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.basic.proto.aws.service.AwsDyanmoDb;
 import com.basic.proto.form.Workers;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -68,6 +73,17 @@ public class WorkerDetails {
         if (users.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
             // You many decide to return HttpStatus.NOT_FOUND
+        }
+        System.out.println(users );
+        return new ResponseEntity<List<Workers>>(users, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/filterDetails/{filterString}", method = RequestMethod.GET)
+    public ResponseEntity<List<Workers>> filterWorkerDetails(@PathVariable("filterString") String filterString) throws JsonParseException, JsonMappingException, IOException {
+  	System.out.println("filterDetails -->");
+  	 List<Workers> users =userService.filterItems(filterString);
+        if (users.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
         System.out.println(users );
         return new ResponseEntity<List<Workers>>(users, HttpStatus.OK);

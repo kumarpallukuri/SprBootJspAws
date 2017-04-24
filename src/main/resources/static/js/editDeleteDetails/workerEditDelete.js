@@ -4,6 +4,7 @@ myApp.controller('AppCtrl', [ '$scope', '$http', function($scope, $http) {
 	$scope.workerId ="";
 	$scope.workerName = "";
 	$scope.Workers = [];
+	$scope.Worker = "";
 	$http.get("/workerDetails").success(function(response) {
 		$scope.Workers = response;
 	}).error(function(response, status, headers, config) {
@@ -19,8 +20,10 @@ myApp.controller('AppCtrl', [ '$scope', '$http', function($scope, $http) {
 		});
 	};
 	
-	$scope.edit = function(workerId,workerName,workerEmail,workerPhoneNumber,workerProffession,workerCity){
+	$scope.edit = function(worker,workerId,workerName,workerEmail,workerPhoneNumber,workerProffession,workerCity){
 		$scope.showAll = true;
+		alert(worker.workerName);
+		$scope.worker = worker;
 		$scope.workerId = workerId;
 		$scope.workerName = workerName;
 		$scope.workerEmail = workerEmail;
@@ -36,7 +39,6 @@ myApp.controller('AppCtrl', [ '$scope', '$http', function($scope, $http) {
 			});
 	}
 	$scope.update = function(workerName,workerEmail,workerPhoneNumber,workerProffession,workerCity){
-		alert(workerCity);
 		var workerId  = $scope.workerId;
 		var worker = 
             { 
