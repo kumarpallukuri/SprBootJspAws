@@ -38,8 +38,7 @@
 		</div>
 	</div>
 <li><a  class="btn btn-default" href="/register">Back. </a></li>
-	<script type="text/javascript"
-		src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
 </body>
 
 </html>

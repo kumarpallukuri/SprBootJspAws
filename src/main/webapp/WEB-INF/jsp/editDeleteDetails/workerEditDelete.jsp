@@ -5,7 +5,7 @@
 	
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-Optional theme 
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 </head>
 <body>
@@ -45,6 +45,7 @@ Optional theme
 			<td><input class="form-control" ng-model="workerProffession"> </td> </br>
 			<td><input class="form-control" ng-model="workerCity"> </td> </br>
 			<td><button class="btn btn-info"  ng-click="update(workerName,workerEmail,workerPhoneNumber,workerProffession,workerCity)" >update</button> </td> 
+			
 			<td><button class="btn btn-info"  ng-click="clear()" >Clear</button> </td> 
 			<td><button class="btn btn-info"  ng-click="close()" >Close</button> </td> 
 			</tr>
@@ -56,7 +57,7 @@ Optional theme
 					<td>{{worker.workerCity}}</td>
 					<input type="hidden" value={worker} id="workerObject"/>
 					<td><button class="btn btn-danger"  ng-click="remove(worker.workerId,worker.workerPhoneNumber)" ng-model="contact.name">Remove</button> </td>
-					<td><button class="btn btn-warning"  ng-click="edit(worker,worker.workerId,worker.workerName,worker.workerEmail,worker.workerPhoneNumber,worker.workerProffession,worker.workerCity)" >Edit</button> </td>
+					<td>	<li><a  class="btn btn-warning" href="/editDetails/{{worker.workerId}}">Edit Details </a></li></td>
 			</tr>
 		</tbody>
 	</table>

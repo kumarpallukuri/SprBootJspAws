@@ -16,7 +16,7 @@ import com.basic.proto.form.Workers;
 
 @Controller
 public class AddWorkerDetailsController {
-	// Write the item to the table
+	// Writte the item to the table
 	// workerId (N) workerAddress (S) workerAvailablity (S) workerCity (S)
 	// workerDistrict (S)
 	// workerEmail (S) workerName (S) workerPhoneNumber (N) workerProffession
@@ -60,7 +60,25 @@ public class AddWorkerDetailsController {
 		model.put("workerRate", worker.getWorkerRate());
 		model.put("workerState", worker.getWorkerState());
 
-		return "details/workerInfo";
+		return "details/personalworkerInfo";
 	}
+	
+	@RequestMapping(value = "/editDetails/{id}")
+	public String editWorkerDetails(@PathVariable("id") String id, Map<String, Object> model) throws Exception {
+		System.out.println("add worker detailszz.." + id + "ff");
+		double idValue = Double.parseDouble(id);
+		Workers worker = awsdynamoDb.retrieveItem(idValue);
+		model.put("workerPhoneNumber", worker.getWorkerPhoneNumber());
+		model.put("workerProffession", worker.getWorkerProffession());
+		model.put("workerEmail", worker.getWorkerEmail());
+		model.put("workerAddress", worker.getWorkerAddress());
+		model.put("workerCity", worker.getWorkerCity());
+		model.put("workerAvailablity", worker.getWorkerAvailablity());
+		model.put("workerDistrict", worker.getWorkerDistrict());
+		model.put("workerName", worker.getWorkerName());
+		model.put("workerRate", worker.getWorkerRate());
+		model.put("workerState", worker.getWorkerState());
 
+		return "details/editDetails";
+	}
 }
