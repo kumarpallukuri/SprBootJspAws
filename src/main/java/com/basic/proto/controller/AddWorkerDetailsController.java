@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,7 +17,7 @@ import com.basic.proto.form.Workers;
 
 @Controller
 public class AddWorkerDetailsController {
-	// Writte the item to the table
+	// Write the item to the table
 	// workerId (N) workerAddress (S) workerAvailablity (S) workerCity (S)
 	// workerDistrict (S)
 	// workerEmail (S) workerName (S) workerPhoneNumber (N) workerProffession
@@ -41,6 +42,14 @@ public class AddWorkerDetailsController {
 		System.out.println("add worker details...");
 		awsdynamoDb.addItem(registartionDetailsForm);
 		System.out.println(registartionDetailsForm.getWorkerEmail());
+		return new ModelAndView("redirect:/register");
+	}
+	
+	@RequestMapping(value = "/addEditedWorkerDetails")
+	public ModelAndView addEditedWorkerDetails(@RequestBody Workers worker)
+			throws Exception {
+		System.out.println("addEditedWorkerDetails...");
+		awsdynamoDb.updateExistingAttributeConditionally(worker);
 		return new ModelAndView("redirect:/register");
 	}
 
@@ -68,6 +77,7 @@ public class AddWorkerDetailsController {
 		System.out.println("add worker detailszz.." + id + "ff");
 		double idValue = Double.parseDouble(id);
 		Workers worker = awsdynamoDb.retrieveItem(idValue);
+		model.put("workerId", id);
 		model.put("workerPhoneNumber", worker.getWorkerPhoneNumber());
 		model.put("workerProffession", worker.getWorkerProffession());
 		model.put("workerEmail", worker.getWorkerEmail());

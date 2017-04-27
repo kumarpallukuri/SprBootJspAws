@@ -22,7 +22,6 @@ myApp.controller('AppCtrl', [ '$scope', '$http', function($scope, $http) {
 	
 	$scope.edit = function(worker,workerId,workerName,workerEmail,workerPhoneNumber,workerProffession,workerCity){
 		$scope.showAll = true;
-		alert(worker.workerName);
 		$scope.worker = worker;
 		$scope.workerId = workerId;
 		$scope.workerName = workerName;
@@ -30,6 +29,11 @@ myApp.controller('AppCtrl', [ '$scope', '$http', function($scope, $http) {
 		$scope.workerPhoneNumber = workerPhoneNumber;
 		$scope.workerProffession = workerProffession;
 		$scope.workerCity = workerCity;
+		$scope.workerAvailablity = worker.workerAvailablity;
+		$scope.workerAddress = worker.workerAddress;
+		$scope.workerDistrict = worker.workerDistrict;
+		$scope.workerState = worker.workerState;
+		$scope.workerRate = worker.workerRate;
 	}
 	$scope.remove =  function(workerId,workerPhoneNumber){
 		$http.get('/workerDetailRemove/'+workerId+'/'+workerPhoneNumber).success(function(response){
@@ -38,7 +42,9 @@ myApp.controller('AppCtrl', [ '$scope', '$http', function($scope, $http) {
 				refresh();
 			});
 	}
-	$scope.update = function(workerName,workerEmail,workerPhoneNumber,workerProffession,workerCity){
+	
+	$scope.update = function(workerName,workerEmail,workerPhoneNumber,workerProffession,
+			workerCity,workerAvailablity,workerAddress,workerDistrict,workerState,workerRate){
 		var workerId  = $scope.workerId;
 		var worker = 
             { 
@@ -48,6 +54,12 @@ myApp.controller('AppCtrl', [ '$scope', '$http', function($scope, $http) {
             	'workerPhoneNumber':workerPhoneNumber,
             	'workerProffession':workerProffession,
             	'workerCity':workerCity,
+            	'workerAvailablity':workerAvailablity,
+            	'workerAddress':workerAddress,
+            	'workerDistrict':workerDistrict,
+            	'workerState':workerState,
+            	'workerRate':workerRate,
+            	
             	}
             			                    				                    	
             ;

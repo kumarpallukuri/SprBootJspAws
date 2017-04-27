@@ -4,26 +4,18 @@
 <html lang="en">
 <head>
 
-<link rel="stylesheet" type="text/css"
-	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-<!-- 
-	<spring:url value="/css/main.css" var="springCss" />
-	<link href="${springCss}" rel="stylesheet" />
-	 -->
-<c:url value="/css/main.css" var="jstlCss" />
-<link href="${jstlCss}" rel="stylesheet" />
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 </head>
 <body>
-
-
+<h1> Personal Worker Details </h1>
 
 	<div class="container">
 
 		<div class="starter-template">
-			</br><b> Worker Details  for:</b></br> 
-			 <b>Proffession :   </b>${workerName}</br>
+			 <b>WorkerName :   </b>${workerName}</br>
 			<b>Proffession :   </b>${workerProffession} </br> 
 			<b>Rate :   </b>${workerRate} </br> 
 			<b>Availablity :   </b>${workerAvailablity} </br> 
@@ -37,7 +29,10 @@
 
 		</div>
 	</div>
-<li><a  class="btn btn-default" href="/register">Back. </a></li>
+	<div style ="display:inline-block;"> 
+		<li style ="display:inline-block;"><a  class="btn btn-primary"  href="/addWorkerDetails" >Add Contact.. </a></li>
+		<li style ="display:inline-block;"><a  class="btn btn-primary" href="/register">Home/Worker Details .. </a></li>
+	</div>
 	
 </body>
 

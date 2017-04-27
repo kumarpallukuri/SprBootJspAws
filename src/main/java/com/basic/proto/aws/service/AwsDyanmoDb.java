@@ -125,11 +125,16 @@ public class AwsDyanmoDb {
 			//UpdateItemOutcome outcome = table.updateItem(updateItemSpec);
 		//	System.out.println("UpdateItem succeeded:\n" + outcome.getItem().toJSONPretty());
 			Item item = new Item().withPrimaryKey("workerId", worker.getWorkerId())
-					.withString("workerEmail", worker.getWorkerEmail())
-					.withString("workerProffession", worker.getWorkerProffession())
-					.withString("workerName", worker.getWorkerName())
-					.withNumber("workerPhoneNumber", worker.getWorkerPhoneNumber())
-					.withString("workerCity", worker.getWorkerCity());
+			.withString("workerEmail", worker.getWorkerEmail())
+			.withString("workerProffession", worker.getWorkerProffession())
+			.withString("workerName", worker.getWorkerName())
+			.withNumber("workerPhoneNumber", worker.getWorkerPhoneNumber())
+			.withString("workerAddress", worker.getWorkerAddress())
+			.withString("workerDistrict", worker.getWorkerDistrict())
+			.withString("workerCity", worker.getWorkerCity())
+			.withString("workerState", worker.getWorkerState())
+			.withString("workerAvailablity", worker.getWorkerAvailablity())
+			.withString("workerRate", worker.getWorkerRate());
 			PutItemOutcome outcome = table.putItem(item);
 		System.out.println("UpdateItem succeeded:\n" + outcome.getItem().toJSONPretty());
 		} catch (Exception e) {
