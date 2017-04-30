@@ -19,7 +19,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
 <script src="/js/homepage/workerDetails.js"></script>
-
+<script language="Javascript" src="/js/common/jquery.js"></script>
 
 <div class="container" ng-controller="AppCtrl">
 
@@ -27,10 +27,17 @@
 	<div style ="display:inline-block;">
 		<li style ="display:inline-block;"><a  class="btn btn-info" href="/addWorkerDetails">Add workerDetails.. </a></li>
 		<li style ="display:inline-block;"><a  class="btn btn-info" href="/registartionSucess">Update/Delete workerDetails.. </a></li>
-		<li style ="display:inline-block;"><a  class="btn btn-info" href="#" ng-click="filterDetails('painter')">Filter workerDetails.. </a></li>
-		<li style ="display:inline-block;"><a  class="btn btn-info" href="#" ng-click="reset()">Reset.. </a></li>
+		
 	</div>
+	<div id="filter">
 	
+ 	&nbsp;Filter By:   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select id="filterDropDown" ng-model="filter" ></select>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ 	<input type ="text" ng-model="filterValue" /> &nbsp; &nbsp; 
+ 	<li style ="display:inline-block;"><a  class="btn btn-warning" href="#" ng-click="filterDetails()">Filter workerDetails.. </a></li>
+ 	&nbsp; &nbsp; <li style ="display:inline-block;"><a  class="btn btn-info" href="#" ng-click="reset()">Reset.. </a></li>
+    </div>
+
+
 	<table class="table">
 		<thead>
 			<tr>

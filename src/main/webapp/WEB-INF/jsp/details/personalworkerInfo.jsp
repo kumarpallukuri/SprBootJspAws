@@ -30,7 +30,7 @@
 		</div>
 	</div>
 	<div style ="display:inline-block;"> 
-		<li style ="display:inline-block;"><a  class="btn btn-primary"  href="/addWorkerDetails" >Add Contact.. </a></li>
+		<li style ="display:inline-block;"><a  class="btn btn btn-warning"  href="/addWorkerDetails" >Add Contact.. </a></li>
 		<li style ="display:inline-block;"><a  class="btn btn-primary" href="/register">Home/Worker Details .. </a></li>
 	</div>
 	

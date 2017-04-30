@@ -35,10 +35,25 @@ public class WorkerDetails {
 	
 
 	@Autowired
-	AwsDyanmoDb userService; //Service which will do all data retrieval/manipulation work
+	AwsDyanmoDb userService; //Service hich will do all data retrieval/manipulation work
  
     // -------------------Retrieve All Users---------------------------------------------
 	
+	@RequestMapping(value = "/addworkerDetail", method = RequestMethod.POST)	
+	public  ResponseEntity<List<Workers>>  addWorkerDetails( @RequestBody Workers worker ) throws JsonParseException, JsonMappingException, IOException   {		
+		//
+		// Code processing the input parameters
+		System.out.println(worker.getWorkerName());
+		System.out.println(worker.getWorkerEmail());
+			 userService.addItemWithWorkerObject(worker);
+		List<Workers> users = userService.fetchAllItems();
+        if (users.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+            // You many decide to return HttpStatus.NOT_FOUND
+        }
+        System.out.println(users );
+        return new ResponseEntity<List<Workers>>(users, HttpStatus.OK);
+	}
 	@RequestMapping(value = "/workerDetail", method = RequestMethod.POST)	
 	public  ResponseEntity<List<Workers>>  updateDetails( @RequestBody Workers worker ) throws JsonParseException, JsonMappingException, IOException   {		
 		//

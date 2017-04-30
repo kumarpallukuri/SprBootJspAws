@@ -20,12 +20,9 @@ import com.amazonaws.services.dynamodbv2.document.ItemCollection;
 import com.amazonaws.services.dynamodbv2.document.PutItemOutcome;
 import com.amazonaws.services.dynamodbv2.document.ScanOutcome;
 import com.amazonaws.services.dynamodbv2.document.Table;
-import com.amazonaws.services.dynamodbv2.document.UpdateItemOutcome;
 import com.amazonaws.services.dynamodbv2.document.spec.DeleteItemSpec;
-import com.amazonaws.services.dynamodbv2.document.spec.UpdateItemSpec;
 import com.amazonaws.services.dynamodbv2.document.utils.ValueMap;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
-import com.amazonaws.services.dynamodbv2.model.ReturnValue;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.basic.proto.form.RegistartionDetailsForm;
@@ -81,6 +78,36 @@ public class AwsDyanmoDb {
 				.withString("workerRate", registartionDetailsForm.getWorkerRate());
 				
 		// Write the item to the table
+		//workerId (N)	workerAddress (S)	workerAvailablity (S)	workerCity (S)	workerDistrict (S)	
+		//workerEmail (S)	workerName (S)	workerPhoneNumber (N)	workerProffession (S)	workerRate (N)	workerState (S)
+		PutItemOutcome outcome = table.putItem(item);
+	}
+	
+	public  void addItemWithWorkerObject( Workers registartionDetailsForm) {
+		intiliazeTable();
+		ScanRequest scanRequest = new ScanRequest().withTableName("WorkersTableTest");
+		ScanResult result = client.scan(scanRequest);
+		int lastValue = 0;
+		for (Map<String, AttributeValue> item : result.getItems()) {
+			System.out.println(item.get("workertID"));
+		}
+		// Build the item
+		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
+		 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		 System.out.println(timestamp.getTime());
+		Item item = new Item().withPrimaryKey("workerId", timestamp.getTime())
+				.withString("workerEmail", registartionDetailsForm.getWorkerEmail())
+				.withString("workerProffession", registartionDetailsForm.getWorkerProffession())
+				.withString("workerName", registartionDetailsForm.getWorkerName())
+				.withNumber("workerPhoneNumber", registartionDetailsForm.getWorkerPhoneNumber())
+				.withString("workerAddress", registartionDetailsForm.getWorkerAddress())
+				.withString("workerDistrict", registartionDetailsForm.getWorkerDistrict())
+				.withString("workerCity", registartionDetailsForm.getWorkerCity())
+				.withString("workerState", registartionDetailsForm.getWorkerState())
+				.withString("workerAvailablity", registartionDetailsForm.getWorkerAvailablity())
+				.withString("workerRate", registartionDetailsForm.getWorkerRate());
+				
+		// Writee the item to the table
 		//workerId (N)	workerAddress (S)	workerAvailablity (S)	workerCity (S)	workerDistrict (S)	
 		//workerEmail (S)	workerName (S)	workerPhoneNumber (N)	workerProffession (S)	workerRate (N)	workerState (S)
 		PutItemOutcome outcome = table.putItem(item);
@@ -210,12 +237,14 @@ public class AwsDyanmoDb {
 		intiliazeTable();
 		System.out.println("filterItems service");
 		List<Workers> allWorkers = new ArrayList<Workers>();
+		String[] filterValues = filterString.split("_");
 	  	Map<String, AttributeValue> expressionAttributeValues = new HashMap<String, AttributeValue>();
-		expressionAttributeValues.put(":val", new AttributeValue().withS(filterString));
+		expressionAttributeValues.put(":val", new AttributeValue().withS(filterValues[1]));
 	//	ScanRequest scanRequest = new ScanRequest().withTableName("WorkersTableTest");
 	//	ScanResult result = client.scan(scanRequest);
+		String expressionValue = filterValues[0] +" < :val";
 		ScanRequest scanRequest = new ScanRequest().withTableName("WorkersTableTest")
-				.withFilterExpression("workerProffession < :val").withProjectionExpression("workerId")
+				.withFilterExpression(expressionValue).withProjectionExpression("workerId")
 				.withExpressionAttributeValues(expressionAttributeValues);
 
 		ScanResult result = client.scan(scanRequest);
