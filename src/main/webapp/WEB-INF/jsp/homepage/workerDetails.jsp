@@ -29,6 +29,8 @@
 		<li style ="display:inline-block;"><a  class="btn btn-info" href="/registartionSucess">Update/Delete workerDetails.. </a></li>
 		
 	</div>
+	<br>
+	<br>
 	<div id="filter">
 	
  	&nbsp;Filter By:   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select id="filterDropDown" ng-model="filter" ></select>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -37,7 +39,8 @@
  	&nbsp; &nbsp; <li style ="display:inline-block;"><a  class="btn btn-info" href="#" ng-click="reset()">Reset.. </a></li>
     </div>
 
-
+	<br>
+	<br>
 	<table class="table">
 		<thead>
 			<tr>

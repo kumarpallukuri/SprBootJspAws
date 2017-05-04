@@ -45,6 +45,29 @@ app.controller('validateCtrl', [ '$scope', '$http',function($scope, $http) {
         $scope.buttonClicks++;
     };
     $scope.buttonEnableValidation = function(){
+    	//alert(myForm.user.$invalid)
+    	 if((!($scope.myForm.user.$error.required)) ){
+    		 console.log("user sucess");
+    	 }
+    	 if(!($scope.myForm.user.$error.minlength)){
+    		 console.log("user sucess");
+    	 }
+    	 
+    	 if((!($scope.myForm.email.$error.required))&&
+    			 (!($scope.myForm.email.$error.email))){
+    		 console.log("email sucess");
+    	 }
+    	 
+//    	 if(($scope.myForm.user.$error.required) == true){
+//    		 console.log("user sucess");
+//    	 }
+//    	 
+//    	 if(($scope.myForm.city.$error.pattern)  == true){
+//    		 console.log("city enteree");
+//    	 }
+            
+    	
+//    	$("#addDetailsButtonId").attr("disabled", false);
 //		if(( $scope.user != null) &&
 //		( $scope.email != null) &&
 //		( $scope.phone != null) &&
@@ -55,13 +78,9 @@ app.controller('validateCtrl', [ '$scope', '$http',function($scope, $http) {
 //		( $scope.district != null) &&
 //		( $scope.state != null) &&
 //			( $scope.rate!= null)){
-//			$scope.buttonEnable = true;
+//				$("#addDetailsButtonId").attr("disabled", false);
 //			 }
-//    	alert("ss");
-//    	if(( $scope.user != null) &&
-//   			( $scope.email != null) ){
-//    		$scope.buttonEnable = true;
-//    	}else{
+//    	else{
 //    		$scope.buttonEnable = false;
 //    	}
     }
@@ -73,3 +92,9 @@ app.controller('validateCtrl', [ '$scope', '$http',function($scope, $http) {
     	}
     }
 }]);
+
+$(document).ready(function() {
+	
+	$("#addDetailsButtonId").attr("disabled", true);
+});
+
