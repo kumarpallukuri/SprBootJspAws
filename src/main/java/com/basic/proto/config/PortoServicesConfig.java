@@ -5,6 +5,7 @@ import javax.servlet.Filter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 
@@ -47,6 +48,13 @@ public class PortoServicesConfig extends WebMvcConfigurerAdapter {
 	public TransactionEventCleanupInterceptor cleanUp(){
 		System.out.println("cleanUp ..!");
 		return new TransactionEventCleanupInterceptor();
+	}
+	
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+	    registry.addResourceHandler("/static/**")
+	            .addResourceLocations("/WEB-INF/jsp/")
+	            .setCachePeriod(0);
 	}
 	
 	

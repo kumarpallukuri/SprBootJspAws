@@ -17,7 +17,7 @@ import com.basic.proto.form.Workers;
 
 @Controller
 public class AddWorkerDetailsController {
-	// Write the item to the table
+	// Writte the item to the table
 	// workerId (N) workerAddress (S) workerAvailablity (S) workerCity (S)
 	// workerDistrict (S)
 	// workerEmail (S) workerName (S) workerPhoneNumber (N) workerProffession
@@ -90,5 +90,10 @@ public class AddWorkerDetailsController {
 		model.put("workerState", worker.getWorkerState());
 
 		return "details/editDetails";
+	}
+	
+	@RequestMapping(value = "/locateWorkers")
+	public String locateWorkerDetails() throws Exception {
+		return  "workerdetailmap/workerDetailMap";
 	}
 }

@@ -56,9 +56,9 @@
 					type="text" name="proffessionOther" ng-model="proffessionOther"
 					placeholder="Enter proffession here.."
 					ng-change="buttonEnableValidation()"  ng-pattern="/^[a-zA-Z]$/" required>
-				<span ng-show="myForm.proffessionOther.$error.required">Proffession
+				<span style="color: red" ng-show="myForm.proffessionOther.$error.required">Proffession
 					is required.</span>
-					<span ng-show="myForm.proffessionOther.$error.pattern">Enter characters or numbers only.</span>
+					<span style="color: red" ng-show="myForm.proffessionOther.$error.pattern">Enter characters or numbers only.</span>
 			</p>
 		</div>
 		</div>
@@ -98,7 +98,9 @@
 		<p>
 			&nbsp; City<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
 				type="text" name="city" ng-model="city" 
-				ng-click="buttonEnableValidation()" /> <span style="color: red"
+				ng-click="buttonEnableValidation()"  ng-pattern="/^[a-zA-Z]$/" />
+				
+				 <span style="color: red"
 				ng-show="myForm.city.$error.pattern">Do not enter any numbers
 				or special characters.</span>
 		</p>
@@ -120,7 +122,8 @@
 		<p>
 			&nbsp;Rate:<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
 				type="number" name="input" ng-model="rate" min="1" max="1000"
-				ng-change="buttonEnableValidation()" required> <span
+				ng-change="buttonEnableValidation()" required>
+				 <span
 				style="color: red;" ng-show="myForm.input.$error.number"> Not
 				valid number! or Enter numbers only..</span>
 

@@ -46,18 +46,33 @@ app.controller('validateCtrl', [ '$scope', '$http',function($scope, $http) {
     };
     $scope.buttonEnableValidation = function(){
     	//alert(myForm.user.$invalid)
+    	console.log("started...>");
     	 if((!($scope.myForm.user.$error.required)) ){
     		 console.log("user sucess");
     	 }
-    	 if(!($scope.myForm.user.$error.minlength)){
-    		 console.log("user sucess");
+    	 
+    	 if((!($scope.myForm.proffessionOther.$error.required)) && 
+    			 (!($scope.myForm.proffessionOther.$error.pattern)) ){
+    		 console.log("proffessionOther");
     	 }
+    	
     	 
     	 if((!($scope.myForm.email.$error.required))&&
     			 (!($scope.myForm.email.$error.email))){
     		 console.log("email sucess");
     	 }
     	 
+    	 if((!($scope.myForm.phone.$error.required))&&
+    			 (!($scope.myForm.phone.$error.minlength))&&
+    			 (!($scope.myForm.phone.$error.maxlength))&&
+    			 (!($scope.myForm.phone.$error.pattern))){
+    		 console.log("phone sucess");
+    	 }
+    	 
+    	 if((!($scope.myForm.city.$error.pattern))){
+    		 console.log("city sucess");
+    	 }
+    	 console.log("ended...>");
 //    	 if(($scope.myForm.user.$error.required) == true){
 //    		 console.log("user sucess");
 //    	 }

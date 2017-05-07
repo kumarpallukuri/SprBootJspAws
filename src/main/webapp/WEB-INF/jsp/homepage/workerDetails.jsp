@@ -27,7 +27,7 @@
 	<div style ="display:inline-block;">
 		<li style ="display:inline-block;"><a  class="btn btn-info" href="/addWorkerDetails">Add workerDetails.. </a></li>
 		<li style ="display:inline-block;"><a  class="btn btn-info" href="/registartionSucess">Update/Delete workerDetails.. </a></li>
-		
+		<li style ="display:inline-block;"><a  class="btn btn-info" href="/locateWorkers">Locate Workers</a></li>
 	</div>
 	<br>
 	<br>
