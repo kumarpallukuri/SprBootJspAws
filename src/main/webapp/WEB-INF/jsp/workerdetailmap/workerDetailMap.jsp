@@ -14,6 +14,8 @@
       #map {
     height:420px;
     width:600px;
+    aligin:left;
+    padding:100px,200px,300px,0px;
 }
 .infoWindowContent {
     font-size:  14px !important;
@@ -48,8 +50,8 @@ h2 {
     <br>
  <div ng-app="mapsApp" ng-controller="MapCtrl">
     <div id="map"></div>
-    <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
-         <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
+    <div id="markerIdDiv">
+<!--          <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a> -->
     </div>
     
     <p>
