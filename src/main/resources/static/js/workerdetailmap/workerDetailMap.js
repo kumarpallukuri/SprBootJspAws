@@ -1,9 +1,7 @@
 //Data
-var cities = [
-    
-];
 var latNew = "";
 var lngNewv ="";
+ var cities =[];
 //Angular App Module and Controller
 angular.module('mapsApp', [])
 .controller('MapCtrl', [ '$scope', '$http',function ($scope, $http) {
@@ -15,16 +13,20 @@ angular.module('mapsApp', [])
     }
 
     $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
     $scope.markers = [];
-    
     var infoWindow = new google.maps.InfoWindow();
+    $scope.reset =  function(){
+    	console.log("reset...")
+    	$( ".markersLink" ).remove();
+    	$( ".markersLinkBreak").remove();
+            for(i=0; i<$scope.markers.length; i++){
+            	$scope.markers[i].setMap(null);
+            }
+    }
 	$scope.locateMe =  function(){
 		var workers = [];
 		var json ="";
 		$http.get("/workerDetails").success(function(response) {
-			// alert(JSON.stringify(response));
-			//console.log(JSON.stringify(response))
 			workers = response;
 			 json = JSON.stringify(response);
 			 json = angular.toJson(response);
@@ -37,29 +39,9 @@ angular.module('mapsApp', [])
 			alert('cannot find resource');
 		});
 		console.log("ss"+json[0]);
-		 $(".markerLink").remove();
-		var cities = [
-		    {
-		        workerCity : 'tirupathi',
-		        workerProffession : 'paintwe',
-		       lat : 43.7000,
-		        long : -79.4000
-		    },
-		    {
-		        workerCity : 'ODISHA',
-		        workerProffession : 'painter',
-		       lat : 43.7000,
-		        long : -79.4000
-		    },
-		    {
-		        workerCity : 'Jaipur',
-		        workerProffession : 'tailor',
-		       lat : 43.7000,
-		        long : -79.4000
-		    }
-		    ];
+		$( ".markersLink" ).remove();
+    	$( ".markersLinkBreak").remove();
 	
-
     
     var createMarker = function (info,indexValue){
       //  console.log("info" +info)
@@ -74,7 +56,7 @@ angular.module('mapsApp', [])
         });
         var idValue = "infoWindowContent"+indexValue;
        // marker.content = '<div class="infoWindowContent">' + info.workerProffession + '</div>';
-        marker.url = 'http://localhost:8080/fullWorkerDetail/'+info.workerId+"";
+        marker.url = 'http://localhost:8080/fullWorkerDetail/'+info.workerId;
         console.log("indexValueaa"+indexValue)
    
         //$("#marker").append('<a href="' + $(this).html() + '">'+$(this).html()+'</a>');
@@ -88,7 +70,6 @@ angular.module('mapsApp', [])
         });
         
         $scope.markers.push(marker);
-        
     }  
     
     for (i = 0; i < cities.length; i++){
@@ -103,8 +84,8 @@ angular.module('mapsApp', [])
     	console.log(workers.workerProffession)
 		
 		//for (i = 0; i < cities.length; i++){
-	       var url ='http://localhost:8080/fullWorkerDetail/1493495276784';
-			  $("#markerIdDiv").append('<a style="width:200px;height:200px;"  href="' +url + '">' + workers.workerProffession + '</a><br>');
+	       var url ='http://localhost:8080/fullWorkerDetail/'+workers.workerId;
+			  $("#markerIdDiv").append('<a style="width:200px;height:200px;" class="markersLink"  href="' +url + '">' + workers.workerProffession + '</a><br class="markersLinkBreak">');
               
 			 var geocoder =  new google.maps.Geocoder();
 		      var cityAddress = workers.workerCity+","+"india";

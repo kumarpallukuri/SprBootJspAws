@@ -66,6 +66,7 @@ h2 {
 		</p>
     
     <li style ="display:inline-block;"><a  class="btn btn-warning" href="#" ng-click="locateMe()">Locate me.. </a></li>
+     <li style ="display:inline-block;"><a  class="btn btn-warning" href="#" ng-click="reset()">Reset. </a></li>
 </div>
 
     <script>

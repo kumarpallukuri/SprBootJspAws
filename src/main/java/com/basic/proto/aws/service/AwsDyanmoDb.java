@@ -41,7 +41,7 @@ public class AwsDyanmoDb {
 
 	public  void intiliazeTable() {
 		if(table == null){
-			// This client will default to US West(Oregon)
+			// This client will default to US West1(Oregon)
 			client = new AmazonDynamoDBClient(awsIntializerService.credentialsForAwsClients());
 			// Modify the client so that it accesses a different region.
 			client.withRegion(Regions.US_EAST_1);
