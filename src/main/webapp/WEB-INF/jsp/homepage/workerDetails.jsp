@@ -34,7 +34,7 @@
 	<div id="filter">
 	
  	&nbsp;Filter By:   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select id="filterDropDown" ng-model="filter" ></select>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
- 	<input type ="text" ng-model="filterValue" /> &nbsp; &nbsp; 
+ 	<input type ="text" ng-model="filterValue"  id="filterTextValue"/> &nbsp; &nbsp; 
  	<li style ="display:inline-block;"><a  class="btn btn-warning" href="#" ng-click="filterDetails()">Filter workerDetails.. </a></li>
  	&nbsp; &nbsp; <li style ="display:inline-block;"><a  class="btn btn-info" href="#" ng-click="reset()">Reset.. </a></li>
     </div>

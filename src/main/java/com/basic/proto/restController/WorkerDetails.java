@@ -27,7 +27,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 @RestController
 public class WorkerDetails {
 
-	// injectt vi application.properties
+	// injectt vi application.propertiess
 	@Value("${welcome.message:test}")
 	private String message = "Hello World";
 	
@@ -35,7 +35,7 @@ public class WorkerDetails {
 	
 
 	@Autowired
-	AwsDyanmoDb userService; //Service hich will do all data retrieval/manipulation work
+	AwsDyanmoDb userService; //Service hich will do all data retrieval/manipulation wor
  
     // -------------------Retrieve All Users---------------------------------------------
 	

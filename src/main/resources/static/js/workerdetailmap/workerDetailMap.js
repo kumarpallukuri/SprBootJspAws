@@ -19,6 +19,7 @@ angular.module('mapsApp', [])
     	console.log("reset...")
     	$( ".markersLink" ).remove();
     	$( ".markersLinkBreak").remove();
+    	$("#cityName").val("");
             for(i=0; i<$scope.markers.length; i++){
             	$scope.markers[i].setMap(null);
             }
@@ -26,8 +27,17 @@ angular.module('mapsApp', [])
 	$scope.locateMe =  function(){
 		var workers = [];
 		var json ="";
-		$http.get("/workerDetails").success(function(response) {
+		var filterString = "workerCity"+"_"+$("#cityName").val();
+		alert(filterString)
+		$http.get('/filterDetails/'+filterString).success(function(response){
 			workers = response;
+			if(workers.length == 0){
+				alert("No workers available in this location...");
+				$scope.reset();
+				return;
+			}else{
+				$scope.reset();
+			}
 			 json = JSON.stringify(response);
 			 json = angular.toJson(response);
 			

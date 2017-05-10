@@ -24,8 +24,7 @@ myApp.controller('AppCtrl', [ '$scope', '$http', function($scope, $http) {
 	}
 	
 	$scope.filterDetails =  function(){
-		var filterString = $scope.filter+"_"+$scope.filterValue;
-		alert(filterString);
+		var filterString = $("#filterDropDown").val()+"_"+$("#filterTextValue").val();
 		$http.get('/filterDetails/'+filterString).success(function(response){
 			 $scope.Workers = response;
 				console.log(response);
@@ -37,7 +36,7 @@ myApp.controller('AppCtrl', [ '$scope', '$http', function($scope, $http) {
 
 } ]);
 
-var filterValues = ["workerEmail","workerPhoneNumber","workerProffession"];
+var filterValues = ["workerProffession","workerCity"];
 
 
 $(function() {
