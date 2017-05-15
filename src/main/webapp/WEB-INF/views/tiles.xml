@@ -11,11 +11,5 @@
        <put-attribute name="footer" value="/WEB-INF/views/tiles/template/footer.jsp" />  
    </definition>  
    
-   <!-- Test Page -->
-   <definition name="testTile" extends="standard-layout">  
-       <put-attribute name="title" value="Test" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/test.jsp" />  
-   </definition>
-   
   
 </tiles-definitions>

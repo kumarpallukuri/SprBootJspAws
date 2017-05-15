@@ -22,10 +22,5 @@ public class HomePageController {
 		model.put("message", this.message);
 		return "homepage/workerDetails";
 	}
-	
-	@RequestMapping("/test")
-	public String test() {
-		return "testTile";
-	}
 
 }
