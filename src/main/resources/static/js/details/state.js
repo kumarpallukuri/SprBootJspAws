@@ -9,15 +9,15 @@ $(function() {
   for (var i = 0; i < handles.length; i++) {
       options += '<option value="' + handles[i] + '">' + handles[i] + '</option>';
   }
-  $('#listBox').html(options);
+  $('#workerState').html(options);
 });
 function selct_district($val)
 {
     if($val=='SELECT STATE') {
    var options = '';
-  $('#secondlist').html(options);
-   $('#districtlist').hide();
-  }
+   	$('#workerDistrict').html(options);
+   	$('#districtlist').hide();
+ }
   
    if($val !='SELECT STATE') {
    var options = '';
@@ -32,7 +32,7 @@ function selct_district($val)
   for (var i = 0; i < andhra.length; i++) {
       options += '<option value="' + andhra[i] + '">' + andhra[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -44,7 +44,7 @@ function selct_district($val)
   for (var i = 0; i < ap.length; i++) {
       options += '<option value="' + ap[i] + '">' + ap[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -56,7 +56,7 @@ function selct_district($val)
   for (var i = 0; i < assam.length; i++) {
       options += '<option value="' + assam[i] + '">' + assam[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -69,7 +69,7 @@ function selct_district($val)
   for (var i = 0; i < bihar.length; i++) {
       options += '<option value="' + bihar[i] + '">' + bihar[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -81,7 +81,7 @@ function selct_district($val)
   for (var i = 0; i < Chhattisgarh.length; i++) {
       options += '<option value="' + Chhattisgarh[i] + '">' + Chhattisgarh[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -92,7 +92,7 @@ function selct_district($val)
   for (var i = 0; i < dadra.length; i++) {
       options += '<option value="' + dadra[i] + '">' + dadra[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -103,7 +103,7 @@ function selct_district($val)
   for (var i = 0; i < daman.length; i++) {
       options += '<option value="' + daman[i] + '">' + daman[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -114,7 +114,7 @@ function selct_district($val)
   for (var i = 0; i < delhi.length; i++) {
       options += '<option value="' + delhi[i] + '">' + delhi[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -125,7 +125,7 @@ function selct_district($val)
   for (var i = 0; i < goa.length; i++) {
       options += '<option value="' + goa[i] + '">' + goa[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -137,7 +137,7 @@ function selct_district($val)
   for (var i = 0; i < gujarat.length; i++) {
       options += '<option value="' + gujarat[i] + '">' + gujarat[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -149,7 +149,7 @@ function selct_district($val)
   for (var i = 0; i < haryana.length; i++) {
       options += '<option value="' + haryana[i] + '">' + haryana[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -161,7 +161,7 @@ function selct_district($val)
   for (var i = 0; i < himachal.length; i++) {
       options += '<option value="' + himachal[i] + '">' + himachal[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -172,7 +172,7 @@ function selct_district($val)
   for (var i = 0; i < jammu.length; i++) {
       options += '<option value="' + jammu[i] + '">' + jammu[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -184,7 +184,7 @@ function selct_district($val)
   for (var i = 0; i < jharkhand.length; i++) {
       options += '<option value="' + jharkhand[i] + '">' + jharkhand[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -197,7 +197,7 @@ function selct_district($val)
   for (var i = 0; i < karnataka.length; i++) {
       options += '<option value="' + karnataka[i] + '">' + karnataka[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -208,7 +208,7 @@ function selct_district($val)
   for (var i = 0; i < kerala.length; i++) {
       options += '<option value="' + kerala[i] + '">' + kerala[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -221,7 +221,7 @@ function selct_district($val)
   for (var i = 0; i < mp.length; i++) {
       options += '<option value="' + mp[i] + '">' + mp[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -235,7 +235,7 @@ function selct_district($val)
   for (var i = 0; i < maharashtra.length; i++) {
       options += '<option value="' + maharashtra[i] + '">' + maharashtra[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -246,7 +246,7 @@ function selct_district($val)
   for (var i = 0; i < manipur.length; i++) {
       options += '<option value="' + manipur[i] + '">' + manipur[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -257,7 +257,7 @@ function selct_district($val)
   for (var i = 0; i < meghalaya.length; i++) {
       options += '<option value="' + meghalaya[i] + '">' + meghalaya[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -268,7 +268,7 @@ function selct_district($val)
   for (var i = 0; i < mizoram.length; i++) {
       options += '<option value="' + mizoram[i] + '">' + mizoram[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -279,7 +279,7 @@ function selct_district($val)
   for (var i = 0; i < nagaland.length; i++) {
       options += '<option value="' + nagaland[i] + '">' + nagaland[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -290,7 +290,7 @@ function selct_district($val)
   for (var i = 0; i < orissa.length; i++) {
       options += '<option value="' + orissa[i] + '">' + orissa[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -301,7 +301,7 @@ function selct_district($val)
   for (var i = 0; i < puducherry.length; i++) {
       options += '<option value="' + puducherry[i] + '">' + puducherry[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -313,7 +313,7 @@ function selct_district($val)
   for (var i = 0; i < punjab.length; i++) {
       options += '<option value="' + punjab[i] + '">' + napunjabgaland[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -325,7 +325,7 @@ function selct_district($val)
   for (var i = 0; i < rajasthan.length; i++) {
       options += '<option value="' + rajasthan[i] + '">' + rajasthan[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -336,7 +336,7 @@ function selct_district($val)
   for (var i = 0; i < sikkim.length; i++) {
       options += '<option value="' + sikkim[i] + '">' + sikkim[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -349,7 +349,7 @@ function selct_district($val)
   for (var i = 0; i < tn.length; i++) {
       options += '<option value="' + tn[i] + '">' + tn[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -361,7 +361,7 @@ function selct_district($val)
   for (var i = 0; i < telangana.length; i++) {
       options += '<option value="' + telangana[i] + '">' + telangana[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -373,7 +373,7 @@ function selct_district($val)
   for (var i = 0; i < tripura.length; i++) {
       options += '<option value="' + tripura[i] + '">' + tripura[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -387,7 +387,7 @@ function selct_district($val)
   for (var i = 0; i < up.length; i++) {
       options += '<option value="' + up[i] + '">' + up[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -400,7 +400,7 @@ function selct_district($val)
   for (var i = 0; i < uttarakhand.length; i++) {
       options += '<option value="' + uttarakhand[i] + '">' + uttarakhand[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   
@@ -413,7 +413,7 @@ function selct_district($val)
   for (var i = 0; i < wb.length; i++) {
       options += '<option value="' + wb[i] + '">' + wb[i] + '</option>';
   }
-  $('#secondlist').html(options);
+  $('#workerDistrict').html(options);
   });
   }
   

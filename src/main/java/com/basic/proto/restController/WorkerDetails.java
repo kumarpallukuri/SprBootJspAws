@@ -35,7 +35,7 @@ public class WorkerDetails {
 	
 
 	@Autowired
-	AwsDyanmoDb userService; //Service hich will do all data retrieval/manipulation wor
+	AwsDyanmoDb userService; //Service hich will do all data retrieval/manipulation worker
  
     // -------------------Retrieve All Users---------------------------------------------
 	

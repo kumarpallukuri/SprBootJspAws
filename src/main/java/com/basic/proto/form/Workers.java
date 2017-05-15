@@ -23,6 +23,72 @@ public class Workers {
 	private String workerRate;
 	
 	private String workerState;
+	
+	private String modeofPayment;
+	
+	private String websiteUrl;
+	
+	private String wokerAvailabilty;
+	
+	private String workerexperience;
+	
+	
+
+	/**
+	 * @return the modeofPayment
+	 */
+	public String getModeofPayment() {
+		return modeofPayment;
+	}
+
+	/**
+	 * @param modeofPayment the modeofPayment to set
+	 */
+	public void setModeofPayment(String modeofPayment) {
+		this.modeofPayment = modeofPayment;
+	}
+
+	/**
+	 * @return the websiteUrl
+	 */
+	public String getWebsiteUrl() {
+		return websiteUrl;
+	}
+
+	/**
+	 * @param websiteUrl the websiteUrl to set
+	 */
+	public void setWebsiteUrl(String websiteUrl) {
+		this.websiteUrl = websiteUrl;
+	}
+
+	/**
+	 * @return the wokerAvailabilty
+	 */
+	public String getWokerAvailabilty() {
+		return wokerAvailabilty;
+	}
+
+	/**
+	 * @param wokerAvailabilty the wokerAvailabilty to set
+	 */
+	public void setWokerAvailabilty(String wokerAvailabilty) {
+		this.wokerAvailabilty = wokerAvailabilty;
+	}
+
+	/**
+	 * @return the workerexperience
+	 */
+	public String getWorkerexperience() {
+		return workerexperience;
+	}
+
+	/**
+	 * @param workerexperience the workerexperience to set
+	 */
+	public void setWorkerexperience(String workerexperience) {
+		this.workerexperience = workerexperience;
+	}
 
 	/**
 	 * @return the workerId
