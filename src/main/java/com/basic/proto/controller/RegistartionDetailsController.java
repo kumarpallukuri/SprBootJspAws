@@ -20,7 +20,7 @@ public class RegistartionDetailsController {
 	@RequestMapping(value ="/registartionSucess")
 	public String welcome() throws Exception {
 		System.out.println("update / delete page...");
-		return "editDeleteDetails/workerEditDelete";
+		return "editDeleteDetails";
 	}
 
 }

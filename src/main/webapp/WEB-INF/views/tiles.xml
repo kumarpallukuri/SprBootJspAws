@@ -11,5 +11,41 @@
        <put-attribute name="footer" value="/WEB-INF/views/tiles/template/footer.jsp" />  
    </definition>  
    
+      <!-- Register -->
+   <definition name="register" extends="standard-layout">  
+       <put-attribute name="title" value="Home" />   
+       <put-attribute name="body" value="/WEB-INF/views/pages/homepage/workerDetails.jsp" />   
+   </definition> 
+   
+      <!-- Add details -->
+   <definition name="addDetails" extends="standard-layout">  
+       <put-attribute name="title" value="Add Details" />   
+       <put-attribute name="body" value="/WEB-INF/views/pages/details/addDetails.jsp" />   
+   </definition> 
+   
+      <!-- personalworkerInfo-->
+   <definition name="personalWorkerInfo" extends="standard-layout">  
+       <put-attribute name="title" value="Worker Info" />   
+       <put-attribute name="body" value="/WEB-INF/views/pages/details/personalworkerInfo.jsp" />   
+   </definition> 
+   
+      <!-- edit Details-->
+   <definition name="editDetails" extends="standard-layout">  
+       <put-attribute name="title" value="Edit Info" />   
+       <put-attribute name="body" value="/WEB-INF/views/pages/details/editDetails.jsp" />   
+   </definition>
+   
+      <!-- details map-->
+   <definition name="detailsMap" extends="standard-layout">  
+       <put-attribute name="title" value="Details Map" />   
+       <put-attribute name="body" value="/WEB-INF/views/pages/workerdetailmap/workerDetailMap.jsp" />   
+   </definition>  
+   
+      <!--edit details delete-->
+   <definition name="editDeleteDetails" extends="standard-layout">  
+       <put-attribute name="title" value="Edit Details Delete" />   
+       <put-attribute name="body" value="/WEB-INF/views/pages/editDeleteDetails/workerEditDelete.jsp" />   
+   </definition>  
+   
   
 </tiles-definitions>

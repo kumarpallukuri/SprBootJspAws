@@ -20,7 +20,7 @@ public class HomePageController {
 	public String welcome(@ModelAttribute("registartionDetailsForm") RegistartionDetailsForm registartionDetailsForm,
 			Map<String, Object> model) {
 		model.put("message", this.message);
-		return "homepage/workerDetails";
+		return "register";
 	}
 
 }

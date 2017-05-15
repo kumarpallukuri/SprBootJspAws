@@ -33,7 +33,7 @@ public class AddWorkerDetailsController {
 	public String welcome(@ModelAttribute RegistartionDetailsForm registartionDetailsForm) throws Exception {
 		System.out.println("add worker details...");
 		// awsdynamoDb.addItem(registartionDetailsForm);
-		return "details/addDetails";
+		return "addDetails";
 	}
 
 	@RequestMapping(value = "/addWorkerDetailsValues")
@@ -69,7 +69,7 @@ public class AddWorkerDetailsController {
 		model.put("workerRate", worker.getWorkerRate());
 		model.put("workerState", worker.getWorkerState());
 
-		return "details/personalworkerInfo";
+		return "personalWorkerInfo";
 	}
 	
 	@RequestMapping(value = "/editDetails/{id}")
@@ -89,11 +89,11 @@ public class AddWorkerDetailsController {
 		model.put("workerRate", worker.getWorkerRate());
 		model.put("workerState", worker.getWorkerState());
 
-		return "details/editDetails";
+		return "editDetails";
 	}
 	
 	@RequestMapping(value = "/locateWorkers")
 	public String locateWorkerDetails() throws Exception {
-		return  "workerdetailmap/workerDetailMap";
+		return  "detailsMap";
 	}
 }
