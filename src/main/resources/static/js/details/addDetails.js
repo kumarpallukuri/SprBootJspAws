@@ -2,12 +2,38 @@ var app = angular.module('myApp', []);
 app.controller('validateCtrl', [ '$scope', '$http',function($scope, $http) {
     $scope.user = '';
     $scope.email = '';
-    $scope.phoneNumbr = /^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/;
+   $scope.phoneNumbr = /^\+?\d{2}[- ]?\d{5}[- ]?\d{5}$/;
     $scope.otherInputTextBox = false;
     $scope.buttonEnable = false;
     $scope.disabled= false;
     $scope.MyButton = true;
     $scope.addDetails = function(){
+    	var isValidation = $scope.buttonEnableValidation();
+    	alert(isValidation)
+    	if(isValidation){
+    		alert("values corrected")
+    		$scope.state = $("#workerState").val();
+    		$scope.district = $("#workerDistrict").val();
+    		$scope.availabilty = $("#workersavailabilty").val();
+    		 $("#rateDropdown").val();
+    		 $scope.city = $("#workerCity").val();
+    		 if($scope.rate == ""){
+    			 $scope.rate = 100;
+    		 }
+    		 if(($("#proffession").val())== "Other"){
+    			 $scope.proffession =$("#otherInputbox").val();
+    		 }
+    		 
+    		 console.log("user -->"+$scope.user)
+    		  console.log("email -->"+$scope.email)
+    		   console.log("phone -->"+$scope.phone)
+    		    console.log("proffession -->"+$scope.proffession)
+    		     console.log("city -->"+$scope.city)
+    		      console.log("availabilty -->"+$scope.availabilty)
+    		       console.log("address -->"+$scope.address)
+    		        console.log("district -->"+$scope.district)
+    		         console.log("state -->"+$scope.state)
+    		          console.log("rate -->"+$scope.rate)
 		var worker = 
             {           
             	'workerName': $scope.user,
@@ -23,82 +49,91 @@ app.controller('validateCtrl', [ '$scope', '$http',function($scope, $http) {
             	
             	};
 		
-		
 		$http.post('/addworkerDetail',worker).success(function(response){
 			 $scope.contact = response;
 				alert("Details Added sucessfully..!")
 				//refresh();
 			});
-		location.reload();
-//		 $scope.user="";
-//		 $scope.email="";
-//		 $scope.phone="";
-//		 $scope.proffession="";
-//		 $scope.city="";
-//		 $scope.availabilty="";
-//		 $scope.address="";
-//		 $scope.district="";
-//		 $scope.state="";
-//			 $scope.rate="";
+				
+				
+		 location.reload();
+
+    	}
 	}
     $scope.handleButtonClick = function() {
         $scope.buttonClicks++;
     };
     $scope.buttonEnableValidation = function(){
-    	//alert(myForm.user.$invalid)
-    	console.log("started...>");
-    	 if((!($scope.myForm.user.$error.required)) ){
-    		 console.log("user sucess");
-    	 }
-    	 
-    	 if((!($scope.myForm.proffessionOther.$error.required)) && 
-    			 (!($scope.myForm.proffessionOther.$error.pattern)) ){
-    		 console.log("proffessionOther");
-    	 }
+    	if(($("#userName").val().length) == 0){
+    		alert("please enter username..!")
+    		$("#userNameErrorSpan").show();
+    		return false;
+    	}
     	
-    	 
-    	 if((!($scope.myForm.email.$error.required))&&
-    			 (!($scope.myForm.email.$error.email))){
-    		 console.log("email sucess");
-    	 }
-    	 
-    	 if((!($scope.myForm.phone.$error.required))&&
-    			 (!($scope.myForm.phone.$error.minlength))&&
-    			 (!($scope.myForm.phone.$error.maxlength))&&
-    			 (!($scope.myForm.phone.$error.pattern))){
-    		 console.log("phone sucess");
-    	 }
-    	 
-    	 if((!($scope.myForm.city.$error.pattern))){
-    		 console.log("city sucess");
-    	 }
-    	 console.log("ended...>");
-//    	 if(($scope.myForm.user.$error.required) == true){
-//    		 console.log("user sucess");
-//    	 }
-//    	 
-//    	 if(($scope.myForm.city.$error.pattern)  == true){
-//    		 console.log("city enteree");
-//    	 }
-            
+    	if(($("#proffession").val())== "SELECT Proffession"){
+    		alert("please Select Proffession..!")
+    		return false;
+    	}
+    	if(($("#proffession").val())== "Other"){
+    		var str = $("#otherInputbox").val();
+    		if(($("#otherInputbox").val().length) == 0){
+    			 alert("please enter Proffession..!")
+    			 return false;
+    		
+    		}else{
+    			var str2 = "sex";
+    		//	
+//    			if(str.includes("sex")){
+//    			    alert("This Proffession is not accepted..!");
+//        			return false;
+//    			}
+    			
+    		}
+    	}
+    		
     	
-//    	$("#addDetailsButtonId").attr("disabled", false);
-//		if(( $scope.user != null) &&
-//		( $scope.email != null) &&
-//		( $scope.phone != null) &&
-//		 ($scope.proffession != null) &&
-//		( $scope.city != null) &&
-//		( $scope.availabilty != null) &&
-//		( $scope.address != null) &&
-//		( $scope.district != null) &&
-//		( $scope.state != null) &&
-//			( $scope.rate!= null)){
-//				$("#addDetailsButtonId").attr("disabled", false);
-//			 }
-//    	else{
-//    		$scope.buttonEnable = false;
-//    	}
-    }
+    	if(($("#emailAddress").val().length )== 0){
+    		alert("please enter  emailAddress..!")
+    	
+    		return false;
+    	}else{
+    		  if(($scope.myForm.email.$error.email)){
+    			 alert("please enter valid Email Addresss")
+    			 return false;
+    		  }
+    	}
+    	
+    	if(($("#phoneNumber").val().length )== 0){
+    			alert("please enter Phone Number..!")
+    			return false;
+    	}else{
+    		if((($scope.myForm.phone.$error.pattern))){
+    			alert("Please enter valid phone number");
+    			return false;
+       	 	}
+    	}
+    	if(($("#workerAddress").val().length )== 0){
+    		$("#workerAddress").val("Address not available");
+    		//return false;
+    	}
+    	if(($("#workerCity").val().length )== 0){
+    		alert("Please enter City..!")
+    		return false;
+    	}else{
+    		var workerCity = $("#workerCity").val();
+    		var matches = workerCity.match(/^[a-zA-Z]*$/);
+    		if (matches == null) {
+    		    alert('Please do not enter any numeric charcters or special charcters');
+    		    return false;
+    		}
+    	}
+    	if(($("#workerState").val() )== "SELECT STATE"){
+    		alert("Please select State..!")
+    		return false;
+    	}
+    	return true;
+}
+  
     $scope.showInputTextBox = function(){
     	if($scope.proffession === "Other"){
     		$scope.otherInputTextBox =  true;
@@ -110,6 +145,6 @@ app.controller('validateCtrl', [ '$scope', '$http',function($scope, $http) {
 
 $(document).ready(function() {
 	
-	$("#addDetailsButtonId").attr("disabled", true);
+//	$("#addDetailsButtonId").attr("disabled", true);
 });
 

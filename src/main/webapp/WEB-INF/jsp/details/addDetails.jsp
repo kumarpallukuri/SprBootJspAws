@@ -3,7 +3,8 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 <script
@@ -38,9 +39,9 @@
 		<p>
 			&nbsp;Name <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
 				type="text" name="user" ng-model="user" required
-				ng-change="buttonEnableValidation()"> <span
+				 id="userName"> <span
 				style="color: red"
-				ng-show="myForm.user.$dirty && myForm.user.$invalid"> <span
+				ng-show="myForm.user.$dirty && myForm.user.$invalid"> <span id="userNameErrorSpan"
 				ng-show="myForm.user.$error.required">Username is required.</span>
 			</span>
 		</p>
@@ -53,9 +54,9 @@
 		<div id="otherInput" ng-show="otherInputTextBox">
 			<p>
 				&nbsp; other:<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-					type="text" name="proffessionOther" ng-model="proffessionOther"
+					type="text" name="proffessionOther" ng-model="proffessionOther" id="otherInputbox"
 					placeholder="Enter proffession here.."
-					ng-change="buttonEnableValidation()"  ng-pattern="/^[a-zA-Z]$/" required>
+					  ng-pattern="/^[a-zA-Z]$/" required>
 				<span style="color: red" ng-show="myForm.proffessionOther.$error.required">Proffession
 					is required.</span>
 					<span style="color: red" ng-show="myForm.proffessionOther.$error.pattern">Enter characters or numbers only.</span>
@@ -66,8 +67,8 @@
 		</p>
 		<p>
 			&nbsp;Email Addresss<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
-				type="email" name="email" ng-model="email"
-				ng-change="buttonEnableValidation()" required> <span
+				type="email" name="email" ng-model="email" id="emailAddress"
+				 required> <span
 				style="color: red"
 				ng-show="myForm.email.$dirty && myForm.email.$invalid"> <span
 				ng-show="myForm.email.$error.required">Email is required.</span> <span
@@ -79,8 +80,8 @@
 			&nbsp;Mobile Number<br>
 		<div>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text"
-				placeholder="+91-636-78658" name="phone" ng-pattern="phoneNumbr"
-				ng-model="phone" ng-change="buttonEnableValidation()" /> <span
+				placeholder="+91-8939-933393" name="phone" ng-pattern="phoneNumbr"
+				ng-model="phone" id="phoneNumber" /> <span
 				style="color: red"
 				ng-show="myForm.phone.$dirty && myForm.phone.$error.required">Required!</span>
 			<span style="color: red" ng-show="myForm.phone.$error.minlength">Phone
@@ -88,17 +89,17 @@
 				ng-show="myForm.phone.$error.maxlength">Phone no not more
 				than 11 char.</span> <span style="color: red"
 				ng-show="myForm.phone.$error.pattern">Please match pattern
-				[+91-036-78658 || 91-036-78658]</span>
+				[+91-8939-933393 || 91-8939-933393]</span>
 		</div>
 		</p>
 		<p>
 			&nbsp; Address<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-				type="text" ng-model="address" ng-change="buttonEnableValidation()"/>
+				type="text" ng-model="address"  id="workerAddress"/>
 		</p>
 		<p>
 			&nbsp; City<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-				type="text" name="city" ng-model="city" 
-				ng-click="buttonEnableValidation()"  ng-pattern="/^[a-zA-Z]$/" />
+				type="text" name="city" ng-model="city" id="workerCity"
+				 ng-pattern="/^[a-zA-Z]$/" />
 				
 				 <span style="color: red"
 				ng-show="myForm.city.$error.pattern">Do not enter any numbers
@@ -107,7 +108,7 @@
 		</p>
 		&nbsp;State:
 		<div id="selection">
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select id="listBox"
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select id="workerState"
 				onchange='selct_district(this.value)' ng-model="state"></select>
 		</div>
 		</div>
@@ -115,20 +116,19 @@
 		</p>
 		<p id="districtlist" style="display: none">
 			&nbsp;District: :<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select
-				id='secondlist' ng-model="district"
-				ng-click="buttonEnableValidation()"></select>
+				id='workerDistrict' ng-model="district"></select>
 		</p>
 
 		<p>
 			&nbsp;Rate:<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
 				type="number" name="input" ng-model="rate" min="1" max="1000"
-				ng-change="buttonEnableValidation()" required>
+				 required>
 				 <span
 				style="color: red;" ng-show="myForm.input.$error.number"> Not
 				valid number! or Enter numbers only..</span>
 
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span> <select
-				id='rateDropdown' ng-model="rateDropdown" ng-change="buttonEnableValidation()"></select></span>
+				id='rateDropdown' ng-model="rateDropdown" ></select></span>
 		<p>
 		<p>&nbsp;Availabilty:
 		<div id="selection">
