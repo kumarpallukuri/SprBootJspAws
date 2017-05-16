@@ -56,7 +56,6 @@ public class PortoServicesConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 	    registry.addResourceHandler("/static/**")
-	            .addResourceLocations("/WEB-INF/jsp/")
 	            .setCachePeriod(0);
 	}
 	
