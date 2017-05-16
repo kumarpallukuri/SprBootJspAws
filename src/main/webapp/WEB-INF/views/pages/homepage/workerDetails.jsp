@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
 <head>
-	<title>WorkerDetails</title>
 	
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -23,7 +22,7 @@
 
 <div class="container" ng-controller="AppCtrl">
 
-	<h1>Worker details</h1> 
+<!-- 	<h1>Worker details</h1> --> 
 	<div style ="display:inline-block;">
 		<li style ="display:inline-block;"><a  class="btn btn-info" href="/addWorkerDetails">Add workerDetails.. </a></li>
 		<li style ="display:inline-block;"><a  class="btn btn-info" href="/registartionSucess">Update/Delete workerDetails.. </a></li>
