@@ -15,6 +15,9 @@
 	<%@ include file="/WEB-INF/views/tiles/template/cssInclude.jsp" %>
 	<%@ include file="/WEB-INF/views/tiles/template/jsInclude.jsp" %>
 	
+	<!-- include fonts  -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	
 </head>
   
 <body>

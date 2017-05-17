@@ -1,0 +1,35 @@
+.navbar-default .navbar-collapse, .navbar-default .navbar-form{
+	color : #FFFFFF;
+}
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus, 
+.navbar-default .navbar-nav>.active>a:hover{
+	color: #FFFFFF;
+    background-color: #007398;
+}
+.navbar-default .navbar-nav>li>a{
+	color : #505050;
+}
+.navbar-default .navbar-nav>.active>a, 
+.navbar-default .navbar-nav>.open>a{
+	background-image : none;
+	box-shadow : none;
+}
+.navbar-nav>li{
+	margin : 0 10px;
+	padding-top : 8px;
+}
+.navbar-nav>li.active{
+	background : #007398;
+}
+.navbar-default .navbar-nav>li>a:focus, 
+.navbar-default .navbar-nav>li>a:hover{
+	color: #FFFFFF;
+    background-color: #007398;
+}
+.navbar-nav>li>a{
+	padding : 8px 15px 10px 15px;
+}
+#header .container{
+	padding-bottom : 16px;
+}

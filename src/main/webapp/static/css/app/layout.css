@@ -1,5 +1,12 @@
 /*layout*/
-
+html,
 body{
-	background-color : green;
+	font-size : 16px;
+	font-family: 'Open Sans', sans-serif;
+	color : #505050;
+	background-color : #b9b9b9;
+}
+
+#site-content{
+	display : none;
 }
