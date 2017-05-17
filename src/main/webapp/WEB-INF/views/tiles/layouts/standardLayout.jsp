@@ -7,12 +7,14 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title><tiles:getAsString name="title" /></title>
-    
+    <title><tiles:getAsString name="title" /></title>   
     <c:set var="url">${pageContext.request.requestURL}</c:set>
     <base href="${fn:substring(url, 0, fn:length(url) - fn:length(pageContext.request.requestURI))}${pageContext.request.contextPath}/" />
         
-    <!-- include css and js files -->   
+    <!-- include css and js files -->
+	<%@ include file="/WEB-INF/views/tiles/template/cssInclude.jsp" %>
+	<%@ include file="/WEB-INF/views/tiles/template/jsInclude.jsp" %>
+	
 </head>
   
 <body>
