@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp', []);
 
-
+//https://patrickgrimard.io/2014/05/16/pagination-with-spring-data-and-hateoas-in-an-angularjs-app/
 myApp.controller('AppCtrl', [ '$scope', '$http', function($scope, $http) {
 	//$('.news').hide();
 	$scope.Workers = [];

@@ -32,7 +32,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
-public class AwsDyanmoDb {
+public class WorkerDetailsDataService {
 
 	@Autowired
 	AwsIntializerService awsIntializerService;

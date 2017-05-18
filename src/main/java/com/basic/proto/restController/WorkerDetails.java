@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
-import com.basic.proto.aws.service.AwsDyanmoDb;
+import com.basic.proto.aws.service.WorkerDetailsDataService;
 import com.basic.proto.form.Workers;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -35,7 +35,7 @@ public class WorkerDetails {
 	
 
 	@Autowired
-	AwsDyanmoDb userService; //Service hich will do all data retrieval/manipulation worker
+	WorkerDetailsDataService userService; //Service hich will do all data retrieval/manipulation worker
  
     // -------------------Retrieve All Users---------------------------------------------
 	
