@@ -1,0 +1,22 @@
+.nav>li>a:focus, .nav>li>a:hover{
+	background-color : #007398;
+}
+
+
+/*footer*/
+footer#footer{
+	clear : both;
+	padding-top : 15px;
+	position : absolute;
+	bottom : 0;
+}
+#footer .nav>li{
+	display : inline;
+	margin : 0 16px;
+}
+#footer .nav>li>a{
+	display : inline;
+}
+#footerSection{
+	padding : 25px 16px;
+}

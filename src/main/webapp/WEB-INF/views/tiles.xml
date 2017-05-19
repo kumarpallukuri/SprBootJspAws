@@ -10,6 +10,15 @@
        <put-attribute name="body" value="" />  
        <put-attribute name="footer" value="/WEB-INF/views/tiles/template/footer.jsp" />  
    </definition>  
+   	
+   	<!-- side bar -->
+    <definition name="sidebar" template="/WEB-INF/views/tiles/template/sideBar.jsp"/>    
+
+      <!-- Login -->
+   <definition name="login" extends="standard-layout">  
+       <put-attribute name="title" value="Login" />   
+       <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />   
+   </definition> 
    
       <!-- Register -->
    <definition name="register" extends="standard-layout">  
