@@ -10,6 +10,9 @@
        <put-attribute name="body" value="" />  
        <put-attribute name="footer" value="/WEB-INF/views/tiles/template/footer.jsp" />  
    </definition>  
+   	
+   	<!-- side bar -->
+    <definition name="sidebar" template="/WEB-INF/views/tiles/template/sideBar.jsp"/>    
    
       <!-- Register -->
    <definition name="register" extends="standard-layout">  

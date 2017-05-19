@@ -5,4 +5,6 @@
 
 <!-- application css files -->
 <link rel="stylesheet" href="/static/css/app/layout.css">
-<link rel="stylesheet" href="/static/css/app/main.css">
+<link rel="stylesheet" href="/static/css/app/header.css">
+<link rel="stylesheet" href="/static/css/app/sidebar.css">
+<link rel="stylesheet" href="/static/css/app/content.css">

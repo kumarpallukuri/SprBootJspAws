@@ -22,17 +22,25 @@
   
 <body>
 		<!-- header -->
-        <header id="header" class="custom-header">
+        <header id="header" class="col-md-12 custom-header">
             <tiles:insertAttribute name="header" />
         </header>
          
          <!-- main body content -->
-        <section id="site-content">
-            <tiles:insertAttribute name="body" />
-        </section>
+        <main id="site-content">
+        	<div class="col-md-3">
+            	<tiles:insertDefinition name="sidebar" />
+            </div>
+        	<div id="content" class="col-md-9">
+        		<div id="body">
+            		<tiles:insertAttribute name="body" />
+            		<%-- <%@ include file="/WEB-INF/views/pages/testBody.jsp" %> --%>
+            	</div>
+            </div>
+        </main>
          
          <!-- footer -->
-        <footer id="footer">
+        <footer id="footer"  class="col-md-12">
             <tiles:insertAttribute name="footer" />
         </footer>
 </body>
