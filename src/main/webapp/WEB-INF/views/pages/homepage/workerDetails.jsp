@@ -5,7 +5,7 @@
 
 <script src="static/js/app/homepage/workerDetails.js"></script>
 
-<div class="container" ng-controller="AppCtrl">
+<div class="" ng-controller="AppCtrl">
 
 <!-- 	<h1>Worker details</h1> --> 
 	<div style ="display:inline-block;">
