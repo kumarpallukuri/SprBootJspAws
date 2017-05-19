@@ -5,9 +5,8 @@
 
 	<artifactId>spring-boot-web-jsp</artifactId>
 	<packaging>war</packaging>
-	<name>Spring Boot Web JSP Example</name>
-	<description>Spring Boot Web JSP Example</description>
-	<url>https://www.mkyong.com</url>
+	<name>spr Boot Web JSP Example</name>
+	<description>Spr Boot Web JSP Example</description>
 	<version>1.0</version>
 
 	<parent>

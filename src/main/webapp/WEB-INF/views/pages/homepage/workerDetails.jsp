@@ -4,9 +4,9 @@
 <body>
 
 <script src="static/js/app/homepage/workerDetails.js"></script>
-
-<div class="" ng-controller="AppCtrl">
 <script src="/js/login/loginDetailsService.js"></script>
+<div class="" ng-controller="AppCtrl">
+
 
 <!-- 	<h1>Worker details</h1> --> 
 	<div style ="display:inline-block;">
