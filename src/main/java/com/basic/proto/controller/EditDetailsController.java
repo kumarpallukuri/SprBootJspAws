@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.basic.proto.aws.service.AwsDyanmoDb;
+import com.basic.proto.aws.service.WorkerDetailsDataService;
 import com.basic.proto.form.RegistartionDetailsForm;
 
 @Controller
@@ -21,7 +21,7 @@ public class EditDetailsController {
 	private String message = "Hello World";
 	//
 	@Autowired
-	private AwsDyanmoDb awsdynamoDb;
+	private WorkerDetailsDataService awsdynamoDb;
 
 	@RequestMapping(value = "/workerDetails/{id}", method = RequestMethod.GET)
 	public String welcome(@PathVariable("id") long id) throws Exception {

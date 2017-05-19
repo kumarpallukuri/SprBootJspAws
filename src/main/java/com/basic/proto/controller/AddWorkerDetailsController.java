@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.basic.proto.aws.service.AwsDyanmoDb;
+import com.basic.proto.aws.service.WorkerDetailsDataService;
 import com.basic.proto.form.RegistartionDetailsForm;
 import com.basic.proto.form.Workers;
 
@@ -27,7 +27,7 @@ public class AddWorkerDetailsController {
 	private String message = "Hello World";
 	//
 	@Autowired
-	private AwsDyanmoDb awsdynamoDb;
+	private WorkerDetailsDataService awsdynamoDb;
 
 	@RequestMapping(value = "/addWorkerDetails")
 	public String welcome(@ModelAttribute RegistartionDetailsForm registartionDetailsForm) throws Exception {
