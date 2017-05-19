@@ -19,6 +19,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
 <script src="/js/homepage/workerDetails.js"></script>
 <script language="Javascript" src="/js/common/jquery.js"></script>
+<script src="/js/login/loginDetailsService.js"></script>
 
 <div class="container" ng-controller="AppCtrl">
 
@@ -34,8 +35,9 @@
 	
  	&nbsp;Filter By:   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select id="filterDropDown" ng-model="filter" ></select>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
  	<input type ="text" ng-model="filterValue"  id="filterTextValue"/> &nbsp; &nbsp; 
- 	<li style ="display:inline-block;"><a  class="btn btn-warning" href="#" ng-click="filterDetails()">Filter workerDetails.. </a></li>
- 	&nbsp; &nbsp; <li style ="display:inline-block;"><a  class="btn btn-info" href="#" ng-click="reset()">Reset.. </a></li>
+ 	<li style ="display:inline-block;"><a  class="btn btn-warning"  ng-click="filterDetails()">Filter workerDetails.. </a></li>
+ 	&nbsp; &nbsp; <li style ="display:inline-block;"><a  class="btn btn-info"  ng-click="reset()">Reset.. </a></li>
+ 	&nbsp; &nbsp; <li style ="display:inline-block;"><a  class="btn btn-info"  ng-click="loginUser()">Login.. </a></li>
     </div>
 
 	<br>

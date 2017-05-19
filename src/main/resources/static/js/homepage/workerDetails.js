@@ -1,7 +1,6 @@
 var myApp = angular.module('myApp', []);
-
 //https://patrickgrimard.io/2014/05/16/pagination-with-spring-data-and-hateoas-in-an-angularjs-app/
-myApp.controller('AppCtrl', [ '$scope', '$http', function($scope, $http) {
+myApp.controller('AppCtrl', [ '$scope', '$http','loginService',  function($scope, $http,loginService) {
 	//$('.news').hide();
 	$scope.Workers = [];
 	$scope.showAll = false;
@@ -15,6 +14,7 @@ myApp.controller('AppCtrl', [ '$scope', '$http', function($scope, $http) {
 	});
 	
 	$scope.reset =  function(){
+		alert("dd")
 		$http.get("/workerDetails").success(function(response) {
 			// alert(JSON.stringify(response));
 			$scope.Workers = response;
@@ -32,7 +32,12 @@ myApp.controller('AppCtrl', [ '$scope', '$http', function($scope, $http) {
 			});
 	}
 
-
+	 $scope.loginUser = function () {
+		 
+		 loginService.login("sss");
+		      //  $scope.newcontact = {};
+	        
+	    }
 
 } ]);
 
