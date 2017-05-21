@@ -27,11 +27,11 @@ public class PortoServicesConfig extends WebMvcConfigurerAdapter {
 	 * Bean for the  filter
 	 * @return
 	 */
-//	@Bean
-//	public Filter propertiesFilter() {
-//		System.out.println("propertiesFilter ..!");
-//		return new RequestFilter();
-//	}
+	@Bean
+	public Filter propertiesFilter() {
+		System.out.println("propertiesFilter ..!");
+		return new RequestFilter();
+	}
 //	
 //	/**
 //	 * Add the beans and the order for Filters

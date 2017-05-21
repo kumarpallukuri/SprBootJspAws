@@ -36,6 +36,7 @@ public class WorkerDetailsDataService {
 
 	@Autowired
 	AwsIntializerService awsIntializerService;
+	
 	 AmazonDynamoDBClient client = null;
 	 Table table = null;
 

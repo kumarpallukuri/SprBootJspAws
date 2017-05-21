@@ -8,11 +8,15 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+
+import com.basic.proto.form.UserLoginSessionForm;
 
 
 
@@ -37,7 +41,15 @@ public class RequestFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		System.out.println("do filter...!");
-		
+		HttpServletRequest reHttpServletRequest = (HttpServletRequest) request;
+		HttpSession httpSession = reHttpServletRequest.getSession();
+		UserLoginSessionForm userLogout= (UserLoginSessionForm) request.getAttribute("userLoginSessionForm");
+		if(userLogout != null){
+			//Todo
+			System.out.println("usr login");
+		}else{
+			System.out.println("usr not logged in");
+		}
 		chain.doFilter(request, response);
 	}
 
@@ -46,7 +58,7 @@ public class RequestFilter implements Filter {
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 		//No transaction needed
-		System.out.println("do init...!");
+		System.out.println(" filter do init...!");
 	}
 	
 	
@@ -56,6 +68,7 @@ public class RequestFilter implements Filter {
 	public void destroy() {
 		//do nothing
 		System.out.println("do destroy...!");
+		//To do write all appsession from data to serilizable file
 	}
 	
 	
