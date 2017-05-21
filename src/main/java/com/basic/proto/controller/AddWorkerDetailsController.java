@@ -20,7 +20,7 @@ public class AddWorkerDetailsController {
 	// Writte the item to the table
 	// workerId (N) workerAddress (S) workerAvailablity (S) workerCity (S)
 	// workerDistrict (S)
-	// workerEmail (S) workerName (S) workerPhoneNumber (N) workerProffession
+	// workerEmail (S) workerName (S) workerPhoneNumber (N) workerProffessions
 	// (S) workerRate (N) workerState (S)
 	// inject via application.properties
 	@Value("${welcome.message:test}")

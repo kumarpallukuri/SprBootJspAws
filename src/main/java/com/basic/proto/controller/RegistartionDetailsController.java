@@ -29,8 +29,7 @@ public class RegistartionDetailsController {
 	@RequestMapping(value ="/login")
 	public String welcome(@ModelAttribute LoginDetailsForm loginDetailsForm) throws Exception {
 		System.out.println("login page...");
-		//return "editDeleteDetails";
-		return "login";
+			return "login";
 	}
 
 }
