@@ -6,23 +6,31 @@
    <!-- Base Definition -->
    <definition name="standard-layout" template="/WEB-INF/views/tiles/layouts/standardLayout.jsp">  
        <put-attribute name="title" value="" />  
-       <put-attribute name="header" value="/WEB-INF/views/tiles/template/header.jsp" /> 
+       <put-attribute name="header" value="tile.header" /> 
        <put-attribute name="body" value="" />  
+        <put-attribute name="room" value="1" />
        <put-attribute name="footer" value="/WEB-INF/views/tiles/template/footer.jsp" />  
    </definition>  
    	
    	<!-- side bar -->
-    <definition name="sidebar" template="/WEB-INF/views/tiles/template/sideBar.jsp"/>    
-
+    <definition name="sidebar" template="/WEB-INF/views/tiles/template/sideBar.jsp"/>   
+    
+    <!-- header -->
+    <definition name="tile.header" template="/WEB-INF/views/tiles/template/header.jsp">  
+    	 <put-attribute name="room" value="1" />
+    </definition> 
+    
       <!-- Login -->
    <definition name="login" extends="standard-layout">  
-       <put-attribute name="title" value="Login" />   
+       <put-attribute name="title" value="Login" />
+        <put-attribute name="room" value="3" />   
        <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />   
    </definition> 
    
       <!-- Register -->
    <definition name="register" extends="standard-layout">  
-       <put-attribute name="title" value="Home" />   
+       <put-attribute name="title" value="Home" />  
+       <put-attribute name="room" value="1" />    
        <put-attribute name="body" value="/WEB-INF/views/pages/homepage/workerDetails.jsp" />   
    </definition> 
    
