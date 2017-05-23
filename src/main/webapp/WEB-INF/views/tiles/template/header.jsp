@@ -19,7 +19,7 @@
     <div id="navbar" class="navbar-collapse collapse pull-right">
       <ul class="nav navbar-nav">
         <li  class="<c:if test="${room == 1}">active</c:if>">
-        	<a href="/register">
+        	<a href="/home">
         		<span class="anchorText">Home</span>
         	</a>
         </li>
@@ -29,8 +29,13 @@
         	</a>
         </li>
          <li class="<c:if test="${room == 3}">active</c:if>">
+         	<a href="/register">
+         		<span class="anchorText">Register</span>
+         	</a>
+         </li>
+         <li class="<c:if test="${room == 4}">active</c:if>">
          	<a href="/login">
-         		<span class="anchorText">Login/Register</span>
+         		<span class="anchorText">Login</span>
          	</a>
          </li>
       </ul>

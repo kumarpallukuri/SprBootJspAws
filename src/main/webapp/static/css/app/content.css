@@ -1,36 +1,16 @@
 main{
 	clear : both;
 }
-#login-register-form{
-	margin-top : 80px;
-}
-#login-register-form .well{
-	background : #000;
-	color : #fff;
-}
-#loginSubmitButton{
-	width : 50%;
-	margin : auto;
-	margin-top : 50px;
-	font-size: 16px;
-}
-#registerButton{
-	padding: 15px;
-    background: #000;
-    display: flex;
-    justify-content: center;
-    font-size: 20px;
-    margin: left;
-    margin-top: 100px;
-    margin-left: 100px;
-}
-#registerButton .anchorText{
-	color : #fff;
-}
-#registerButton:hover .anchorText{
-	font-weight : normal;
-	text-decoration: none;
-}
 #body{
 	text-align: justify;
+}
+#login-form,
+#register-form{
+	margin-top : 80px;
+}
+#forgotPass{
+	font-size: 14px;
+	display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }

@@ -23,16 +23,23 @@
       <!-- Login -->
    <definition name="login" extends="standard-layout">  
        <put-attribute name="title" value="Login" />
-        <put-attribute name="room" value="3" />   
+        <put-attribute name="room" value="4" />   
        <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />   
    </definition> 
    
       <!-- Register -->
    <definition name="register" extends="standard-layout">  
        <put-attribute name="title" value="Home" />  
+       <put-attribute name="room" value="3" />    
+       <put-attribute name="body" value="/WEB-INF/views/pages/register.jsp" />   
+   </definition> 
+   
+         <!-- Home -->
+   <definition name="home" extends="standard-layout">  
+       <put-attribute name="title" value="Home" />  
        <put-attribute name="room" value="1" />    
        <put-attribute name="body" value="/WEB-INF/views/pages/homepage/workerDetails.jsp" />   
-   </definition> 
+   </definition>
    
       <!-- Add details -->
    <definition name="addDetails" extends="standard-layout">  

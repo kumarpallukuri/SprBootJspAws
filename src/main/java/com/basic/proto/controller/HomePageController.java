@@ -17,10 +17,16 @@ public class HomePageController {
 	private String message = "Hello World";
 
 	@RequestMapping("/register")
-	public String welcome(@ModelAttribute("registartionDetailsForm") RegistartionDetailsForm registartionDetailsForm,
+	public String welcome() {
+		//model.put("message", this.message);
+		return "register";
+	}
+	
+	@RequestMapping("/home")
+	public String welcome1(@ModelAttribute("registartionDetailsForm") RegistartionDetailsForm registartionDetailsForm,
 			Map<String, Object> model) {
 		model.put("message", this.message);
-		return "register";
+		return "home";
 	}
 
 }
