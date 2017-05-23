@@ -28,5 +28,10 @@ public class HomePageController {
 		model.put("message", this.message);
 		return "home";
 	}
+	
+	@RequestMapping("/about")
+	public String about() {
+		return "about";
+	}
 
 }

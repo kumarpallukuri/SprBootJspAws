@@ -13,7 +13,7 @@ angular.module('mapsApp', [])
     }
 
     $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-    $scope.markers = [];R
+    $scope.markers = [];
     var infoWindow = new google.maps.InfoWindow();
     $scope.reset =  function(){
     	console.log("reset...")
