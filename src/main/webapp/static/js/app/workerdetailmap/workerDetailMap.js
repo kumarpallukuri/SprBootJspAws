@@ -13,7 +13,7 @@ angular.module('mapsApp', [])
     }
 
     $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-    $scope.markers = [];
+    $scope.markers = [];R
     var infoWindow = new google.maps.InfoWindow();
     $scope.reset =  function(){
     	console.log("reset...")
@@ -29,6 +29,8 @@ angular.module('mapsApp', [])
 		var json ="";
 		var filterString = "workerCity"+"_"+$("#cityName").val();
 		alert(filterString)
+		 $http.defaults.timeout = 5000;
+		
 		$http.get('/filterDetails/'+filterString).success(function(response){
 			workers = response;
 			if(workers.length == 0){

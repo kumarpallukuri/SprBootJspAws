@@ -38,13 +38,13 @@ public class RegistartionDetailsController {
 	@RequestMapping(value ="/login")
 	public String userLogin(@ModelAttribute LoginDetailsForm loginDetailsForm,HttpServletRequest request) throws Exception {
 		System.out.println("login page...");
-		HttpSession httpSession = request.getSession();
-		if((loginDetailsForm.getUserName().equals("SuperUser")) &&
-				(loginDetailsForm.getPassword().equals("Superappforever"))){
-			userLoginSessionForm.setDisplayEdit(true);
-		}
-		userLoginSessionForm.setUserLogin(true);
-		httpSession.setAttribute("userLoginSessionForm", userLoginSessionForm);
+//		HttpSession httpSession = request.getSession();
+//		if((loginDetailsForm.getUserName().equals("SuperUser")) &&
+//				(loginDetailsForm.getPassword().equals("Superappforever"))){
+//			userLoginSessionForm.setDisplayEdit(true);
+//		}
+//		userLoginSessionForm.setUserLogin(true);
+//		httpSession.setAttribute("userLoginSessionForm", userLoginSessionForm);
 			return "login";
 	}
 	

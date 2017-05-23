@@ -268,7 +268,7 @@ public class WorkerDetailsDataService {
 			String json = iterator.next().toJSONPretty();
 			Workers worker = null;
 			worker = new ObjectMapper().readValue(json, Workers.class);
-			System.out.println(json);
+			System.out.println("filter json-->"+json);
 			allWorkers.add(worker);
         }    
 		return allWorkers;

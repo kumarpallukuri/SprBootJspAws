@@ -22,7 +22,7 @@ public class AmazonSnsTest {
 	@Autowired
 	AwsIntializerService awsIntializerService;
 	public AmazonSnsTest() {
-		// TODO Auto-generated constructor stub
+		// TODO Auto-generated constructor stubb
 
 		// create a client connection based on credentials
 		snsService = new AmazonSNSClient(awsIntializerService.credentialsForAwsClients());

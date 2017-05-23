@@ -1,6 +1,6 @@
 <!DOCTYPE html >
 <html >
-    <script src="http://maps.googleapis.com/maps/api/js?key="></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBbdjQPGY-cOqdoZkPl5WNodYOWQEQ3E_8"></script>
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
@@ -43,8 +43,7 @@ h2 {
 	src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
-	
-	<script src="/js/workerdetailmap/workerdetailmap.js"></script>
+	<script src="static/js/app/workerdetailmap/workerDetailMap.js"></script>
   <body>
     <br>
     <br>
