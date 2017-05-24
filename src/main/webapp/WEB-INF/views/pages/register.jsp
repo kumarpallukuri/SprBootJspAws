@@ -10,7 +10,10 @@
                       </div>
                       <div class="form-group">
                           <label for="mobileNum" class="control-label">Mobile Number</label>
-                          <input type="text" class="form-control" id="mobileNum" name="mobileNum" value="" required="true" title="Please enter your mobile number">
+                           <div class="input-group">
+                          	<span class="input-group-addon">+91</span>
+                          	<input type="tel" pattern="^\d{10}$"  maxlength="10" class="form-control" id="mobileNum" name="mobileNum" value="" required="true" title="Please enter your mobile number">
+                          </div>
                           <span class="help-block"></span>
                       </div>
                       <div class="form-group">
