@@ -4,13 +4,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.amazonaws.Request;
 import com.basic.proto.aws.service.GenerateOTPService;
 import com.basic.proto.aws.service.LoginDetailsDataService;
 import com.basic.proto.form.LoginDetailsForm;
@@ -38,7 +43,7 @@ public class RegistartionDetailsController {
 	}
 	
 	@RequestMapping(value ="/login")
-	public String userLogin(@ModelAttribute LoginDetailsForm loginDetailsForm,HttpServletRequest request) throws Exception {
+	public String userLogin(@ModelAttribute LoginDetailsForm loginDetailsForm,@RequestParam( value = "firstLogin" , required = false) String firstLogin,HttpServletRequest request) throws Exception {
 		System.out.println("login page...");
 //		HttpSession httpSession = request.getSession();
 //		if((loginDetailsForm.getUserName().equals("SuperUser")) &&
@@ -47,15 +52,23 @@ public class RegistartionDetailsController {
 //		}
 //		userLoginSessionForm.setUserLogin(true);
 //		httpSession.setAttribute("userLoginSessionForm", userLoginSessionForm);
+		if(firstLogin != null && !"".equals(firstLogin)){
+			if(firstLogin.equals("true")){
+				request.setAttribute("otpRequired",true);
+			}
+		}
 			return "login";
 	}
 	
 	@RequestMapping(value ="/registerUser")
+	@ResponseBody
 	public String register(@RequestBody LoginDetailsForm loginDetailsForm,HttpServletRequest request) throws Exception {
 		System.out.println("login page..."+loginDetailsForm.getPhoneNumber());
-		int otp = generateOTPService.generateOTP(Long.toString(loginDetailsForm.getPhoneNumber()));
-		loginDetailsDataService.addItem(loginDetailsForm);
-			return "login";
+		//int otp = generateOTPService.generateOTP(Long.toString(loginDetailsForm.getPhoneNumber()));
+		//loginDetailsDataService.addItem(loginDetailsForm);
+		//return "login";
+		String otp = "234";
+		return otp;
 	}
 	
 	@RequestMapping(value ="/generateOTP/{mobileNumber}")

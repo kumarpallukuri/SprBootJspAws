@@ -17,6 +17,8 @@ app.controller('validateCtrl', [ '$scope', '$http', function($scope, $http) {
 			 //$scope.contact = response;
 				alert("Details Added sucessfully..!")
 				//refresh();
+				alert(response);
+				window.location = "/login.uri?firstLogin=true";
 			});
 
 	}
