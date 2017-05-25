@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.basic.proto.aws.service.GenerateOTPService;
+import com.basic.proto.aws.service.LoginDetailsDataService;
 import com.basic.proto.aws.service.WorkerDetailsDataService;
 import com.basic.proto.form.LoginDetailsForm;
 import com.basic.proto.form.RegistartionDetailsForm;
@@ -28,6 +29,8 @@ public class RegistartionDetailsController {
 //	
 	@Autowired
 		private GenerateOTPService generateOTPService;
+	@Autowired
+	private LoginDetailsDataService loginDetailsDataService;
 	
 	@RequestMapping(value ="/registartionSucess")
 	public String welcome() throws Exception {
@@ -50,8 +53,9 @@ public class RegistartionDetailsController {
 	
 	@RequestMapping(value ="/registerUser")
 	public String register(@ModelAttribute LoginDetailsForm loginDetailsForm,HttpServletRequest request) throws Exception {
-		System.out.println("login page...");
-		
+		System.out.println("login page..."+loginDetailsForm.getPhoneNumber());
+		int otp = generateOTPService.generateOTP(Long.toString(loginDetailsForm.getPhoneNumber()));
+		loginDetailsDataService.addItem(loginDetailsForm);
 			return "login";
 	}
 	
@@ -60,6 +64,7 @@ public class RegistartionDetailsController {
 		System.out.println("generateOTP...");
 		int otp = generateOTPService.generateOTP(mobileNumber);
 		System.out.println(otp);
+		
 		//To do construct appsession object here and 
 			//return "login";
 	}

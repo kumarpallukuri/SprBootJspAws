@@ -15,6 +15,26 @@ public class LoginDetailsForm {
 	
 	private long phoneNumber;
 	
+	private String userName;
+	
+	private String workerName;
+	
+	
+	
+	/**
+	 * @return the workerName
+	 */
+	public String getWorkerName() {
+		return workerName;
+	}
+
+	/**
+	 * @param workerName the workerName to set
+	 */
+	public void setWorkerName(String workerName) {
+		this.workerName = workerName;
+	}
+
 	/**
 	 * @return the phoneNumber
 	 */
@@ -29,7 +49,7 @@ public class LoginDetailsForm {
 		this.phoneNumber = phoneNumber;
 	}
 
-	private String userName;
+	
 
 	/**
 	 * @return the workerId

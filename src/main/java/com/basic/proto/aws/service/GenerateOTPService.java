@@ -35,7 +35,9 @@ public class GenerateOTPService {
 		//To do otp generation logic
 		int otp = 3311;
 		String message = "My SMS message"+otp;
-		String phoneNumber = mobileNumber;
+		//To do
+		//remove +1 once india number testing done...
+		String phoneNumber = "+1"+mobileNumber;
 		Map<String, MessageAttributeValue> smsAttributes = new HashMap<String, MessageAttributeValue>();
 		sendSMSMessage(snsClient, message, phoneNumber, smsAttributes);
 		return otp;

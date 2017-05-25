@@ -31,7 +31,7 @@ public class LoginDetailsDataService {
 		if(table == null){
 			// This client will default to US West1(Oregon)
 			client = new AmazonDynamoDBClient(awsIntializerService.credentialsForAwsClients());
-			// Modify the client so that it accesses a different region.
+			// Modify the client so that it accesses a different regionn.
 			client.withRegion(Regions.US_EAST_1);
 			client.setEndpoint("dynamodb.us-east-2.amazonaws.com");
 			DynamoDB dynamoDB = new DynamoDB(client);
@@ -55,7 +55,7 @@ public class LoginDetailsDataService {
 				.withString("password", loginDetailsForm.getPassword())
 				.withString("userName", loginDetailsForm.getUserName())
 				.withNumber("phoneNumber", loginDetailsForm.getPhoneNumber())
-				.withString("emailID", loginDetailsForm.getEmailID())
+				.withString("workerName", loginDetailsForm.getWorkerName())
 				.withString("fullProfile", loginDetailsForm.getFullProfile());
 				
 		// Write the item to the table

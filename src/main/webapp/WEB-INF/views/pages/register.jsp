@@ -1,4 +1,5 @@
-  <div id="register-form">
+  <script src="static/js/app/login/register.js"></script>
+  <div id="register-form" ng-app="myApp" ng-controller="validateCtrl">
       <div class="row">
           <div class="col-xs-offset-4 col-xs-4">
               <div class="well">
@@ -26,7 +27,7 @@
                           <input type="password" class="form-control" id="password" name="password" value="" required="true" title="Please enter your password">
                           <span class="help-block"></span>
                       </div>
-                      <button type="submit" id="registerSubmitButton" class="btn btn-default btn-primary center-block">Register</button>
+                      <li type="submit" id="registerSubmitButton" class="btn btn-default btn-primary center-block" ng-click="register()" >Register</li>
                   </form>
               </div>
           </div>

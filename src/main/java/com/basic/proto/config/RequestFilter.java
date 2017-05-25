@@ -40,15 +40,15 @@ public class RequestFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		System.out.println("do filter...!");
+	//	System.out.println("do filter...!");
 		HttpServletRequest reHttpServletRequest = (HttpServletRequest) request;
 		HttpSession httpSession = reHttpServletRequest.getSession();
 		UserLoginSessionForm userLogout= (UserLoginSessionForm) request.getAttribute("userLoginSessionForm");
 		if(userLogout != null){
 			//Todo
-			System.out.println("usr login");
+		//	System.out.println("usr login");
 		}else{
-			System.out.println("usr not logged in");
+		//	System.out.println("usr not logged in");
 		}
 		chain.doFilter(request, response);
 	}
