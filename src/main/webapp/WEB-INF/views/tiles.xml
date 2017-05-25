@@ -9,6 +9,7 @@
        <put-attribute name="header" value="tile.header" /> 
        <put-attribute name="body" value="" />  
         <put-attribute name="room" value="1" />
+        <put-attribute name="sidebarActive" value="false" />
        <put-attribute name="footer" value="/WEB-INF/views/tiles/template/footer.jsp" />  
    </definition>  
    	
@@ -68,7 +69,8 @@
    
       <!-- details map-->
    <definition name="detailsMap" extends="standard-layout">  
-       <put-attribute name="title" value="Details Map" />   
+       <put-attribute name="title" value="Details Map" />
+       <put-attribute name="sidebarActive" value="true" />   
        <put-attribute name="body" value="/WEB-INF/views/pages/workerdetailmap/workerDetailMap.jsp" />   
    </definition>  
    

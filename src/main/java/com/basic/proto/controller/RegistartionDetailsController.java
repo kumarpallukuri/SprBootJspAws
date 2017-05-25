@@ -8,13 +8,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.basic.proto.aws.service.GenerateOTPService;
 import com.basic.proto.aws.service.LoginDetailsDataService;
-import com.basic.proto.aws.service.WorkerDetailsDataService;
 import com.basic.proto.form.LoginDetailsForm;
-import com.basic.proto.form.RegistartionDetailsForm;
 import com.basic.proto.form.UserLoginSessionForm;
 
 @Controller
@@ -52,7 +51,7 @@ public class RegistartionDetailsController {
 	}
 	
 	@RequestMapping(value ="/registerUser")
-	public String register(@ModelAttribute LoginDetailsForm loginDetailsForm,HttpServletRequest request) throws Exception {
+	public String register(@RequestBody LoginDetailsForm loginDetailsForm,HttpServletRequest request) throws Exception {
 		System.out.println("login page..."+loginDetailsForm.getPhoneNumber());
 		int otp = generateOTPService.generateOTP(Long.toString(loginDetailsForm.getPhoneNumber()));
 		loginDetailsDataService.addItem(loginDetailsForm);

@@ -1,13 +1,6 @@
-<!DOCTYPE html >
-<html >
+
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBbdjQPGY-cOqdoZkPl5WNodYOWQEQ3E_8"></script>
   <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <meta name="description" content="Simple Map">
-<meta name="keywords" content="ng-map,AngularJS,center">
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <title>Worker Details</title>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -28,21 +21,7 @@ h2 {
 }
     </style>
   </head>
-  
-<script
-	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
-<script
-	src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
+
 	<script src="static/js/app/workerdetailmap/workerDetailMap.js"></script>
   <body>
     <br>
@@ -69,9 +48,5 @@ h2 {
      	<li style ="display:inline-block;"><a  class="btn btn-primary" href="/register">Home/Worker Details .. </a></li>
 </div>
 
-    <script>
-     
-    </script>
 
   </body>
-</html>

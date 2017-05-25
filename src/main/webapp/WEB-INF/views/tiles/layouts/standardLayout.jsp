@@ -21,9 +21,12 @@
 </head>
   
 <body>
+
+		<c:set var="room"><tiles:getAsString name="room"/></c:set>
+		<c:set var="sidebarActive"><tiles:getAsString name="sidebarActive"/></c:set>
+	
 		<div class="wrapper">
-			<c:set var="room"><tiles:getAsString name="room"/></c:set>
-		
+			
 			<!-- header -->
 	        <header id="header" class="col-md-12 custom-header">
 	            <tiles:insertAttribute name="header">
@@ -33,13 +36,12 @@
 	         
 	         <!-- main body content -->
 	        <main class="row" id="site-content">
-	<%--         	<div class="col-md-3">
+	        	<div class='<c:if test="${sidebarActive }">col-md-3</c:if><c:if test="${not sidebarActive }">hidden</c:if>'>
 	            	<tiles:insertDefinition name="sidebar" />
-	            </div> --%>
-	        	<div id="content" class="col-md-12">
+	            </div>
+	        	<div id="content" class='<c:if test="${sidebarActive }">col-md-9</c:if><c:if test="${not sidebarActive }">col-md-12</c:if>'>
 	        		<div id="body">
 	            		<tiles:insertAttribute name="body" />
-	            		<%-- <%@ include file="/WEB-INF/views/pages/testBody.jsp" %> --%>
 	            	</div>
 	            </div>
 	        </main>

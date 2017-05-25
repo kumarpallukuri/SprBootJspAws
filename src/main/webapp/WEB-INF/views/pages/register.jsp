@@ -3,7 +3,7 @@
       <div class="row">
           <div class="col-xs-offset-4 col-xs-4">
               <div class="well">
-                  <form id="registerForm" method="POST" action="/register/">
+                  <form id="registerForm">
                        <div class="form-group">
                           <label for="profName" class="control-label">Name</label>
                           <input type="text" class="form-control" id="profName" name="profName" value="" required="true" title="Please enter your profile name">
@@ -27,7 +27,7 @@
                           <input type="password" class="form-control" id="password" name="password" value="" required="true" title="Please enter your password">
                           <span class="help-block"></span>
                       </div>
-                      <li type="submit" id="registerSubmitButton" class="btn btn-default btn-primary center-block" ng-click="register()" >Register</li>
+                      <button id="registerSubmitButton" class="btn btn-default btn-primary center-block" ng-click="register()" >Register</button>
                   </form>
               </div>
           </div>
