@@ -7,13 +7,19 @@ body{
 	background: rgba(255,255,255,.3);
 	height : 100%;
 }
+.wrapper{
+	min-height: 100%;
+  	position: relative;
+}
 #body,
 #footerSection,
 #sidebar{
 	padding : 16px;
 	color : #505050;
 }
-
+#site-content{
+	padding-bottom : 140px;
+}
 a{
 	color : #1b1d1e ! important;
 }
@@ -31,6 +37,8 @@ button{
     font-size: 16px ! important;
     padding: 8px 20px ! important;
 }
-
+.row{
+	margin : 0px;
+}
 
 /*82172B*/

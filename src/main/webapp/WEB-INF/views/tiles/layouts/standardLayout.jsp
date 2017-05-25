@@ -21,32 +21,33 @@
 </head>
   
 <body>
+		<div class="wrapper">
+			<c:set var="room"><tiles:getAsString name="room"/></c:set>
 		
-		<c:set var="room"><tiles:getAsString name="room"/></c:set>
-	
-		<!-- header -->
-        <header id="header" class="col-md-12 custom-header">
-            <tiles:insertAttribute name="header">
-            	 <tiles:putAttribute name="room" value="${room}" />
-            </tiles:insertAttribute>
-        </header>
-         
-         <!-- main body content -->
-        <main id="site-content">
-<%--         	<div class="col-md-3">
-            	<tiles:insertDefinition name="sidebar" />
-            </div> --%>
-        	<div id="content" class="col-md-12">
-        		<div id="body">
-            		<tiles:insertAttribute name="body" />
-            		<%-- <%@ include file="/WEB-INF/views/pages/testBody.jsp" %> --%>
-            	</div>
-            </div>
-        </main>
-         
-         <!-- footer -->
-        <footer id="footer"  class="col-md-12">
-            <tiles:insertAttribute name="footer" />
-        </footer>
+			<!-- header -->
+	        <header id="header" class="col-md-12 custom-header">
+	            <tiles:insertAttribute name="header">
+	            	 <tiles:putAttribute name="room" value="${room}" />
+	            </tiles:insertAttribute>
+	        </header>
+	         
+	         <!-- main body content -->
+	        <main class="row" id="site-content">
+	<%--         	<div class="col-md-3">
+	            	<tiles:insertDefinition name="sidebar" />
+	            </div> --%>
+	        	<div id="content" class="col-md-12">
+	        		<div id="body">
+	            		<tiles:insertAttribute name="body" />
+	            		<%-- <%@ include file="/WEB-INF/views/pages/testBody.jsp" %> --%>
+	            	</div>
+	            </div>
+	        </main>
+	         
+	         <!-- footer -->
+	        <footer id="footer"  class="col-md-12 well row">
+	            <tiles:insertAttribute name="footer" />
+	        </footer>
+         </div>
 </body>
 </html>

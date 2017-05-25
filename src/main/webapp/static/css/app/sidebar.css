@@ -3,6 +3,8 @@
 footer#footer{
 	clear : both;
 	padding-top : 15px;
+	margin-bottom : 0;
+	border-radius : 0;
 	position : absolute;
 	bottom : 0;
 }
@@ -12,6 +14,10 @@ footer#footer{
 }
 #footer .nav>li>a{
 	display : inline;
+}
+#footer .nav>li>a:hover,
+#footer .nav>li>a:focus{
+	font-weight : bold
 }
 #footerSection{
 	padding : 25px 16px;
