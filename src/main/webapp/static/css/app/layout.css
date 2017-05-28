@@ -40,5 +40,10 @@ button{
 .row{
 	margin : 0px;
 }
+select{
+	display : block;
+	border-radius : 4px;
+	border-color : rgb(204, 204, 204);
+}
 
 /*82172B*/
