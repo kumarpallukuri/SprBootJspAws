@@ -9,12 +9,9 @@
        <put-attribute name="header" value="tile.header" /> 
        <put-attribute name="body" value="" />  
         <put-attribute name="room" value="" />
-        <put-attribute name="sidebarActive" value="false" />
+        <put-attribute name="sidebar" value="" />
        <put-attribute name="footer" value="/WEB-INF/views/tiles/template/footer.jsp" />  
-   </definition>  
-   	
-   	<!-- side bar -->
-    <definition name="sidebar" template="/WEB-INF/views/tiles/template/sideBar.jsp"/>   
+   </definition>   
     
     <!-- header -->
     <definition name="tile.header" template="/WEB-INF/views/tiles/template/header.jsp">  
@@ -25,7 +22,7 @@
    <definition name="login" extends="standard-layout">  
        <put-attribute name="title" value="Login" />
         <put-attribute name="room" value="4" />   
-       <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />   
+       <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" /> 
    </definition> 
    
       <!-- Register -->
@@ -69,8 +66,8 @@
    
       <!-- details map-->
    <definition name="detailsMap" extends="standard-layout">  
-       <put-attribute name="title" value="Details Map" />
-       <put-attribute name="sidebarActive" value="true" />   
+       <put-attribute name="title" value="Details Map" />  
+       <put-attribute name="sidebar" value="/WEB-INF/views/tiles/template/sideBar.jsp" />
        <put-attribute name="body" value="/WEB-INF/views/pages/workerdetailmap/workerDetailMap.jsp" />   
    </definition>  
    

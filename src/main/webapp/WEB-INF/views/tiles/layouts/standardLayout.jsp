@@ -23,7 +23,11 @@
 <body>
 
 		<c:set var="room"><tiles:getAsString name="room"/></c:set>
-		<c:set var="sidebarActive"><tiles:getAsString name="sidebarActive"/></c:set>
+		<c:set var="sidebar"><tiles:getAsString name="sidebar"/></c:set>
+		<c:set var="sidebarActive">
+			<c:if test="${sidebar != ''}">true</c:if>
+			<c:if test="${sidebar == ''}">false</c:if>
+		</c:set>
 	
 		<div class="wrapper">
 			
@@ -37,7 +41,7 @@
 	         <!-- main body content -->
 	        <main class="row" id="site-content">
 	        	<div class='<c:if test="${sidebarActive }">col-md-3</c:if><c:if test="${not sidebarActive }">hidden</c:if>'>
-	            	<tiles:insertDefinition name="sidebar" />
+	            	<tiles:insertAttribute name="sidebar" />
 	            </div>
 	        	<div id="content" class='<c:if test="${sidebarActive }">col-md-9</c:if><c:if test="${not sidebarActive }">col-md-12</c:if>'>
 	        		<div id="body">
