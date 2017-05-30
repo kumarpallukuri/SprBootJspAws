@@ -41,7 +41,11 @@
 	         <!-- main body content -->
 	        <main class="row" id="site-content">
 	        	<div class='<c:if test="${sidebarActive }">col-md-3</c:if><c:if test="${not sidebarActive }">hidden</c:if>'>
-	            	<tiles:insertAttribute name="sidebar" />
+	            	<section id="sidebar">
+						<div class="sidebar">
+	            			<tiles:insertAttribute name="sidebar" />
+	            		</div>
+	            	</section>
 	            </div>
 	        	<div id="content" class='<c:if test="${sidebarActive }">col-md-9</c:if><c:if test="${not sidebarActive }">col-md-12</c:if>'>
 	        		<div id="body">

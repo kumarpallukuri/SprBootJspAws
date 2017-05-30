@@ -67,7 +67,7 @@
       <!-- details map-->
    <definition name="detailsMap" extends="standard-layout">  
        <put-attribute name="title" value="Details Map" />  
-       <put-attribute name="sidebar" value="/WEB-INF/views/tiles/template/sideBar.jsp" />
+       <put-attribute name="sidebar" value="/WEB-INF/views/pages/workerdetailmap/mapSideBar.jsp" />
        <put-attribute name="body" value="/WEB-INF/views/pages/workerdetailmap/workerDetailMap.jsp" />   
    </definition>  
    

@@ -15,3 +15,24 @@ main{
     justify-content: center;
     margin-top: 10px;
 }
+#map {
+    height:420px;
+    width:100%;
+}
+
+.infoWindowContent {
+    font-size:  14px !important;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+#worker_search_results .list-group{
+	box-shadow : none;
+}
+#worker_search_results .list-group-item{
+	border : none;
+	border-bottom : 2px solid #ccc;
+	border-radius : none;
+}
+#worker_search_results .list-group-item:last-child{
+	border-bottom : none;
+}
