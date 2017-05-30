@@ -5,7 +5,11 @@ var proffessional = ["Select Profession","AC Repair","Carpenter","laptop Repair"
 $(function() {
   var options = '';
   for (var i = 0; i < proffessional.length; i++) {
-      options += '<option value="' + proffessional[i] + '">' + proffessional[i] + '</option>';
+	  if(proffessional[i] === "Select Profession"){
+		  options += '<option value="">' + proffessional[i] + '</option>';
+	  }else{
+		  options += '<option value="' + proffessional[i] + '">' + proffessional[i] + '</option>';
+	  }
   }
   $('#proffession').html(options);
 });
@@ -20,6 +24,17 @@ $(function() {
 	      options += '<option value="' + availabilty[i] + '">' + availabilty[i] + '</option>';
 	  }
 	  $('#workersavailabilty').html(options);
+	});
+
+var paymentMode = ["Cash","Online","NA"];
+
+
+$(function() {
+	  var options = '';
+	  for (var i = 0; i < paymentMode.length; i++) {
+	      options += '<option value="' + paymentMode[i] + '">' + paymentMode[i] + '</option>';
+	  }
+	  $('#workersPaymentMode').html(options);
 	});
 
 

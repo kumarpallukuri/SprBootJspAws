@@ -8,9 +8,9 @@ app.controller('validateCtrl', [ '$scope', '$http',function($scope, $http) {
     $scope.disabled= false;
     $scope.MyButton = true;
     $scope.addDetails = function(){
-    	var isValidation = $scope.buttonEnableValidation();
-    	alert(isValidation)
-    	if(isValidation){
+    	var isValidSubmission = $scope.buttonEnableValidation();
+    	alert(isValidSubmission);
+    	if (isValidSubmission) {
     		alert("values corrected")
     		$scope.state = $("#workerState").val();
     		$scope.district = $("#workerDistrict").val();
@@ -23,6 +23,9 @@ app.controller('validateCtrl', [ '$scope', '$http',function($scope, $http) {
     		 if(($("#proffession").val())== "Other"){
     			 $scope.proffession =$("#otherInputbox").val();
     		 }
+    		 $scope.modeOfPayment = $("#workersPaymentMode").val();
+    		 $scope.workerWebsite = $("#workerWebsite").val();
+    		 
     		 
     		 console.log("user -->"+$scope.user)
     		  console.log("email -->"+$scope.email)
@@ -46,31 +49,40 @@ app.controller('validateCtrl', [ '$scope', '$http',function($scope, $http) {
             	'workerDistrict': $scope.district,
             	'workerState': $scope.state,
             	'workerRate': $scope.rate,
-            	
+            	'websiteUrl' : $scope.workerWebsite,
+            	'workerexperience': $scope.workerExp,
+            	'modeofPayment': $scope.modeOfPayment
             	};
 		
 		$http.post('/addworkerDetail',worker).success(function(response){
 			 $scope.contact = response;
-				alert("Details Added sucessfully..!")
+				alert("Details Added sucessfully..!");
+				 location.reload();
 				//refresh();
 			});
 				
 				
-		 location.reload();
-
+		
     	}
 	}
     $scope.handleButtonClick = function() {
         $scope.buttonClicks++;
-    };
-    $scope.buttonEnableValidation = function(){
+    }; 
+    $scope.showInputTextBox = function(){
+    	if($scope.proffession === "Other"){
+    		$scope.otherInputTextBox =  true;
+    	}else{
+    		$scope.otherInputTextBox =  false;
+    	}
+    }
+    $scope.buttonEnableValidation = function(){/*
     	if(($("#userName").val().length) == 0){
     		alert("please enter username..!")
     		$("#userNameErrorSpan").show();
     		return false;
     	}
     	
-    	if(($("#proffession").val())== "Select Profession"){
+    	if(($("#proffession").val())== "SELECT Proffession"){
     		alert("please Select Proffession..!")
     		return false;
     	}
@@ -127,20 +139,12 @@ app.controller('validateCtrl', [ '$scope', '$http',function($scope, $http) {
     		    return false;
     		}
     	}
-    	if(($("#workerState").val() )== "Select State"){
+    	if(($("#workerState").val() )== "SELECT STATE"){
     		alert("Please select State..!")
     		return false;
-    	}
+    	}*/
     	return true;
 }
-  
-    $scope.showInputTextBox = function(){
-    	if($scope.proffession === "Other"){
-    		$scope.otherInputTextBox =  true;
-    	}else{
-    		$scope.otherInputTextBox =  false;
-    	}
-    }
 }]);
 
 $(document).ready(function() {

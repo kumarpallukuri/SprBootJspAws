@@ -7,19 +7,23 @@ var handles = ["Select State","Andhra Pradesh","Arunachal Pradesh","Assam","Biha
 $(function() {
   var options = '';
   for (var i = 0; i < handles.length; i++) {
-      options += '<option value="' + handles[i] + '">' + handles[i] + '</option>';
+	  if(handles[i] === "Select State"){
+		  options += '<option value="">' + handles[i] + '</option>';
+	  }else{
+		  options += '<option value="' + handles[i] + '">' + handles[i] + '</option>';
+	  }
   }
   $('#workerState').html(options);
 });
 function selct_district($val)
 {
-    if($val=='Select State') {
+    if($val=='') {
    var options = '';
    	$('#workerDistrict').html(options);
    	$('#districtlist').addClass("hidden");
  }
   
-   if($val !='Select State') {
+   if($val !='') {
    var options = '';
    $('#districtlist').removeClass("hidden");
  
