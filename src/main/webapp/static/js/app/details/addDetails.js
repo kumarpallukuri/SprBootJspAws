@@ -70,7 +70,7 @@ app.controller('validateCtrl', [ '$scope', '$http',function($scope, $http) {
     		return false;
     	}
     	
-    	if(($("#proffession").val())== "SELECT Proffession"){
+    	if(($("#proffession").val())== "Select Profession"){
     		alert("please Select Proffession..!")
     		return false;
     	}
@@ -127,7 +127,7 @@ app.controller('validateCtrl', [ '$scope', '$http',function($scope, $http) {
     		    return false;
     		}
     	}
-    	if(($("#workerState").val() )== "SELECT STATE"){
+    	if(($("#workerState").val() )== "Select State"){
     		alert("Please select State..!")
     		return false;
     	}

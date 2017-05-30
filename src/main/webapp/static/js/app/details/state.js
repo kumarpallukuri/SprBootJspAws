@@ -1,6 +1,6 @@
 
 
-var handles = ["SELECT STATE","Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Dadra and Nagar Haveli","Daman and Diu","Delhi","Goa","Gujarat","Haryana","Himachal Pradesh","Jammu and Kashmir","Jharkhand","Karnataka",
+var handles = ["Select State","Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Dadra and Nagar Haveli","Daman and Diu","Delhi","Goa","Gujarat","Haryana","Himachal Pradesh","Jammu and Kashmir","Jharkhand","Karnataka",
                                         "Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Orissa","Puducherry","Punjab", "Rajasthan","Sikkim","Tamil Nadu",
                                         "Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal"];
 
@@ -13,15 +13,15 @@ $(function() {
 });
 function selct_district($val)
 {
-    if($val=='SELECT STATE') {
+    if($val=='Select State') {
    var options = '';
    	$('#workerDistrict').html(options);
-   	$('#districtlist').hide();
+   	$('#districtlist').addClass("hidden");
  }
   
-   if($val !='SELECT STATE') {
+   if($val !='Select State') {
    var options = '';
-   $('#districtlist').show();
+   $('#districtlist').removeClass("hidden");
  
   }
  if($val=='Andhra Pradesh') {

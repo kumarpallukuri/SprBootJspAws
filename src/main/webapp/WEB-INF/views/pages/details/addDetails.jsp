@@ -14,6 +14,20 @@
                           <span class="help-block"></span>
                       </div>
                       <div class="form-group">
+                          <label for="profession" class="control-label">Profession</label>
+                          <div id="selection">
+                          	<select id="proffession" ng-model="proffession" ng-click="showInputTextBox()"></select>
+                          </div>
+                          <span class="help-block"></span>
+                      </div>
+                      <div id="otherInput" ng-show="otherInputTextBox">
+                      	<div class="form-group">
+                    		 <label for="otherInputbox" class="control-label">Other</label>
+                    		 <input type="text" class="form-control" id="otherInputbox" name="proffessionOther" value="" ng-model="proffessionOther" required="true" title="Please enter your profession">
+                        	 <span class="help-block"></span>
+                      	</div>
+					  </div>
+                      <div class="form-group">
                           <label for="email" class="control-label">Email</label>
                           	<input type="email" class="form-control" id="email" name="email" value="" required="true" title="Please enter your email address">
                           <span class="help-block"></span>
@@ -41,6 +55,11 @@
                            <select id="workerState" onchange='selct_district(this.value)' ng-model="state"></select>
                           <span class="help-block"></span>
                       </div>
+                      <div class="form-group hidden" id="districtlist">
+                          <label for="workerDistrict" class="control-label">District</label>
+                           <select id="workerDistrict" ng-model="district"></select>
+                          <span class="help-block"></span>
+                      </div>
                     <div class="form-group">
                           <label for="rate" class="control-label">Rate</label>
                           <div class="input-group">
@@ -59,6 +78,7 @@
                           <select id="workersavailabilty" data-ng-model="availabilty"></select>
                           <span class="help-block"></span>
                       </div>
+                      <button id="addDetailsButtonId" ng-click="addDetails()" class="btn btn-default btn-primary center-block">Submit</button>
                   </form>
               </div>
           </div>
