@@ -36,3 +36,6 @@ main{
 #worker_search_results .list-group-item:last-child{
 	border-bottom : none;
 }
+#WorkerDetailsBackButton{
+	margin-bottom : 16px;
+}

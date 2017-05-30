@@ -93,12 +93,39 @@ angular.module('mapsApp', [])
         google.maps.event.trigger(selectedMarker, 'click');
     }
     function constructCitiArray(workers){
-    	console.log(workers.workerProffession)
+
+    	console.log(workers.workerProffession);
+    	
+
+    	
 		
 		//for (i = 0; i < cities.length; i++){
-	       var url ='http://localhost:8080/fullWorkerDetail/'+workers.workerId;
-			  $("#markerIdDiv").append('<a style="width:200px;height:200px;" class="markersLink"  href="' +url + '">' + workers.workerProffession + '</a><br class="markersLinkBreak">');
+	       var url ='../fullWorkerDetail/'+workers.workerId;
+			 // $("#markerIdDiv").append('<a style="width:200px;height:200px;" class="markersLink"  href="' +url + '">' + workers.workerProffession + '</a><br class="markersLinkBreak">');
               
+			  //create an li element under ul for each worker
+			  var worker = $("<li>", 
+					  		{"class": "list-group-item"}
+			  				);
+			  var worker_name = "<div>"+workers.workerName+"</div>";
+			  var worker_profession = "<div>"+workers.workerProffession+"</div>";
+			  var worker_city = "<div>"+workers.workerCity+"</div>";
+
+			  worker.append(worker_name).append(worker_profession).append(worker_city);
+			  
+			  var workerFullDetailUrl = $("<a>", 
+				  		{"href": url,
+				  		  "text" : "view full details"}
+		  				);
+			  
+			  worker.append(workerFullDetailUrl);
+			  
+			  $("#worker_results_list").append(worker);
+			  
+			  if( $("#worker_search_results").hasClass("hidden")){
+				  $("#worker_search_results").removeClass("hidden");
+			  }
+		    	
 			 var geocoder =  new google.maps.Geocoder();
 		      var cityAddress = workers.workerCity+","+"india";
 		   //   console.log(cityAddress);
