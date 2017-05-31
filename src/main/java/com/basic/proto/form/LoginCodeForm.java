@@ -7,6 +7,24 @@ public class LoginCodeForm {
 	private long workerId;
 	
 	private long generatedTime;
+	
+	private long phoneNumber;
+	
+	
+
+	/**
+	 * @return the phoneNumber
+	 */
+	public long getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	/**
+	 * @param phoneNumber the phoneNumber to set
+	 */
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 
 	/**
 	 * @return the otp

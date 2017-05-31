@@ -16,6 +16,8 @@ import com.amazonaws.services.dynamodbv2.document.Table;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
+import com.basic.proto.config.ApplicationSessionObject;
+import com.basic.proto.form.AppSessionForm;
 import com.basic.proto.form.LoginDetailsForm;
 import com.basic.proto.form.RegistartionDetailsForm;
 
@@ -39,19 +41,14 @@ public class LoginDetailsDataService {
 		}
 	}
 	
-	public  void addItem( LoginDetailsForm loginDetailsForm) {
+	public  long addItem( LoginDetailsForm loginDetailsForm) {
 		intiliazeTable();
-//		ScanRequest scanRequest = new ScanRequest().withTableName("WorkersTableTest");
-//		ScanResult result = client.scan(scanRequest);
-//		int lastValue = 0;
-//		for (Map<String, AttributeValue> item : result.getItems()) {
-//			System.out.println(item.get("workertID"));
-//		}
+		loginDetailsForm.setFullProfile("no");
 		// Build the item
 		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 		 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-		 System.out.println(timestamp.getTime());
-		Item item = new Item().withPrimaryKey("workerId", timestamp.getTime())
+		 long workerId = timestamp.getTime();
+		Item item = new Item().withPrimaryKey("workerId", workerId)
 				.withString("password", loginDetailsForm.getPassword())
 				.withString("userName", loginDetailsForm.getUserName())
 				.withNumber("phoneNumber", loginDetailsForm.getPhoneNumber())
@@ -62,6 +59,7 @@ public class LoginDetailsDataService {
 		//workerId (N)	workerAddress (S)	workerAvailablity (S)	workerCity (S)	workerDistrict (S)	
 		//workerEmail (S)	workerName (S)	workerPhoneNumber (N)	workerProffession (S)	workerRate (N)	workerState (S)
 		PutItemOutcome outcome = table.putItem(item);
+		return workerId;
 	}
 
 }

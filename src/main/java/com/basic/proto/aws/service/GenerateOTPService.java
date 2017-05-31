@@ -20,6 +20,7 @@ import com.amazonaws.services.sns.AmazonSNSClientBuilder;
 import com.amazonaws.services.sns.model.MessageAttributeValue;
 import com.amazonaws.services.sns.model.PublishRequest;
 import com.amazonaws.services.sns.model.PublishResult;
+import com.basic.proto.util.OTPNumberGeneration;
 
 @Service
 public class GenerateOTPService {
@@ -28,12 +29,12 @@ public class GenerateOTPService {
 	AwsIntializerService awsIntializerService;
 	AmazonSNSClient snsClient = null;
 
-	public int generateOTP(String mobileNumber) {
+	public int generateOTP(long mobileNumber) {
 		snsClient = new AmazonSNSClient(awsIntializerService.credentialsForAwsClients());
 		snsClient.setRegion(Region.getRegion(Regions.US_EAST_1));
 		
 		//To do otp generation logic
-		int otp = 3311;
+		int otp = OTPNumberGeneration.numberGeneration();;
 		String message = "My SMS message"+otp;
 		//To do
 		//remove +1 once india number testing done...
