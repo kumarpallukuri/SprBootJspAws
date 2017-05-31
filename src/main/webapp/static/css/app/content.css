@@ -16,7 +16,7 @@ main{
     margin-top: 10px;
 }
 #map {
-    height:420px;
+    height:550px;
     width:100%;
 }
 
@@ -38,4 +38,11 @@ main{
 }
 #WorkerDetailsBackButton{
 	margin-bottom : 16px;
+}
+.fullDetailsAnchor{
+	text-decoration: underline;
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 16px;
+    display: block;
 }

@@ -107,14 +107,15 @@ angular.module('mapsApp', [])
 			  var worker = $("<li>", 
 					  		{"class": "list-group-item"}
 			  				);
-			  var worker_name = "<div>"+workers.workerName+"</div>";
-			  var worker_profession = "<div>"+workers.workerProffession+"</div>";
-			  var worker_city = "<div>"+workers.workerCity+"</div>";
+			  var worker_name = "<div class='boldFont'>"+workers.workerName+"</div>";
+			  var worker_profession = "<div class='smallFont'>"+workers.workerProffession+"</div>";
+			  var worker_city = "<div class='smallFont'>"+workers.workerCity+"</div>";
 
 			  worker.append(worker_name).append(worker_profession).append(worker_city);
 			  
 			  var workerFullDetailUrl = $("<a>", 
 				  		{"href": url,
+				  		"class" : "fullDetailsAnchor",
 				  		  "text" : "view full details"}
 		  				);
 			  

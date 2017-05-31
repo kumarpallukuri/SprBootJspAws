@@ -51,5 +51,10 @@ select{
 .inline-buttons button{
 	display : inline-block;
 }
-
+.boldFont{
+	font-weight : bold;
+}
+.smallFont{
+	font-size : 14px;
+}
 /*82172B*/
