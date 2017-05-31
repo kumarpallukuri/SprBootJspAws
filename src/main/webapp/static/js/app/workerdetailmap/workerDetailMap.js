@@ -16,9 +16,10 @@ angular.module('mapsApp', [])
     $scope.markers = [];
     var infoWindow = new google.maps.InfoWindow();
     $scope.reset =  function(){
-    	console.log("reset...")
-    	$( ".markersLink" ).remove();
-    	$( ".markersLinkBreak").remove();
+    	$("#worker_results_list").html('');
+		 if( !$("#worker_search_results").hasClass("hidden")){
+			  $("#worker_search_results").addClass("hidden");
+		  }
     	$("#cityName").val("");
             for(i=0; i<$scope.markers.length; i++){
             	$scope.markers[i].setMap(null);
@@ -43,6 +44,9 @@ angular.module('mapsApp', [])
 			 json = JSON.stringify(response);
 			 json = angular.toJson(response);
 			
+			//clear already existing results when searched again
+			 $("#worker_results_list").html('');
+			 
 			for( i=0;i<workers.length;i++){
 				constructCitiArray(workers[i]);
 			}
