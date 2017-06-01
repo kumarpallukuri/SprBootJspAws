@@ -46,6 +46,11 @@
                           <span class="help-block"></span>
                       </div>
                       <div class="form-group">
+                          <label for="pincode" class="control-label">PIN code</label>
+                          <input type="text" class="form-control" id="pincode" name="pincode" ng-model="pincode" max-length="6" required="true" title="Please enter you pin code">
+                          <span class="help-block"></span>
+                      </div>
+                      <div class="form-group">
                           <label for="workerCity" class="control-label">City</label>
                           <input type="text" class="form-control" id="workerCity" name="workerCity" ng-model="city" required="true" title="Please enter your city">
                           <span class="help-block"></span>

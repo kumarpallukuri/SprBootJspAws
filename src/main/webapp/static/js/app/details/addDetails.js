@@ -25,6 +25,8 @@ app.controller('validateCtrl', [ '$scope', '$http',function($scope, $http) {
     		 }
     		 $scope.modeOfPayment = $("#workersPaymentMode").val();
     		 $scope.workerWebsite = $("#workerWebsite").val();
+    		 $scope.pincode = $("#pincode").val();
+    		 
     		 
     		 
     		 console.log("user -->"+$scope.user)
@@ -46,6 +48,7 @@ app.controller('validateCtrl', [ '$scope', '$http',function($scope, $http) {
             	'workerCity': $scope.city,
             	'workerAvailablity': $scope.availabilty,
             	'workerAddress': $scope.address,
+            	'pincode': $scope.pincode,
             	'workerDistrict': $scope.district,
             	'workerState': $scope.state,
             	'workerRate': $scope.rate,

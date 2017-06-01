@@ -28,11 +28,19 @@ public class Workers {
 	
 	private String websiteUrl;
 	
-	private String wokerAvailabilty;
-	
 	private String workerexperience;
 	
+	private String pincode;
 	
+	
+
+	public String getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
+	}
 
 	/**
 	 * @return the modeofPayment
@@ -60,20 +68,6 @@ public class Workers {
 	 */
 	public void setWebsiteUrl(String websiteUrl) {
 		this.websiteUrl = websiteUrl;
-	}
-
-	/**
-	 * @return the wokerAvailabilty
-	 */
-	public String getWokerAvailabilty() {
-		return wokerAvailabilty;
-	}
-
-	/**
-	 * @param wokerAvailabilty the wokerAvailabilty to set
-	 */
-	public void setWokerAvailabilty(String wokerAvailabilty) {
-		this.wokerAvailabilty = wokerAvailabilty;
 	}
 
 	/**
