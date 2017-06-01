@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 
+import com.basic.proto.form.AppSessionForm;
 import com.basic.proto.form.UserLoginSessionForm;
 
 
@@ -59,6 +60,7 @@ public class RequestFilter implements Filter {
 	public void init(FilterConfig fConfig) throws ServletException {
 		//No transaction needed
 		System.out.println(" filter do init...!");
+		AppSessionForm appSessionForm = ApplicationSessionObject.getApplicationSessionObject();
 	}
 	
 	

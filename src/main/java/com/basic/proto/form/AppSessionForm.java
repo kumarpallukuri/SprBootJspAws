@@ -1,6 +1,7 @@
 package com.basic.proto.form;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.context.annotation.Scope;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class AppSessionForm implements Serializable{
 	
-	private Map<String, LoginCodeForm> usersLoginCodes;
+	private Map<String, LoginCodeForm> usersLoginCodes = new HashMap<String, LoginCodeForm>();
 
 	/**
 	 * @return the usersLoginCodes

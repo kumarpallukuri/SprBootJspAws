@@ -1,5 +1,9 @@
 package com.basic.proto.controller;
 
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -18,8 +22,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.amazonaws.Request;
 import com.basic.proto.aws.service.GenerateOTPService;
 import com.basic.proto.aws.service.LoginDetailsDataService;
+import com.basic.proto.config.ApplicationSessionObject;
+import com.basic.proto.form.AppSessionForm;
+import com.basic.proto.form.LoginCodeForm;
 import com.basic.proto.form.LoginDetailsForm;
 import com.basic.proto.form.UserLoginSessionForm;
+import com.basic.proto.util.OTPNumberGeneration;
 
 @Controller
 public class RegistartionDetailsController {
@@ -64,18 +72,27 @@ public class RegistartionDetailsController {
 	@ResponseBody
 	public String register(@RequestBody LoginDetailsForm loginDetailsForm,HttpServletRequest request) throws Exception {
 		System.out.println("login page..."+loginDetailsForm.getPhoneNumber());
-		//int otp = generateOTPService.generateOTP(Long.toString(loginDetailsForm.getPhoneNumber()));
-		//loginDetailsDataService.addItem(loginDetailsForm);
-		//return "login";
-		String otp = "234";
-		return otp;
+	//	int otp = generateOTPService.generateOTP(Long.toString(loginDetailsForm.getPhoneNumber()));
+		AppSessionForm appSessionForm = ApplicationSessionObject.getApplicationSessionObject();
+		long workerId = loginDetailsDataService.addItem(loginDetailsForm);
+		//return "login"; 
+		Map<String, LoginCodeForm> usersLoginCodes = appSessionForm.getUsersLoginCodes();
+		LoginCodeForm loginCodeForm = new LoginCodeForm();
+		loginCodeForm.setGeneratedTime(Calendar.getInstance().getTimeInMillis());
+		int otp =  generateOTPService.generateOTP(loginDetailsForm.getPhoneNumber());
+		loginCodeForm.setOtp(otp);
+		loginCodeForm.setPhoneNumber(loginDetailsForm.getPhoneNumber());
+		loginCodeForm.setWorkerId(workerId);
+		usersLoginCodes.put(loginDetailsForm.getUserName(), loginCodeForm);
+		ApplicationSessionObject.getApplicationSessionObject().setUsersLoginCodes(usersLoginCodes);
+		return "";
 	}
 	
 	@RequestMapping(value ="/generateOTP/{mobileNumber}")
 	public void generateOTP(@PathVariable("mobileNumber") String mobileNumber) throws Exception {
 		System.out.println("generateOTP...");
-		int otp = generateOTPService.generateOTP(mobileNumber);
-		System.out.println(otp);
+		//int otp = generateOTPService.generateOTP(mobileNumber);
+		//System.out.println(otp);
 		
 		//To do construct appsession object here and 
 			//return "login";
