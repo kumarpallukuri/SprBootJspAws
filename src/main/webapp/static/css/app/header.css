@@ -1,4 +1,4 @@
-.navbar-default,
+/* .navbar-default,
 .navbar-default .navbar-nav>.active>a, 
 .navbar-default .navbar-nav>.open>a,
 .navbar-default .navbar-nav>.active>a:focus, 
@@ -7,6 +7,10 @@
 	border : none;
 	background-image : none;
 	box-shadow : none;
+} */
+.headerContainer{
+	padding : 0 15px;
+	margin-bottom: 8px;
 }
 .navbar-default .navbar-nav>.active>a,
 .navbar-default .navbar-nav>.active>a:focus,
@@ -23,4 +27,28 @@
 #logo{
 	width: 177px;
     height: 43px;
+}
+.fixedMenu{
+    position: fixed;
+    right: 0;
+    top: 150px;
+    height : 200px;
+}
+/* Style all font awesome icons */
+.fa {
+	display : block ! important;
+    padding: 20px;
+    font-size: 30px ! important;
+    width: 60px;
+    text-align: center;
+    text-decoration: none;
+    margin : 5px 0px;
+    color: white ! important;
+    background : #000;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+    opacity: 0.7;
+    cursor : pointer;
 }

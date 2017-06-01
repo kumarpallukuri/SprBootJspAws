@@ -3,8 +3,8 @@
 
 <c:set var="room"><tiles:getAsString name="room" /></c:set>
 
-<nav class="navbar navbar-default navbar-static-top">
-  <div class="container">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="row headerContainer">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
@@ -39,6 +39,10 @@
          	</a>
          </li>
       </ul>
+    </div>
+    <div class="fixedMenu">
+	    <a class="fa fa-facebook" title="Like us on facebook"><span class="sr-only">facebook</span></a>
+	    <a class="fa fa-twitter" title="Follow us on twitter"><span class="sr-only">twitter</span></a>
     </div>
   </div>
 </nav>

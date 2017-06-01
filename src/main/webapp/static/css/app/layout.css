@@ -17,11 +17,15 @@ body{
 	padding : 16px;
 	color : #505050;
 }
+#body{
+	padding-right : 60px; 
+}
 #sidebar{
 	padding-right : 0;
 }
 #site-content{
 	padding-bottom : 140px;
+	padding-top: 90px;
 }
 a{
 	color : #1b1d1e ! important;
