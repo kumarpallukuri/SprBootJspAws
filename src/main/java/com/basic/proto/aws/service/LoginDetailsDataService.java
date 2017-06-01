@@ -1,7 +1,12 @@
 package com.basic.proto.aws.service;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +16,9 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.document.Item;
+import com.amazonaws.services.dynamodbv2.document.ItemCollection;
 import com.amazonaws.services.dynamodbv2.document.PutItemOutcome;
+import com.amazonaws.services.dynamodbv2.document.ScanOutcome;
 import com.amazonaws.services.dynamodbv2.document.Table;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
@@ -20,6 +27,10 @@ import com.basic.proto.config.ApplicationSessionObject;
 import com.basic.proto.form.AppSessionForm;
 import com.basic.proto.form.LoginDetailsForm;
 import com.basic.proto.form.RegistartionDetailsForm;
+import com.basic.proto.form.Workers;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 public class LoginDetailsDataService {
@@ -60,6 +71,47 @@ public class LoginDetailsDataService {
 		//workerEmail (S)	workerName (S)	workerPhoneNumber (N)	workerProffession (S)	workerRate (N)	workerState (S)
 		PutItemOutcome outcome = table.putItem(item);
 		return workerId;
+	}
+	
+
+	public LoginDetailsForm getUserDetails(String userName) throws JsonParseException, JsonMappingException, IOException {
+		// This client will default to US West (Oregon)
+		
+		intiliazeTable();
+		System.out.println("filterItems service");
+		//String[] filterValues = filterString.split("_");
+	  	Map<String, AttributeValue> expressionAttributeValues = new HashMap<String, AttributeValue>();
+		expressionAttributeValues.put(":val", new AttributeValue().withS(userName));
+	//	ScanRequest scanRequest = new ScanRequest().withTableName("WorkersTableTest");
+	//	ScanResult result = client.scan(scanRequest);
+		String expressionValue = "userName" +" < :val";
+		ScanRequest scanRequest = new ScanRequest().withTableName("Workersregistration")
+				.withFilterExpression(expressionValue).withProjectionExpression("workerId")
+				.withExpressionAttributeValues(expressionAttributeValues);
+
+		ScanResult result = client.scan(scanRequest);
+		
+		Map<String, Object> expressionAttributeValues2 = new HashMap<String, Object>();
+        expressionAttributeValues2.put(":pr", userName);
+        String filterCondition = "userName" +" = :pr";
+        ItemCollection<ScanOutcome> items = table.scan(
+        		filterCondition,
+            "workerId, password, userName, phoneNumber,workerName,fullProfile", 
+            null, 
+            expressionAttributeValues2);
+        //"workerId, workerEmail, workerProffession, workerName,workerPhoneNumber,"
+	//	+ "workerAddress,workerAvailablity,workerCity,workerDistrict,workerRate,workerState"
+        System.out.println("Scan of for items with a price less than 100.");
+        LoginDetailsForm loginDetailsForm = null;
+        Iterator<Item> iterator = items.iterator();
+        while (iterator.hasNext()) {
+           // System.out.println(iterator.next().toJSONPretty());
+            ObjectMapper mapper = new ObjectMapper();
+			String json = iterator.next().toJSONPretty();
+			loginDetailsForm = new ObjectMapper().readValue(json, LoginDetailsForm.class);
+			System.out.println("filter json-->"+json);
+        }    
+		return loginDetailsForm;
 	}
 
 }

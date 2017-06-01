@@ -60,9 +60,19 @@ public class RegistartionDetailsController {
 //		}
 //		userLoginSessionForm.setUserLogin(true);
 //		httpSession.setAttribute("userLoginSessionForm", userLoginSessionForm);
+		LoginDetailsForm userDetailsForm = null;
 		if(firstLogin != null && !"".equals(firstLogin)){
 			if(firstLogin.equals("true")){
 				request.setAttribute("otpRequired",true);
+			}
+		}
+		if(loginDetailsForm.getUserName() != null){
+			userDetailsForm = loginDetailsDataService.getUserDetails(loginDetailsForm.getUserName());
+			if(loginDetailsForm.getOtp() == 0){
+				if((loginDetailsForm.getUserName().equals(userDetailsForm.getUserName()))&&
+						(loginDetailsForm.getPassword().equals(userDetailsForm.getPassword()))){
+					return "home";
+				}
 			}
 		}
 			return "login";
