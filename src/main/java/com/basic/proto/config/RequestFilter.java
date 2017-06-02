@@ -44,12 +44,14 @@ public class RequestFilter implements Filter {
 	//	System.out.println("do filter...!");
 		HttpServletRequest reHttpServletRequest = (HttpServletRequest) request;
 		HttpSession httpSession = reHttpServletRequest.getSession();
-		UserLoginSessionForm userLogout= (UserLoginSessionForm) request.getAttribute("userLoginSessionForm");
-		if(userLogout != null){
+		UserLoginSessionForm userLoginSession = (UserLoginSessionForm) request.getAttribute("userLoginSessionForm");
+		if(userLoginSession != null){
 			//Todo
-		//	System.out.println("usr login");
+			if(userLoginSession.isUserLogin()){
+				//System.out.println("usr  logged in");
+			}
 		}else{
-		//	System.out.println("usr not logged in");
+			//System.out.println("usr not logged in");
 		}
 		chain.doFilter(request, response);
 	}
