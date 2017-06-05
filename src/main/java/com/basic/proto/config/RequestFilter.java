@@ -35,6 +35,8 @@ public class RequestFilter implements Filter {
 	/** Get the logger **/
 	Logger logger = (Logger) LoggerFactory.getLogger(RequestFilter.class);
 	
+	@Autowired
+	UserLoginSessionForm userLoginSessionForm;
 	
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
@@ -44,15 +46,8 @@ public class RequestFilter implements Filter {
 	//	System.out.println("do filter...!");
 		HttpServletRequest reHttpServletRequest = (HttpServletRequest) request;
 		HttpSession httpSession = reHttpServletRequest.getSession();
-		UserLoginSessionForm userLoginSession = (UserLoginSessionForm) request.getAttribute("userLoginSessionForm");
-		if(userLoginSession != null){
-			//Todo
-			if(userLoginSession.isUserLogin()){
-				//System.out.println("usr  logged in");
-			}
-		}else{
-			//System.out.println("usr not logged in");
-		}
+	//	UserLoginSessionForm userLoginSession = (UserLoginSessionForm) request.getAttribute("userLoginSessionForm");
+		System.out.println(userLoginSessionForm.isUserLogin());
 		chain.doFilter(request, response);
 	}
 

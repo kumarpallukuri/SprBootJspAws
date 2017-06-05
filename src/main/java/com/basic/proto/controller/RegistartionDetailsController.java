@@ -75,8 +75,8 @@ public class RegistartionDetailsController {
 //					 userLoginSessionForm.setDisplayEdit(true);
 //					 }
 					 userLoginSessionForm.setUserLogin(true);
-					 httpSession.setAttribute("userLoginSessionForm",
-					 userLoginSessionForm);
+//					 httpSession.setAttribute("userLoginSessionForm",
+//					 userLoginSessionForm);
 					return "home";
 				} else {
 					return "login";
@@ -136,11 +136,11 @@ public class RegistartionDetailsController {
 	public String userLogout(@ModelAttribute LoginDetailsForm loginDetailsForm, HttpServletRequest request)
 			throws Exception {
 		System.out.println("userLogout");
-		HttpSession httpSession = request.getSession();
-		UserLoginSessionForm userLogout = (UserLoginSessionForm) request.getAttribute("userLoginSessionForm");
-		userLogout.setUserLogin(false);
-		userLogout.setDisplayEdit(false);
-		httpSession.setAttribute("userLoginSessionForm", userLogout);
+//		HttpSession httpSession = request.getSession();
+//		UserLoginSessionForm userLogout = (UserLoginSessionForm) request.getAttribute("userLoginSessionForm");
+		userLoginSessionForm.setUserLogin(false);
+		userLoginSessionForm.setDisplayEdit(false);
+	//	httpSession.setAttribute("userLoginSessionForm", userLogout);
 		return "login";
 	}
 

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class AppSessionForm implements Serializable{
-	
+
 	private Map<String, LoginCodeForm> usersLoginCodes = new HashMap<String, LoginCodeForm>();
 
 	/**
