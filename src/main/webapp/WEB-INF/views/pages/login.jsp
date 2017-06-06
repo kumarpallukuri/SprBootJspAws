@@ -7,7 +7,7 @@
                   <form id="loginForm" method="POST" action="/login/">
                       <div class="form-group">
                           <label for="username" class="control-label">Username</label>
-                          <input type="text" class="form-control" id="username" name="username" value="" required="true" title="Please enter you username">
+                          <input type="text" class="form-control" id="userName" name="userName" value="" required="true" title="Please enter you username">
                           <span class="help-block"></span>
                       </div>
                       <c:if test="${not otpRequired}">

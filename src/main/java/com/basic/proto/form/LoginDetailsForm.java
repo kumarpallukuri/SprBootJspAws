@@ -19,8 +19,25 @@ public class LoginDetailsForm {
 	
 	private String workerName;
 	
+	private int otp;
 	
 	
+	
+	
+	/**
+	 * @return the otp
+	 */
+	public int getOtp() {
+		return otp;
+	}
+
+	/**
+	 * @param otp the otp to set
+	 */
+	public void setOtp(int otp) {
+		this.otp = otp;
+	}
+
 	/**
 	 * @return the workerName
 	 */
