@@ -31,12 +31,23 @@ myApp.controller('AppCtrl', [ '$scope', '$http', function($scope, $http) {
 				//refresh();
 			});
 	}
+	
+	$scope.filterChange =  function(){
+		//alert("filter change "+$scope.filter);
+		if($scope.filter === "----Select----"){
+			$("#filterTextValueDiv").addClass("hidden");
+		}else{
+			if($("#filterTextValueDiv").hasClass("hidden")){
+				$("#filterTextValueDiv").removeClass("hidden");
+			}
+		}
+	}
 
 
 
 } ]);
 
-var filterValues = ["workerProffession","workerCity"];
+var filterValues = ["----Select----","Proffession","City"];
 
 
 $(function() {

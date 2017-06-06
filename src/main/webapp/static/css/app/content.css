@@ -58,3 +58,16 @@ main{
 .resultsSideBar .list-group-item{
 	border : none ! important;
 }
+.filterSection{
+	padding : 8px;
+	position : absolute;
+	right : 75px;
+}
+.cityFilterSearch{
+	margin-top: -1px;
+	border: none;
+    padding: 6px 20px ! important;
+}
+#filterTextValueDiv{
+	margin-right : 45px;
+}

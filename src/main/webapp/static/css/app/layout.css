@@ -64,4 +64,10 @@ select{
 .marginB16{
 	margin-bottom : 16px;
 }
+.displayInline{
+	display : inline;
+}
+.displayInlineFlex{
+	display : inline-flex;
+}
 /*82172B*/
