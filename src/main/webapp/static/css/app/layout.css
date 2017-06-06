@@ -70,4 +70,12 @@ select{
 .displayInlineFlex{
 	display : inline-flex;
 }
+.panel-inverse{
+	border : 2px solid #000;
+}
+.panel-inverse .panel-heading{
+	background : #000;
+	color : #fff;
+}
+
 /*82172B*/
