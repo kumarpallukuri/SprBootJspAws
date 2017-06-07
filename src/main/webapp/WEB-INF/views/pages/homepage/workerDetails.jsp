@@ -10,7 +10,7 @@
         <div id="filterTextValueDiv" class="input-group displayInlineFlex hidden">
 	      <input type="text" class="form-control" ng-model="filterValue" id="filterTextValue" title="Please enter your search" placeholder="Enter your search..">
 	      <span class="input-group-btn">
-	        <button class="btn btn-default glyphicon glyphicon-search btn-primary center-block cityFilterSearch" type="button"></button>
+	        <button class="btn btn-default glyphicon glyphicon-search btn-primary center-block cityFilterSearch" type="button" ng-click="filterDetails();"></button>
 	      </span>
 	    </div>
 	</div>

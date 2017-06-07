@@ -33,7 +33,6 @@ myApp.controller('AppCtrl', [ '$scope', '$http', function($scope, $http) {
 	}
 	
 	$scope.filterChange =  function(){
-		//alert("filter change "+$scope.filter);
 		if($scope.filter === "----Select----"){
 			$("#filterTextValueDiv").addClass("hidden");
 		}else{

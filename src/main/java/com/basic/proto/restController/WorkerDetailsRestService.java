@@ -27,7 +27,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 @RestController
 public class WorkerDetailsRestService {
 
-	// injectt vi application.propertiess
+	// injectt vii application.propertiess
 	@Value("${welcome.message:test}")
 	private String message = "Hello World";
 	

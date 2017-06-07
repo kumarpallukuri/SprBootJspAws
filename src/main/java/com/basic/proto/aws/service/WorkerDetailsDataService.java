@@ -240,10 +240,16 @@ public class WorkerDetailsDataService {
 		List<Workers> allWorkers = new ArrayList<Workers>();
 		String[] filterValues = filterString.split("_");
 	  	Map<String, AttributeValue> expressionAttributeValues = new HashMap<String, AttributeValue>();
+	  	String filterDropdwonValue =filterValues[0];
+	  	if(filterValues[0].equals("Proffession")){
+	  		filterDropdwonValue = "workerProffession";
+	  	}else if(filterValues[0].equals("City")){
+	  		filterDropdwonValue = "workerCity";
+	  	}
 		expressionAttributeValues.put(":val", new AttributeValue().withS(filterValues[1]));
 	//	ScanRequest scanRequest = new ScanRequest().withTableName("WorkersTableTest");
 	//	ScanResult result = client.scan(scanRequest);
-		String expressionValue = filterValues[0] +" < :val";
+		String expressionValue = filterDropdwonValue +" < :val";
 		ScanRequest scanRequest = new ScanRequest().withTableName("WorkersTableTest")
 				.withFilterExpression(expressionValue).withProjectionExpression("workerId")
 				.withExpressionAttributeValues(expressionAttributeValues);
@@ -252,7 +258,7 @@ public class WorkerDetailsDataService {
 		
 		Map<String, Object> expressionAttributeValues2 = new HashMap<String, Object>();
         expressionAttributeValues2.put(":pr", filterValues[1]);
-        String filterCondition = filterValues[0] +" = :pr";
+        String filterCondition = filterDropdwonValue +" = :pr";
         ItemCollection<ScanOutcome> items = table.scan(
         		filterCondition,
             "workerId, workerEmail, workerName, workerPhoneNumber,workerCity,workerProffession", 
