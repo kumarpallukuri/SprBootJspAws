@@ -1,7 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ page session="true" %>
 
 <c:set var="room"><tiles:getAsString name="room" /></c:set>
+<c:set var="userIsLoggedIn"><c:out value="${sessionScope['scopedTarget.userLoginSessionForm'].isUserLogin()}"/></c:set>
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="row headerContainer">
@@ -28,16 +30,25 @@
         		<span class="anchorText">About</span>
         	</a>
         </li>
-         <li class="<c:if test="${room == 3}">active</c:if>">
-         	<a href="/register">
-         		<span class="anchorText">Register</span>
-         	</a>
-         </li>
-         <li class="<c:if test="${room == 4}">active</c:if>">
-         	<a href="/login">
-         		<span class="anchorText">Login</span>
-         	</a>
-         </li>
+        <c:if test="${not userIsLoggedIn}">
+	         <li class="<c:if test="${room == 3}">active</c:if>">
+	         	<a href="/register">
+	         		<span class="anchorText">Register</span>
+	         	</a>
+	         </li>
+	         <li class="<c:if test="${room == 4}">active</c:if>">
+	         	<a href="/login">
+	         		<span class="anchorText">Login</span>
+	         	</a>
+	         </li>
+         </c:if>
+         <c:if test="${userIsLoggedIn}">
+	         <li>
+	         	<a href="/logout">
+	         		<span class="anchorText">Logout</span>
+	         	</a>
+	         </li>
+         </c:if>
       </ul>
     </div>
     <div class="fixedMenu">
