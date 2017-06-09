@@ -5,7 +5,7 @@
           <div class="col-xs-offset-4 col-xs-4">
               <div class="well">
                   <form id="registerForm" name="registerForm" novalidate ng-submit="register();">
-                       <div class="form-group">
+                       <div class="form-group" ng-show="!alreadyRegistered">
                           <label for="profName" class="control-label">Name
 	                          <span class="help-block displayInline">
 	                          	<span ng-show="registerForm.$submitted || registerForm.profName.$touched">
@@ -51,7 +51,7 @@
 	                          	</span>
                           	</span>
                       </div>
-                      <div class="form-group">
+                      <div class="form-group" ng-show="!alreadyRegistered">
                           <label for="password" class="control-label">Password
                           	<span class="help-block displayInline">
 	                          	<span ng-show="registerForm.$submitted || registerForm.password.$touched">
@@ -68,9 +68,16 @@
 	                          	</span>
                           	</span>
                       </div>
-                      <button type="submit" id="registerSubmitButton" class="btn btn-default btn-primary center-block" 
+                      <button type="submit" id="registerSubmitButton" class="btn btn-default btn-primary center-block" ng-show="!alreadyRegistered" title="Register"
                       ng-disabled="registerForm.username.$error.required || registerForm.password.$error.required || registerForm.profName.$error.required 
                       || registerForm.mobileNum.$error.required">Register</button>
+                      
+                      <button type="submit" id="requestOTPButton" class="btn btn-default btn-primary center-block" ng-show="alreadyRegistered" title="Request One Time Password (OTP)"
+                      ng-disabled="registerForm.username.$error.required || registerForm.mobileNum.$error.required">Request OTP</button>
+                      
+                       <a id="alreadyRegistered" href="javascript:void(0);" ng-click="alreadyRegistered = true" ng-show="!alreadyRegistered">
+                      	<span class="anchorText">Already Registered ?</span>
+                      </a>
                   </form>
               </div>
           </div>
