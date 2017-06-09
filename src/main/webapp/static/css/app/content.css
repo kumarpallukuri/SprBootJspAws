@@ -83,3 +83,6 @@ main{
 #fullProfile #userName{
 	font-size : 24px;
 }
+.ng-invalid.ng-invalid-required.ng-touched{
+	border : 1px solid red;
+}
