@@ -1,0 +1,1 @@
+var wtApp = angular.module('wtApp', []);

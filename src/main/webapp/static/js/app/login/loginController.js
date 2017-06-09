@@ -1,6 +1,4 @@
-var wtApp = angular.module('wtApp', []);
-
-wtApp.controller('loginController', [ '$scope', '$http', function($scope, $http) {
+wtApp.controller('loginController', [ '$scope', function($scope) {
 	//submit the form
 	$scope.submitForm =  function(){
 		document.loginform.submit();

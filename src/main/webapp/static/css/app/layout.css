@@ -67,6 +67,9 @@ select{
 .displayInline{
 	display : inline;
 }
+.displayBlock{
+	display : block;
+}
 .displayInlineFlex{
 	display : inline-flex;
 }
@@ -81,8 +84,4 @@ select{
 	color : red;
 	font-size: 14px;
 }
-.help-block {
-    display: inline;
-}
-
 /*82172B*/

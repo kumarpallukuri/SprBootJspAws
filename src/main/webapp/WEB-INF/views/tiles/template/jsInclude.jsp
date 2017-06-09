@@ -5,3 +5,4 @@
  
 
 <!-- application js files -->
+<script src="/static/js/app/common/common.js"></script>  

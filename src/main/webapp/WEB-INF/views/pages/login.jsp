@@ -8,7 +8,7 @@
                   <form name="loginform" id="loginForm" novalidate ng-submit="submitForm();" method="post" action="/login">
                       <div class="form-group">
                           <label for="username" class="control-label">Username
-                          <span class="help-block">
+                          <span class="help-block displayInline">
                           	<span ng-show="loginform.$submitted || loginform.userName.$touched">
                           		<span class="errorText" ng-show="loginform.userName.$error.required"> - REQUIRED</span> 
                           	</span>
@@ -19,7 +19,7 @@
                       <c:if test="${not otpRequired}">
 	                      <div class="form-group">
 	                          <label for="password" class="control-label">Password
-	                          	<span class="help-block">
+	                          	<span class="help-block displayInline">
 		                          	<span ng-show="loginform.$submitted || loginform.password.$touched">
 		                          		<span class="errorText" ng-show="loginform.password.$error.required"> - REQUIRED</span> 
 		                          	</span>
@@ -31,7 +31,7 @@
                       <c:if test="${ otpRequired}">
                       	<div class="form-group">
                           <label for="otp" class="control-label">OTP
-                          	<span class="help-block">
+                          	<span class="help-block displayInline">
                           	<span ng-show="loginform.$submitted || loginform.otp.$touched">
                           		<span class="errorText" ng-show="loginform.otp.$error.required"> - REQUIRED</span> 
                           	</span>
