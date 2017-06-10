@@ -43,7 +43,7 @@
                           	</span>
                           </label>
                           <input type="text" class="form-control" id="username" name="username" ng-model="user.userName" 
-                          minlength="4" maxlength="20" ng-pattern="/^[a-zA-Z0-9]+[@#_-.]?[a-zA-Z0-9]*$/" required title="Please enter you username">
+                          minlength="4" maxlength="20" ng-pattern="/^[a-zA-Z0-9]+[@#_\-.]?[a-zA-Z0-9]*$/" required title="Please enter you username">
                           <span class="help-block">
 	                          	<span ng-show="registerForm.$submitted || registerForm.username.$touched">
 	                          		<span class="errorText" ng-show="registerForm.username.$error.pattern">Should contain only letters, numbers and @,#,-,.,_ characters.</span>
