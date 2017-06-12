@@ -8,3 +8,4 @@
 <link rel="stylesheet" href="/static/css/app/header.css">
 <link rel="stylesheet" href="/static/css/app/sidebar.css">
 <link rel="stylesheet" href="/static/css/app/content.css">
+<link rel="stylesheet" href="/static/css/app/carousel.css">

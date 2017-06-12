@@ -88,3 +88,27 @@ main{
 .ng-invalid.ng-invalid-pattern.ng-touched{
 	border : 1px solid red;
 }
+.homeSearchSection{
+	width : 100%;
+}
+.homeSearchSection h1{
+    width: 80%;
+    margin: 0 auto;
+    font-size: 24px;
+    line-height: 1.75;
+    word-spacing: 2px;
+}
+.highLightTerm {
+    font-size: 40px;
+    font-weight: bold;
+    color: #000;
+    display: block;
+}
+.homeSearchSection #searchform{
+	margin: 0 auto;
+    width: 80%;
+    margin-top: 40px;
+    border: 2px solid #e3e3e3;
+    border-radius: 8px;
+    background : #f5f5f5;
+}

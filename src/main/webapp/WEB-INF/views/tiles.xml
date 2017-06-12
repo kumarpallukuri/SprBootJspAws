@@ -27,7 +27,7 @@
    
       <!-- Register -->
    <definition name="register" extends="standard-layout">  
-       <put-attribute name="title" value="Home" />  
+       <put-attribute name="title" value="Register" />  
        <put-attribute name="room" value="3" />    
        <put-attribute name="body" value="/WEB-INF/views/pages/register.jsp" />   
    </definition> 
@@ -36,13 +36,13 @@
    <definition name="home" extends="standard-layout">  
        <put-attribute name="title" value="Home" />  
        <put-attribute name="room" value="1" />    
-       <put-attribute name="sidebar" value="/WEB-INF/views/pages/homepage/resultsSideBar.jsp" />
-       <put-attribute name="body" value="/WEB-INF/views/pages/homepage/workerDetails.jsp" />   
+       <!-- <put-attribute name="sidebar" value="/WEB-INF/views/pages/homepage/resultsSideBar.jsp" /> -->
+       <put-attribute name="body" value="/WEB-INF/views/pages/homepage/home.jsp" />   
    </definition>
    
          <!-- About -->
    <definition name="about" extends="standard-layout">  
-       <put-attribute name="title" value="Home" />  
+       <put-attribute name="title" value="About" />  
        <put-attribute name="room" value="2" />    
        <put-attribute name="body" value="/WEB-INF/views/pages/about.jsp" />   
    </definition>
