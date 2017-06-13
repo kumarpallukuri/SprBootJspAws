@@ -1,51 +1,138 @@
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
-
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  z-index: 10;
-  top : 30%;
-}
-
-/* Declare heights because of positioning of img element */
-.carousel .item {
-  height: 70%;
-  background-color: #777;
-}
-.carousel-inner > .item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  height: 500px;
-}
-
-
-/* RESPONSIVE CSS
--------------------------------------------------- */
-
-@media (min-width: 768px) {
-
-  /* Bump up size of carousel content */
-  .carousel-caption p {
-    margin-bottom: 20px;
-    font-size: 21px;
-    line-height: 1.4;
-  }
-
-}
-
-#filteringSection select,
-#searchSection input{
+#filteringSection input,
+#filteringSection button{
 	height : 40px;
+}
+#filteringSection button{
+	margin-bottom : 4px;
 }
 #searchform .form-group{
 	margin : 15px;
 	display : inline-block;
+	width : 40%;
 }
-#filteringSection,
-#searchSection{
+#filteringSection{
 	margin : 0 auto;
-	padding-top : 16px;
-	width : 66%;
+	padding: 16px;
+}
+
+
+
+
+
+@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
+.col-item
+{
+    border: 1px solid #E1E1E1;
+    border-radius: 5px;
+    background: #FFF;
+}
+.col-item .photo img
+{
+    margin: 0 auto;
+    width: 100%;
+    height : 260px
+}
+
+.col-item .info
+{
+    padding: 10px;
+    border-radius: 0 0 5px 5px;
+    margin-top: 1px;
+    background-color : #f5f5f5;
+}
+
+.col-item .price
+{
+    /*width: 50%;*/
+    float: left;
+    margin-top: 5px;
+}
+
+.col-item .price h5
+{
+    line-height: 20px;
+    margin: 0;
+}
+
+.price-text-color
+{
+    color: #219FD1;
+}
+
+.col-item .info .rating
+{
+    color: #777;
+}
+
+.col-item .rating
+{
+    /*width: 50%;*/
+    float: left;
+    font-size: 17px;
+    text-align: right;
+    line-height: 52px;
+    margin-bottom: 10px;
+    height: 52px;
+}
+
+.col-item .separator
+{
+    border-top: 1px solid #E1E1E1;
+}
+
+.clear-left
+{
+    clear: left;
+}
+
+.col-item .separator p
+{
+    line-height: 20px;
+    margin-bottom: 0;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.col-item .separator p i
+{
+    margin-right: 5px;
+}
+.col-item .btn-add
+{
+    width: 50%;
+    float: left;
+}
+
+.col-item .btn-add
+{
+    border-right: 1px solid #E1E1E1;
+}
+
+.col-item .btn-details
+{
+    width: 50%;
+    float: left;
+    padding-left: 10px;
+}
+.controls
+{
+    margin-top: 20px;
+}
+[data-slide="prev"]
+{
+    margin-right: 10px;
+}
+#carouselSection{
+	margin-top : 40px;
+	margin-left : 50px;
+}
+#carouselSection #headingSec{
+	margin-bottom : 24px;
+}
+#carouselSection h3{
+	font-size : 18px;
+}
+.controls a{
+	background: transparent;
+    box-shadow: none;
 }
