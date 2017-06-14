@@ -124,7 +124,8 @@ main{
 	display : inline-block;
 	width : 40%;
 }
-#filteringSection{
+#filteringSection,
+#locateSection{
 	margin : 0 auto;
 	padding: 16px;
 }
@@ -135,4 +136,61 @@ main{
   -webkit-transform: scaleX(-1); /* Webkit */
   transform: scaleX(-1);         /* Standard */
   filter: FlipH;    
+}
+
+#searchform input[type="text"]{
+	border: none;
+    background: transparent;
+    box-shadow: none;
+    border-bottom: 2px solid #000;
+    border-radius: 0;
+    padding-left : 0;
+}
+
+
+#searchform .form-group {
+	height: 55px;
+}
+
+#searchform .control-label {
+	margin-left: -6px;
+	margin-top : -10px;
+	font-size: 16px;
+	font-weight: 400;
+	pointer-events: none;
+	position: absolute;
+	transform: translate3d(6px, 22px, 0) scale(1);
+	transform-origin: left top;
+	transition: 240ms;
+}
+
+#searchform .form-group.focused .control-label {
+	opacity: 0.4;
+	transform: scale(0.75);
+}
+
+#searchform .form-control {
+	align-self: flex-end;
+}
+
+#searchform .form-control::-webkit-input-placeholder {
+	color: transparent;
+	transition: 240ms;
+}
+
+#searchform .form-control:focus::-webkit-input-placeholder {
+	transition: none;
+}
+
+#searchform .form-group.focused .form-control::-webkit-input-placeholder {
+	color: #bbb;
+}
+.locateButtonText{
+	margin-left : 6px;
+}
+.orText{
+    text-align: center;
+    margin-bottom: 25px;
+    margin-top: -25px;
+    font-weight: bold;
 }
