@@ -89,7 +89,8 @@ main{
 	border : 1px solid red;
 }
 .homeSearchSection{
-	width : 100%;
+	width : 100%;    
+	padding-top: 60px;
 }
 .homeSearchSection h1{
     width: 80%;
@@ -145,6 +146,8 @@ main{
     border-bottom: 2px solid #000;
     border-radius: 0;
     padding-left : 0;
+    color: #000;
+    font-size: 16px;
 }
 
 
@@ -189,8 +192,7 @@ main{
 	margin-left : 6px;
 }
 .orText{
-    text-align: center;
-    margin-bottom: 25px;
-    margin-top: -25px;
+	margin-left : 18px;
+	font-size: 14px;
     font-weight: bold;
 }

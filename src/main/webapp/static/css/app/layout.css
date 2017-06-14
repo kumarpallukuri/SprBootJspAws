@@ -65,6 +65,10 @@ select{
 .marginB16{
 	margin-bottom : 16px;
 }
+.searchEg{
+	margin-top : 8px;
+	opacity : 0.5;
+}
 .displayInline{
 	display : inline;
 }
