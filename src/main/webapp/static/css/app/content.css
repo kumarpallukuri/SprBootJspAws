@@ -112,3 +112,19 @@ main{
     border-radius: 8px;
     background : #f5f5f5;
 }
+#filteringSection input,
+#filteringSection button{
+	height : 40px;
+}
+#filteringSection button{
+	margin-bottom : 4px;
+}
+#searchform .form-group{
+	margin : 15px;
+	display : inline-block;
+	width : 40%;
+}
+#filteringSection{
+	margin : 0 auto;
+	padding: 16px;
+}
