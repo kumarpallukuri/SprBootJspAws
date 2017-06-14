@@ -1,4 +1,5 @@
 <div  class="homeSearchSection">
+	<img class="homepageWorkerImg" src="static/images/homeWorker.jpg">
    <h1><span class="highLightTerm">WorkTarget</span> Find workers around you and get your work done !!</h1>
     <form name="searchform" id="searchform">
     		<section id="filteringSection">

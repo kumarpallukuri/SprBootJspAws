@@ -14,7 +14,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/register">
+      <a class="navbar-brand" href="/home">
       	<img id="logo" src="/static/images/wtLogo.png">
       </a>
     </div>
@@ -50,10 +50,6 @@
 	         </li>
          </c:if>
       </ul>
-    </div>
-    <div class="fixedMenu">
-	    <a class="fa fa-facebook" title="Like us on facebook"><span class="sr-only">facebook</span></a>
-	    <a class="fa fa-twitter" title="Follow us on twitter"><span class="sr-only">twitter</span></a>
     </div>
   </div>
 </nav>

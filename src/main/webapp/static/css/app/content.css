@@ -105,9 +105,9 @@ main{
     display: block;
 }
 .homeSearchSection #searchform{
-	margin: 0 auto;
-    width: 80%;
+	margin-left : 225px;
     margin-top: 40px;
+    margin-right : 30px;
     border: 2px solid #e3e3e3;
     border-radius: 8px;
     background : #f5f5f5;
@@ -127,4 +127,12 @@ main{
 #filteringSection{
 	margin : 0 auto;
 	padding: 16px;
+}
+.homepageWorkerImg{
+	float : left;
+	-moz-transform: scaleX(-1);    /* Gecko */
+  -o-transform: scaleX(-1);      /* Opera */
+  -webkit-transform: scaleX(-1); /* Webkit */
+  transform: scaleX(-1);         /* Standard */
+  filter: FlipH;    
 }
