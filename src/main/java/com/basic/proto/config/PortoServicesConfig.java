@@ -2,6 +2,7 @@ package com.basic.proto.config;
 
 import javax.servlet.Filter;
 
+import org.springframework.boot.actuate.autoconfigure.ManagementContextConfiguration;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
  */
 
 @Configuration
+//@ManagementContextConfiguration(locations = { "file:/WEB-INF/view/tiles.xml"})
 public class PortoServicesConfig extends WebMvcConfigurerAdapter {
 	
 	
@@ -65,8 +67,9 @@ public class PortoServicesConfig extends WebMvcConfigurerAdapter {
     @Bean
     public TilesConfigurer tilesConfigurer(){
         TilesConfigurer tilesConfigurer = new TilesConfigurer();
-        tilesConfigurer.setDefinitions(new String[] {"/WEB-INF/views/**/tiles.xml"});
+      //  tilesConfigurer.setDefinitions("\\WEB-INF\\views\\tiles.xml");
         tilesConfigurer.setCheckRefresh(true);
+        tilesConfigurer.setDefinitions("\\WEB-INF\\views\\tiles.xml");
         return tilesConfigurer;
     }
  
