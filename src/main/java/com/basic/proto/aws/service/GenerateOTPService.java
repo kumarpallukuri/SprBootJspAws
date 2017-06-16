@@ -3,6 +3,8 @@ package com.basic.proto.aws.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +30,7 @@ public class GenerateOTPService {
 	@Autowired
 	AwsIntializerService awsIntializerService;
 	AmazonSNSClient snsClient = null;
-
+	 static Logger logger = LoggerFactory.getLogger(GenerateOTPService.class);
 	public int generateOTP(long mobileNumber) {
 		snsClient = new AmazonSNSClient(awsIntializerService.credentialsForAwsClients());
 		snsClient.setRegion(Region.getRegion(Regions.US_EAST_1));
@@ -49,7 +51,7 @@ public class GenerateOTPService {
 		PublishResult result = snsClient.publish(new PublishRequest().withMessage(message).withPhoneNumber(phoneNumber)
 				.withMessageAttributes(smsAttributes));
 		// .withMessageAttributes(smsAttributes);
-		System.out.println(result.getMessageId()); // Prints the message ID.
+		logger.info(result.getMessageId()); // Prints the message ID.
 	}
 
 }

@@ -3,12 +3,12 @@ package com.basic.proto.aws.service;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,11 +23,7 @@ import com.amazonaws.services.dynamodbv2.document.Table;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
-import com.basic.proto.config.ApplicationSessionObject;
-import com.basic.proto.form.AppSessionForm;
 import com.basic.proto.form.LoginDetailsForm;
-import com.basic.proto.form.RegistartionDetailsForm;
-import com.basic.proto.form.Workers;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -39,7 +35,7 @@ public class LoginDetailsDataService {
 	AwsIntializerService awsIntializerService;
 	 AmazonDynamoDBClient client = null;
 	 Table table = null;
-
+	 Logger logger = LoggerFactory.getLogger(this.getClass());
 	public  void intiliazeTable() {
 		if(table == null){
 			// This client will default to US West1(Oregon)
@@ -78,7 +74,7 @@ public class LoginDetailsDataService {
 		// This client will default to US West (Oregon)
 		
 		intiliazeTable();
-		System.out.println("filterItems service");
+		logger.info("filterItems service");
 		//String[] filterValues = filterString.split("_");
 	  	Map<String, AttributeValue> expressionAttributeValues = new HashMap<String, AttributeValue>();
 		expressionAttributeValues.put(":val", new AttributeValue().withS(userName));
@@ -99,9 +95,7 @@ public class LoginDetailsDataService {
             "workerId, password, userName, phoneNumber,workerName,fullProfile", 
             null, 
             expressionAttributeValues2);
-        //"workerId, workerEmail, workerProffession, workerName,workerPhoneNumber,"
-	//	+ "workerAddress,workerAvailablity,workerCity,workerDistrict,workerRate,workerState"
-        System.out.println("Scan of for items with a price less than 100.");
+        logger.info("Scan of for items with a price less than 100.");
         LoginDetailsForm loginDetailsForm = null;
         Iterator<Item> iterator = items.iterator();
         while (iterator.hasNext()) {
@@ -109,7 +103,7 @@ public class LoginDetailsDataService {
             ObjectMapper mapper = new ObjectMapper();
 			String json = iterator.next().toJSONPretty();
 			loginDetailsForm = new ObjectMapper().readValue(json, LoginDetailsForm.class);
-			System.out.println("filter json-->"+json);
+			logger.info("filter json-->"+json);
         }    
 		return loginDetailsForm;
 	}

@@ -3,6 +3,8 @@ package com.basic.proto.aws.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.amazonaws.services.sns.AmazonSNS;
@@ -18,7 +20,7 @@ import com.amazonaws.services.sns.model.Topic;
 
 public class AmazonSnsTest {
 	AmazonSNS snsService;
-	
+	 static Logger logger = LoggerFactory.getLogger(AmazonSnsTest.class);
 	@Autowired
 	AwsIntializerService awsIntializerService;
 	public AmazonSnsTest() {
@@ -29,7 +31,7 @@ public class AmazonSnsTest {
 	}
 
 	public void createSNSService(String emailId, String topicName) throws Exception {
-		System.out.println(topicName);
+		logger.info(topicName);
 		try {
 			
 			List<Topic> topics = listTopics();
@@ -47,7 +49,7 @@ public class AmazonSnsTest {
 	}
 
 	public  void sendNotification(String topicName) {
-		System.out.println("In send");
+		logger.info("In send");
 
 		List<Topic> topics = listTopics();
 		// Subscribe to the topic selected
@@ -61,11 +63,11 @@ public class AmazonSnsTest {
 	}
 
 	 public void createTopic(String topicName) {
-	 System.out.println("In create");
+		 logger.info("In create");
 	
 	 // AmazonSNS
 	 if (snsService == null)
-	 System.out.println("AKSDAKJDKAJSDKAJSDKAJDKASSJDKASSJD");
+		 logger.info("AKSDAKJDKAJSDKAJSDKAJDKASSJDKASSJD");
 	 // Create a topic
 	 CreateTopicRequest createReq = new
 	 CreateTopicRequest().withName(topicName);
@@ -94,7 +96,7 @@ public class AmazonSnsTest {
 			// go on if there are more elements
 		} while (nextToken != null);
 
-		System.out.println("Topics: " + topics);
+		logger.info("Topics: " + topics);
 
 		// show the list of topics...
 

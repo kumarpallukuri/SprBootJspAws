@@ -2,6 +2,8 @@ package com.basic.proto.controller;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -21,10 +23,13 @@ public class HomePageController {
 
 	@Autowired
 	UserLoginSessionForm userLoginSessionForm;
+	
+	Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@RequestMapping("/register")
 	public String welcome() {
 		//model.put("message", this.message);
+		logger.info("welcome method");
 		return "register";
 	}
 	

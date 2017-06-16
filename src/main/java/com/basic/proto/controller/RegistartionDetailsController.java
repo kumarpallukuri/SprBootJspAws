@@ -7,6 +7,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.beans.factory.annotation.Value;
@@ -43,6 +45,9 @@ public class RegistartionDetailsController {
 	private GenerateOTPService generateOTPService;
 	@Autowired
 	private LoginDetailsDataService loginDetailsDataService;
+	
+	Logger logger = LoggerFactory.getLogger(this.getClass());
+
 
 	@RequestMapping(value = "/registartionSucess")
 	public String welcome() throws Exception {
@@ -54,7 +59,7 @@ public class RegistartionDetailsController {
 	public String userLogin(@ModelAttribute LoginDetailsForm loginDetailsForm,
 			@RequestParam(value = "firstLogin", required = false) String firstLogin, HttpServletRequest request)
 			throws Exception {
-		System.out.println("login page...");
+		logger.info("login page...");
 		
 		LoginDetailsForm userDetailsForm = null;
 		if (firstLogin != null && !"".equals(firstLogin)) {
@@ -104,7 +109,7 @@ public class RegistartionDetailsController {
 	@ResponseBody
 	public String register(@RequestBody LoginDetailsForm loginDetailsForm, HttpServletRequest request)
 			throws Exception {
-		System.out.println("login page..." + loginDetailsForm.getPhoneNumber());
+		logger.info("login page..." + loginDetailsForm.getPhoneNumber());
 		// int otp =
 		// generateOTPService.generateOTP(Long.toString(loginDetailsForm.getPhoneNumber()));
 		AppSessionForm appSessionForm = ApplicationSessionObject.getApplicationSessionObject();
@@ -124,7 +129,7 @@ public class RegistartionDetailsController {
 
 	@RequestMapping(value = "/generateOTP/{mobileNumber}")
 	public void generateOTP(@PathVariable("mobileNumber") String mobileNumber) throws Exception {
-		System.out.println("generateOTP...");
+		logger.info("generateOTP...");
 		// int otp = generateOTPService.generateOTP(mobileNumber);
 		// System.out.println(otp);
 
@@ -135,7 +140,7 @@ public class RegistartionDetailsController {
 	@RequestMapping(value = "/logout")
 	public String userLogout(@ModelAttribute LoginDetailsForm loginDetailsForm, HttpServletRequest request)
 			throws Exception {
-		System.out.println("userLogout");
+		logger.info("userLogout");
 //		HttpSession httpSession = request.getSession();
 //		UserLoginSessionForm userLogout = (UserLoginSessionForm) request.getAttribute("userLoginSessionForm");
 		userLoginSessionForm.setUserLogin(false);

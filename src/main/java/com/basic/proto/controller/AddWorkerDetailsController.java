@@ -2,6 +2,8 @@ package com.basic.proto.controller;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -28,10 +30,13 @@ public class AddWorkerDetailsController {
 	//
 	@Autowired
 	private WorkerDetailsDataService awsdynamoDb;
+	
+
+	Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@RequestMapping(value = "/addWorkerDetails")
 	public String welcome(@ModelAttribute RegistartionDetailsForm registartionDetailsForm) throws Exception {
-		System.out.println("add worker details...");
+		logger.info("add worker details...");
 		// awsdynamoDb.addItem(registartionDetailsForm);
 		return "addDetails";
 	}
@@ -39,7 +44,7 @@ public class AddWorkerDetailsController {
 	@RequestMapping(value = "/addWorkerDetailsValues")
 	public ModelAndView addWorkerDetails(@ModelAttribute RegistartionDetailsForm registartionDetailsForm)
 			throws Exception {
-		System.out.println("add worker details...");
+		logger.info("add worker details...");
 		awsdynamoDb.addItem(registartionDetailsForm);
 		System.out.println(registartionDetailsForm.getWorkerEmail());
 		return new ModelAndView("redirect:/register");
@@ -48,14 +53,14 @@ public class AddWorkerDetailsController {
 	@RequestMapping(value = "/addEditedWorkerDetails")
 	public ModelAndView addEditedWorkerDetails(@RequestBody Workers worker)
 			throws Exception {
-		System.out.println("addEditedWorkerDetails...");
+		logger.info("addEditedWorkerDetails...");
 		awsdynamoDb.updateExistingAttributeConditionally(worker);
 		return new ModelAndView("redirect:/register");
 	}
 
 	@RequestMapping(value = "/fullWorkerDetail/{id}")
 	public String workerDetails(@PathVariable("id") String id, Map<String, Object> model) throws Exception {
-		System.out.println("add worker detailszz.." + id + "ff");
+		logger.info("add worker detailszz.." + id + "ff");
 		double idValue = Double.parseDouble(id);
 		Workers worker = awsdynamoDb.retrieveItem(idValue);
 		model.put("workerPhoneNumber", worker.getWorkerPhoneNumber());
@@ -74,7 +79,7 @@ public class AddWorkerDetailsController {
 	
 	@RequestMapping(value = "/editDetails/{id}")
 	public String editWorkerDetails(@PathVariable("id") String id, Map<String, Object> model) throws Exception {
-		System.out.println("add worker detailszz.." + id + "ff");
+		logger.info("add worker detailszz.." + id + "ff");
 		double idValue = Double.parseDouble(id);
 		Workers worker = awsdynamoDb.retrieveItem(idValue);
 		model.put("workerId", id);

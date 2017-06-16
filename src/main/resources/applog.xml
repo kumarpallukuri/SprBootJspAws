@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- Log message format -->
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36}  %X{reqId} - %msg%n</pattern>
+    </encoder>
+  </appender>
+  
+ <!-- Need appender to write to file -->
+  <appender name="applicationAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <file>/var/log/app.log</file>
+  <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- daily rollover -->
+      <fileNamePattern>/var/log/app.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+      <timeBasedFileNamingAndTriggeringPolicy
+          class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+          <!-- or whenever the file size reaches 50MB -->
+        <maxFileSize>50MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} %X{reqId} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <!-- Setting the root level of logging to INFO--> 
+  <root level="info">
+    <appender-ref ref="applicationAppender" />
+    <appender-ref ref="consoleAppender" />
+  </root>
+</configuration>
