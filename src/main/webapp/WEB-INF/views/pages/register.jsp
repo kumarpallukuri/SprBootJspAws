@@ -55,11 +55,10 @@
                           	</span>
                       </div>
                       <button type="submit" id="registerSubmitButton" class="btn btn-default btn-primary center-block" ng-show="!alreadyRegistered" title="Register"
-                      ng-disabled="registerForm.username.$error.required || registerForm.password.$error.required || registerForm.profName.$error.required 
-                      || registerForm.mobileNum.$error.required">Register</button>
+                      ng-disabled="registerForm.$invalid">Register</button>
                       
                       <button type="submit" id="requestOTPButton" class="btn btn-default btn-primary center-block" ng-show="alreadyRegistered" title="Request One Time Password (OTP)"
-                      ng-disabled="registerForm.username.$error.required || registerForm.mobileNum.$error.required">Request OTP</button>
+                      ng-disabled="registerForm.$invalid">Request OTP</button>
                       
                        <a id="alreadyRegistered" href="javascript:void(0);" ng-click="alreadyRegistered = true" ng-show="!alreadyRegistered">
                       	<span class="anchorText">Already Registered ?</span>
