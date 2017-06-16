@@ -279,5 +279,38 @@ public class WorkerDetailsDataService {
         }    
 		return allWorkers;
 	}
+	
+	public List<Workers> filterItemsWithProfessionAndCity(String filterString) throws JsonParseException, JsonMappingException, IOException {
+		// This client will default to US West (Oregon)
+		
+		intiliazeTable();
+		System.out.println("filterItems service");
+		List<Workers> allWorkers = new ArrayList<Workers>();
+		
+		Map<String, Object> expressionAttributeValues2 = new HashMap<String, Object>();
+        expressionAttributeValues2.put(":pr", "Plumber");
+        expressionAttributeValues2.put(":pr1", "chennai");
+       // String filterCondition = filterDropdwonValue +" = :pr";
+        ItemCollection<ScanOutcome> items = table.scan(
+        		"workerProffession =:pr AND workerCity =:pr1",
+            "workerId, workerEmail, workerName, workerPhoneNumber,workerCity,workerProffession", 
+            null, 
+            expressionAttributeValues2);
+        //"workerId, workerEmail, workerProffession, workerName,workerPhoneNumber,"
+	//	+ "workerAddress,workerAvailablity,workerCity,workerDistrict,workerRate,workerState"
+        System.out.println("Scan of for items with a price less than 100.");
+        Iterator<Item> iterator = items.iterator();
+        while (iterator.hasNext()) {
+           // System.out.println(iterator.next().toJSONPretty());
+            ObjectMapper mapper = new ObjectMapper();
+			String json = iterator.next().toJSONPretty();
+			Workers worker = null;
+			worker = new ObjectMapper().readValue(json, Workers.class);
+			System.out.println("filter json-->"+json);
+			allWorkers.add(worker);
+        }    
+		return allWorkers;
+	}
+
 
 }

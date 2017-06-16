@@ -103,5 +103,16 @@ public class WorkerDetailsRestService {
         System.out.println(users );
         return new ResponseEntity<List<Workers>>(users, HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/homeFilterDetails/{filterString}", method = RequestMethod.GET)
+    public ResponseEntity<List<Workers>> filterWorkerDetailsForHomeSearch(@PathVariable("filterString") String filterString) throws JsonParseException, JsonMappingException, IOException {
+  	System.out.println("filterDetails -->");
+  	 List<Workers> users =userService.filterItemsWithProfessionAndCity(filterString);
+        if (users.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        System.out.println(users );
+        return new ResponseEntity<List<Workers>>(users, HttpStatus.OK);
+    }
 
 }
