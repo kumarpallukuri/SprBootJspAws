@@ -17,3 +17,19 @@ $( document ).ready(function() {
     directive.templateUrl = "static/js/app/common/username.html";
     return directive;
 });*/
+
+/*wtApp.directive('test', function($compile) {
+	return {
+		restrict : 'E',
+		scope: {
+	         name: '@',
+	         form: '@'
+	      },
+	      replace : true,
+		templateUrl : "static/js/app/common/requiredInputField.html",
+		link: function (scope, element, attrs, ctrl) {
+			console.log(scope)
+            $compile(element.contents())(scope);
+        }
+	}
+});*/
