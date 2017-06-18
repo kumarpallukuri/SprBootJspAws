@@ -32,7 +32,23 @@ public class Workers {
 	
 	private String pincode;
 	
+	private String phoneNumberToDisplay;
 	
+	
+
+	/**
+	 * @return the phoneNumberToDisplay
+	 */
+	public String getPhoneNumberToDisplay() {
+		return phoneNumberToDisplay;
+	}
+
+	/**
+	 * @param phoneNumberToDisplay the phoneNumberToDisplay to set
+	 */
+	public void setPhoneNumberToDisplay(String phoneNumberToDisplay) {
+		this.phoneNumberToDisplay = phoneNumberToDisplay;
+	}
 
 	public String getPincode() {
 		return pincode;

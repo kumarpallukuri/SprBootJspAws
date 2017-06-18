@@ -20,10 +20,12 @@ import com.amazonaws.services.dynamodbv2.document.ItemCollection;
 import com.amazonaws.services.dynamodbv2.document.PutItemOutcome;
 import com.amazonaws.services.dynamodbv2.document.ScanOutcome;
 import com.amazonaws.services.dynamodbv2.document.Table;
+import com.amazonaws.services.dynamodbv2.document.utils.ValueMap;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.basic.proto.form.LoginDetailsForm;
+import com.basic.proto.form.Workers;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -60,7 +62,8 @@ public class LoginDetailsDataService {
 				.withString("userName", loginDetailsForm.getUserName())
 				.withNumber("phoneNumber", loginDetailsForm.getPhoneNumber())
 				.withString("workerName", loginDetailsForm.getWorkerName())
-				.withString("fullProfile", loginDetailsForm.getFullProfile());
+				.withString("fullProfile", loginDetailsForm.getFullProfile())
+				.withString("otpVerification", "no");
 				
 		// Write the item to the table
 		//workerId (N)	workerAddress (S)	workerAvailablity (S)	workerCity (S)	workerDistrict (S)	
@@ -76,16 +79,7 @@ public class LoginDetailsDataService {
 		intiliazeTable();
 		logger.info("filterItems service");
 		//String[] filterValues = filterString.split("_");
-	  	Map<String, AttributeValue> expressionAttributeValues = new HashMap<String, AttributeValue>();
-		expressionAttributeValues.put(":val", new AttributeValue().withS(userName));
-	//	ScanRequest scanRequest = new ScanRequest().withTableName("WorkersTableTest");
-	//	ScanResult result = client.scan(scanRequest);
-		String expressionValue = "userName" +" < :val";
-		ScanRequest scanRequest = new ScanRequest().withTableName("Workersregistration")
-				.withFilterExpression(expressionValue).withProjectionExpression("workerId")
-				.withExpressionAttributeValues(expressionAttributeValues);
-
-		ScanResult result = client.scan(scanRequest);
+	  
 		
 		Map<String, Object> expressionAttributeValues2 = new HashMap<String, Object>();
         expressionAttributeValues2.put(":pr", userName);
@@ -106,6 +100,57 @@ public class LoginDetailsDataService {
 			logger.info("filter json-->"+json);
         }    
 		return loginDetailsForm;
+	}
+	
+	public LoginDetailsForm getUserWorkerDetailsbyID(long workerID) throws JsonParseException, JsonMappingException, IOException {
+		// This client will default to US West (Oregon)
+		
+		intiliazeTable();
+		logger.info("filterItems service");
+		//String[] filterValues = filterString.split("_");
+	  
+		
+		Map<String, Object> expressionAttributeValues2 = new HashMap<String, Object>();
+        expressionAttributeValues2.put(":pr", workerID);
+        String filterCondition = "workerID" +" = :pr";
+        ItemCollection<ScanOutcome> items = table.scan(
+        		filterCondition,
+            "workerId, password, userName, phoneNumber,workerName,fullProfile", 
+            null, 
+            expressionAttributeValues2);
+        logger.info("Scan of for items with a price less than 100.");
+        LoginDetailsForm loginDetailsForm = null;
+        Iterator<Item> iterator = items.iterator();
+        while (iterator.hasNext()) {
+           // System.out.println(iterator.next().toJSONPretty());
+            ObjectMapper mapper = new ObjectMapper();
+			String json = iterator.next().toJSONPretty();
+			loginDetailsForm = new ObjectMapper().readValue(json, LoginDetailsForm.class);
+			logger.info("filter json-->"+json);
+        }    
+		return loginDetailsForm;
+	}
+
+	
+	public  void updateUserRegistrationDetails(LoginDetailsForm loginDetailsForm) {
+	
+		intiliazeTable();
+			
+		logger.info("updateExistingAttributeConditionally");
+		try{	
+			Item item = new Item().withPrimaryKey("workerId", loginDetailsForm.getWorkerId())
+					.withString("password", loginDetailsForm.getPassword())
+					.withString("userName", loginDetailsForm.getUserName())
+					.withNumber("phoneNumber", loginDetailsForm.getPhoneNumber())
+					.withString("workerName", loginDetailsForm.getWorkerName())
+					.withString("fullProfile", loginDetailsForm.getFullProfile())
+					.withString("otpVerification", "no");
+			PutItemOutcome outcome = table.putItem(item);
+			logger.info("UpdateItem succeeded:\n" + outcome.getItem().toJSONPretty());
+		} catch (Exception e) {
+			System.err.println("Error updating item in " + table);
+			System.err.println(e.getMessage());
+		}
 	}
 
 }

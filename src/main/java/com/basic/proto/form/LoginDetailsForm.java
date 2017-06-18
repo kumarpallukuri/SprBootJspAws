@@ -21,9 +21,23 @@ public class LoginDetailsForm {
 	
 	private int otp;
 	
+	private String otpVerification;
 	
 	
-	
+	/**
+	 * @return the otpVerification
+	 */
+	public String getOtpVerification() {
+		return otpVerification;
+	}
+
+	/**
+	 * @param otpVerification the otpVerification to set
+	 */
+	public void setOtpVerification(String otpVerification) {
+		this.otpVerification = otpVerification;
+	}
+
 	/**
 	 * @return the otp
 	 */

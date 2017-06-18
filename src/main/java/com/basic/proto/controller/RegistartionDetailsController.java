@@ -148,5 +148,57 @@ public class RegistartionDetailsController {
 	//	httpSession.setAttribute("userLoginSessionForm", userLogout);
 		return "login";
 	}
+	
+	@RequestMapping(value = "/verifyUserName/{userName}")
+	public String userNameVerification(@PathVariable("userName") String userName)
+			throws Exception {
+		logger.info("verifyUserName");
+		String isUserNameExists = "no";
+		LoginDetailsForm loginDetailsForm =loginDetailsDataService.getUserDetails(userName);
+		if(loginDetailsForm != null){
+			isUserNameExists = "yes";
+		}
+		return isUserNameExists;
+	}
+	
+	@RequestMapping(value = "/verifyOTP/{userName}/{phonenumber}/{otp}")
+	@ResponseBody
+	public String verifyOTP(@PathVariable("userName") String userName,@PathVariable("phonenumber") long phonenumber,@PathVariable("otp") int otp)
+			throws Exception {
+		logger.info("verifyOTP..." );
+		// int otp =
+		// generateOTPService.generateOTP(Long.toString(loginDetailsForm.getPhoneNumber()));
+		AppSessionForm appSessionForm = ApplicationSessionObject.getApplicationSessionObject();
+		Map<String, LoginCodeForm> usersLoginCodes = appSessionForm.getUsersLoginCodes();
+		LoginCodeForm loginCodeForm  = usersLoginCodes.get(userName);
+		if(loginCodeForm != null){
+			LoginDetailsForm loginDetailsForm = loginDetailsDataService.getUserWorkerDetailsbyID(loginCodeForm.getWorkerId());
+			if((loginCodeForm.getOtp() == otp) && (loginCodeForm.getPhoneNumber() == phonenumber)){
+				loginDetailsForm.setOtpVerification("done");
+				loginDetailsDataService.updateUserRegistrationDetails(loginDetailsForm);
+				 userLoginSessionForm.setUserLogin(true);
+				 if(loginDetailsForm.getFullProfile().equals("yes")){
+					 userLoginSessionForm.setFullProfile(true);
+				 }else{
+					 userLoginSessionForm.setFullProfile(false);
+				 }
+				return "/home";
+			}
+		}else{
+			return "/error";
+		}
+//		long workerId = loginDetailsDataService.addItem(loginDetailsForm);
+//		// return "login";
+//		Map<String, LoginCodeForm> usersLoginCodes = appSessionForm.getUsersLoginCodes();
+//		LoginCodeForm loginCodeForm = new LoginCodeForm();
+//		loginCodeForm.setGeneratedTime(Calendar.getInstance().getTimeInMillis());
+//		int otp = generateOTPService.generateOTP(loginDetailsForm.getPhoneNumber());
+//		loginCodeForm.setOtp(otp);
+//		loginCodeForm.setPhoneNumber(loginDetailsForm.getPhoneNumber());
+//		loginCodeForm.setWorkerId(workerId);
+//		usersLoginCodes.put(loginDetailsForm.getUserName(), loginCodeForm);
+//		ApplicationSessionObject.getApplicationSessionObject().setUsersLoginCodes(usersLoginCodes);
+		return "";
+	}
 
 }
