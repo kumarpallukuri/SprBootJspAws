@@ -9,6 +9,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -39,7 +41,7 @@ public class WorkerDetailsDataService {
 	
 	 AmazonDynamoDBClient client = null;
 	 Table table = null;
-
+	 Logger logger = LoggerFactory.getLogger(this.getClass());
 	public  void intiliazeTable() {
 		if(table == null){
 			// This client will default to US West1(Oregon)
@@ -60,12 +62,12 @@ public class WorkerDetailsDataService {
 		ScanResult result = client.scan(scanRequest);
 		int lastValue = 0;
 		for (Map<String, AttributeValue> item : result.getItems()) {
-			System.out.println(item.get("workertID"));
+			logger.info(""+item.get("workertID"));
 		}
 		// Build the item
 		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 		 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-		 System.out.println(timestamp.getTime());
+		 logger.info("timestamp"+timestamp.getTime());
 		Item item = new Item().withPrimaryKey("workerId", timestamp.getTime())
 				.withString("workerEmail", registartionDetailsForm.getWorkerEmail())
 				.withString("workerProffession", registartionDetailsForm.getWorkerProffession())
@@ -90,12 +92,12 @@ public class WorkerDetailsDataService {
 		ScanResult result = client.scan(scanRequest);
 		int lastValue = 0;
 		for (Map<String, AttributeValue> item : result.getItems()) {
-			System.out.println(item.get("workertID"));
+			logger.info(""+item.get("workertID"));
 		}
 		// Build the item
 		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 		 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-		 System.out.println(timestamp.getTime());
+		 logger.info(""+timestamp.getTime());
 		Item item = new Item().withPrimaryKey("workerId", timestamp.getTime())
 				.withString("workerEmail", registartionDetailsForm.getWorkerEmail())
 				.withString("workerProffession", registartionDetailsForm.getWorkerProffession())
@@ -119,8 +121,8 @@ public class WorkerDetailsDataService {
 		Workers worker = null;
 		try {
 			Item item = table.getItem("workerId", id);
-			System.out.println("Printing item after retrieving it....");
-			System.out.println(item.toJSONPretty());
+			logger.info("Printing item after retrieving it....");
+			logger.info(item.toJSONPretty());
 			ObjectMapper mapper = new ObjectMapper();
 			worker = new ObjectMapper().readValue(item.toJSONPretty(), Workers.class);
 		} catch (Exception e) {
@@ -164,7 +166,7 @@ public class WorkerDetailsDataService {
 			.withString("workerAvailablity", worker.getWorkerAvailablity())
 			.withString("workerRate", worker.getWorkerRate());
 			PutItemOutcome outcome = table.putItem(item);
-		System.out.println("UpdateItem succeeded:\n" + outcome.getItem().toJSONPretty());
+			logger.info("UpdateItem succeeded:\n" + outcome.getItem().toJSONPretty());
 		} catch (Exception e) {
 			System.err.println("Error updating item in " + table);
 			System.err.println(e.getMessage());
@@ -176,24 +178,24 @@ public class WorkerDetailsDataService {
 		
 		intiliazeTable();
 		try {
-			System.out.println("delete sucessfully enter");
+			logger.info("delete sucessfully enter");
 			 SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 			 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-			 System.out.println(timestamp.getTime());
+			 logger.info(""+timestamp.getTime());
 			DeleteItemSpec deleteItemSpec = new DeleteItemSpec().withPrimaryKey("workerId", id)
 					.withConditionExpression("workerPhoneNumber <= :val")
 					.withValueMap(new ValueMap().withNumber(":val", phoneNumber));
 			try {
-				System.out.println("Attempting a conditional delete...");
+				logger.info("Attempting a conditional delete...");
 				table.deleteItem(deleteItemSpec);
-				System.out.println("DeleteItem succeeded");
+				logger.info("DeleteItem succeeded");
 			} catch (Exception e) {
-				System.err.println(e.getMessage());
+				logger.info(e.getMessage());
 			}
-			System.out.println("delete sucessfully");
+			logger.info("delete sucessfully");
 		} catch (Exception e) {
-			System.err.println("Error updating item in " + table);
-			System.err.println(e.getMessage());
+			logger.info("Error updating item in " + table);
+			logger.info(e.getMessage());
 		}
 	}
 
@@ -203,7 +205,7 @@ public class WorkerDetailsDataService {
 		intiliazeTable();
 		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
 		 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-		 System.out.println(timestamp.getTime());
+		 logger.info(""+timestamp.getTime());
 		List<Workers> allWorkers = new ArrayList<Workers>();
 		Map<String, Object> expressionAttributeValues = new HashMap<String, Object>();
 		expressionAttributeValues.put(":pr", timestamp.getTime());
@@ -214,7 +216,7 @@ public class WorkerDetailsDataService {
 				null, // ExpressionAttributeNames - not used in this example
 				expressionAttributeValues);
 		
-		System.out.println("Scan of " + "WorkersTableTest" + " for items with a price less than 2.");
+		logger.info("Scan of " + "WorkersTableTest" + " for items with a price less than 2.");
 		Iterator<Item> iterator = items.iterator();
 		while (iterator.hasNext()) {
 			ObjectMapper mapper = new ObjectMapper();
@@ -236,7 +238,7 @@ public class WorkerDetailsDataService {
 		// This client will default to US West (Oregon)
 		
 		intiliazeTable();
-		System.out.println("filterItems service");
+		logger.info("filterItems service");
 		List<Workers> allWorkers = new ArrayList<Workers>();
 		String[] filterValues = filterString.split("_");
 	  	Map<String, AttributeValue> expressionAttributeValues = new HashMap<String, AttributeValue>();
@@ -266,7 +268,7 @@ public class WorkerDetailsDataService {
             expressionAttributeValues2);
         //"workerId, workerEmail, workerProffession, workerName,workerPhoneNumber,"
 	//	+ "workerAddress,workerAvailablity,workerCity,workerDistrict,workerRate,workerState"
-        System.out.println("Scan of for items with a price less than 100.");
+        logger.info("Scan of for items with a price less than 100.");
         Iterator<Item> iterator = items.iterator();
         while (iterator.hasNext()) {
            // System.out.println(iterator.next().toJSONPretty());
@@ -274,7 +276,7 @@ public class WorkerDetailsDataService {
 			String json = iterator.next().toJSONPretty();
 			Workers worker = null;
 			worker = new ObjectMapper().readValue(json, Workers.class);
-			System.out.println("filter json-->"+json);
+			logger.info("filter json-->"+json);
 			allWorkers.add(worker);
         }    
 		return allWorkers;
@@ -284,29 +286,25 @@ public class WorkerDetailsDataService {
 		// This client will default to US West (Oregon)
 		
 		intiliazeTable();
-		System.out.println("filterItems service");
+		logger.info("filterItems service");
 		List<Workers> allWorkers = new ArrayList<Workers>();
-		
+		String[] searchValue = filterString.split("_");
 		Map<String, Object> expressionAttributeValues2 = new HashMap<String, Object>();
-        expressionAttributeValues2.put(":pr", "Plumber");
-        expressionAttributeValues2.put(":pr1", "chennai");
-       // String filterCondition = filterDropdwonValue +" = :pr";
+        expressionAttributeValues2.put(":pr", searchValue[0]);
+        expressionAttributeValues2.put(":pr1",searchValue[1]);
         ItemCollection<ScanOutcome> items = table.scan(
         		"workerProffession =:pr AND workerCity =:pr1",
             "workerId, workerEmail, workerName, workerPhoneNumber,workerCity,workerProffession", 
             null, 
             expressionAttributeValues2);
-        //"workerId, workerEmail, workerProffession, workerName,workerPhoneNumber,"
-	//	+ "workerAddress,workerAvailablity,workerCity,workerDistrict,workerRate,workerState"
-        System.out.println("Scan of for items with a price less than 100.");
+        logger.info("Scan of for items with a price less than 100.");
         Iterator<Item> iterator = items.iterator();
         while (iterator.hasNext()) {
-           // System.out.println(iterator.next().toJSONPretty());
             ObjectMapper mapper = new ObjectMapper();
 			String json = iterator.next().toJSONPretty();
 			Workers worker = null;
 			worker = new ObjectMapper().readValue(json, Workers.class);
-			System.out.println("filter json-->"+json);
+			logger.info("filter json-->"+json);
 			allWorkers.add(worker);
         }    
 		return allWorkers;
