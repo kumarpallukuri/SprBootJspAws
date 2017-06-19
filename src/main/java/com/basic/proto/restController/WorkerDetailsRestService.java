@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
@@ -135,14 +136,18 @@ public class WorkerDetailsRestService {
 	}
 
 	@RequestMapping(value = "/homeFilterDetails/{filterString}", method = RequestMethod.GET)
-	public ResponseEntity<List<Workers>> filterWorkerDetailsForHomeSearch(
+	public ModelAndView filterWorkerDetailsForHomeSearch(
 			@PathVariable("filterString") String filterString)
 			throws JsonParseException, JsonMappingException, IOException {
 		logger.info("filterDetails -->");
 		List<Workers> workers = workersService.filterItemsWithProfessionAndCity(filterString);
-
+		
+		ModelAndView mv = new ModelAndView();
 		if (workers.isEmpty()) {
-			return new ResponseEntity(HttpStatus.NO_CONTENT);
+			//return new ResponseEntity(HttpStatus.NO_CONTENT);
+			mv.setViewName("home");
+			mv.addObject("SearchReturnedNoResults",true);
+			return mv;
 		}
 
 		for (Workers worker : workers) {
@@ -153,7 +158,10 @@ public class WorkerDetailsRestService {
 			}
 		}
 		logger.info("response result from db" + workers);
-		return new ResponseEntity<List<Workers>>(workers, HttpStatus.OK);
+		mv.setViewName("workerResults");
+		mv.addObject("workers", workers);
+		return mv;
+		//return new ResponseEntity<List<Workers>>(workers, HttpStatus.OK);
 	}
 
 }

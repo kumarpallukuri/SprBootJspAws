@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <script src="static/js/app/homepage/home.js"></script>
 
 <div ng-app="wtApp" ng-controller="homePageController" class="homeSearchSection">
@@ -5,6 +6,11 @@
    <h1><span class="highLightTerm">WorkTarget</span> Find workers around you and get your work done !!</h1>
     <form name="searchform" id="searchform" method="post" ng-submit="searchForWorkers();" novalidate>
     		<section id="filteringSection">
+    		<c:if test="${SearchReturnedNoResults}">
+	    		<div class="alert alert-danger">
+				  Your Search did not return any results !!
+				</div>
+			</c:if>
      		 <div class="form-group">
      		 	<label class="control-label">Profession</label>
      		 	<input type="text" class="form-control" id="profession" name="profession" ng-model="profession" 

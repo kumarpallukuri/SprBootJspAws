@@ -36,7 +36,6 @@
    <definition name="home" extends="standard-layout">  
        <put-attribute name="title" value="Home" />  
        <put-attribute name="room" value="1" />    
-       <!-- <put-attribute name="sidebar" value="/WEB-INF/views/pages/homepage/resultsSideBar.jsp" /> -->
        <put-attribute name="body" value="/WEB-INF/views/pages/homepage/home.jsp" />   
    </definition>
    
@@ -78,6 +77,13 @@
        <put-attribute name="title" value="Edit Details Delete" />   
        <put-attribute name="body" value="/WEB-INF/views/pages/editDeleteDetails/workerEditDelete.jsp" />   
    </definition>  
+   
+            <!-- Home -->
+   <definition name="workerResults" extends="standard-layout">  
+       <put-attribute name="title" value="Search Results" />    
+       <put-attribute name="sidebar" value="/WEB-INF/views/pages/results/resultsSideBar.jsp" />
+       <put-attribute name="body" value="/WEB-INF/views/pages/results/workerResults.jsp" />   
+   </definition>
    
   
 </tiles-definitions>

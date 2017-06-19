@@ -194,3 +194,8 @@ main{
 	font-size: 14px;
     font-weight: bold;
 }
+#filteringSection .alert-danger{
+	margin-bottom : 0;
+	background-image : none;
+	border-color : none;
+}
