@@ -44,5 +44,10 @@ public class HomePageController {
 	public String about() {
 		return "about";
 	}
+	
+	@RequestMapping("/forgotPassword")
+	public String forgotPass() {
+		return "forgotPass";
+	}
 
 }

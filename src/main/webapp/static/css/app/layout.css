@@ -34,6 +34,7 @@ a:focus{
 a:focus .anchorText,
 a:hover .anchorText{
 	font-weight : bold;
+	cursor : pointer;
 }
 button{
 	color: #fff;
@@ -88,5 +89,8 @@ select{
 .errorText{
 	color : red;
 	font-size: 14px;
+}
+.marginB8{
+	margin-bottom : 8px;
 }
 /*82172B*/

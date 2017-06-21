@@ -42,7 +42,7 @@
                       </button>
 					    
                       <c:if test="${not otpRequired}">
-	                      <a id="forgotPass" href="#">
+	                      <a id="forgotPass" href="/forgotPassword">
 	                      	<span class="anchorText">forgot password ?</span>
 	                      </a>
                       </c:if>

@@ -32,6 +32,12 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/register.jsp" />   
    </definition> 
    
+         <!-- Forgot password -->
+   <definition name="forgotPass" extends="standard-layout">  
+       <put-attribute name="title" value="Forgot Password" />     
+       <put-attribute name="body" value="/WEB-INF/views/pages/forgotPass.jsp" />   
+   </definition> 
+   
          <!-- Home -->
    <definition name="home" extends="standard-layout">  
        <put-attribute name="title" value="Home" />  

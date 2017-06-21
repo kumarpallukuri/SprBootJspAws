@@ -197,5 +197,5 @@ main{
 #filteringSection .alert-danger{
 	margin-bottom : 0;
 	background-image : none;
-	border-color : none;
+	border : none;
 }

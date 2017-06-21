@@ -4,15 +4,7 @@
       <div class="row">
           <div class="col-xs-offset-4 col-xs-4">
               <div class="well">
-                  <form id="registerForm" name="registerForm" novalidate ng-submit="register();">
-                       <div class="form-group" ng-class="{ 'has-error' : registerForm.profName.$invalid && !registerForm.profName.$pristine }">
-                          <label for="profName" class="control-label">Name
-	                          <span class="help-block displayInline">
-	                          		<span class="errorText" ng-show="registerForm.profName.$error.required && !registerForm.profName.$pristine"> - REQUIRED</span> 
-	                          </span>
-                          </label>
-                          <input type="text" class="form-control" id="profName" name="profName" ng-model="user.profileName" required title="Please enter your profile name">
-                      </div>
+                  <form id="registerForm" name="registerForm" novalidate ng-submit="forgotPass();">
                       <div class="form-group" ng-class="{ 'has-error' : registerForm.mobileNum.$invalid && !registerForm.mobileNum.$pristine }">
                           <label for="mobileNum" class="control-label">Mobile Number
                           	<span class="help-block displayInline">
@@ -41,28 +33,8 @@
                           		<span class="errorText displayBlock" ng-show="registerForm.username.$error.minlength">Should contain atleast 4 characters.</span>  
                           	</span>
                       </div>
-                      <div class="form-group" ng-class="{ 'has-error' : registerForm.password.$invalid && !registerForm.password.$pristine }">
-                          <label for="password" class="control-label">Password
-                          	<span class="help-block displayInline">
-	                          	<span class="errorText" ng-show="registerForm.password.$error.required && !registerForm.password.$pristine"> - REQUIRED</span> 
-                          	</span>
-                          </label>
-                          <input type="password" class="form-control" id="password" name="password" ng-model="user.password" minlength="6"
-                          ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/" required title="Please enter your password">
-                          <span class="help-block">
-                          		<span class="errorText" ng-show="registerForm.password.$error.minlength">Should contain minimum of 6 characters.</span>
-                          		<span class="errorText displayBlock" ng-show="registerForm.password.$error.pattern">Should contain atleast one capital letter, one small letter and a number.</span> 
-                          	</span>
-                      </div>
-                      <div class="marginB8 smallFont">
-						  <span>By clicking register, you agree to our <a href="/privacyPolicy"><span class="anchorText">Privacy policy</span></a> and <a href="/termsAndConditions"><span class="anchorText">Terms and conditions</span></a></span>
-					   </div>
-                      <button type="submit" id="registerSubmitButton" class="btn btn-default btn-primary center-block" title="Register"
-                      ng-disabled="registerForm.$invalid">Register</button>
-                      
-                       <a id="alreadyRegistered" href="/login">
-                      	<span class="anchorText">Already Registered ?</span>
-                      </a>
+                      <button type="submit" id="registerSubmitButton" class="btn btn-default btn-primary center-block" title="Request OTP"
+                      ng-disabled="registerForm.$invalid">Request OTP</button>
                   </form>
               </div>
           </div>
