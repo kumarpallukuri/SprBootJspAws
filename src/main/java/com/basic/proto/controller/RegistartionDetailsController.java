@@ -150,13 +150,13 @@ public class RegistartionDetailsController {
 	}
 	
 	@RequestMapping(value = "/verifyUserName/{userName}")
-	public String userNameVerification(@PathVariable("userName") String userName)
+	public @ResponseBody boolean userNameVerification(@PathVariable("userName") String userName)
 			throws Exception {
 		logger.info("verifyUserName");
-		String isUserNameExists = "no";
+		boolean isUserNameExists = false;
 		LoginDetailsForm loginDetailsForm =loginDetailsDataService.getUserDetails(userName);
 		if(loginDetailsForm != null){
-			isUserNameExists = "yes";
+			isUserNameExists = true;
 		}
 		return isUserNameExists;
 	}
