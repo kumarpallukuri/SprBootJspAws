@@ -1,12 +1,14 @@
 package com.basic.proto.form;
 
+import java.sql.Date;
+
 public class LoginCodeForm {
 	
 	private int otp;
 	
 	private long workerId;
 	
-	private long generatedTime;
+	private Date generatedTime;
 	
 	private long phoneNumber;
 	
@@ -73,14 +75,14 @@ public class LoginCodeForm {
 	/**
 	 * @return the generatedTime
 	 */
-	public long getGeneratedTime() {
+	public Date getGeneratedTime() {
 		return generatedTime;
 	}
 
 	/**
 	 * @param generatedTime the generatedTime to set
 	 */
-	public void setGeneratedTime(long generatedTime) {
+	public void setGeneratedTime(Date generatedTime) {
 		this.generatedTime = generatedTime;
 	}
 	

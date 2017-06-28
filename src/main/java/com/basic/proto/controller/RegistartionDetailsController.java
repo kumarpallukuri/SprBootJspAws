@@ -1,5 +1,6 @@
 package com.basic.proto.controller;
 
+import java.sql.Date;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,6 +30,7 @@ import com.basic.proto.form.AppSessionForm;
 import com.basic.proto.form.LoginCodeForm;
 import com.basic.proto.form.LoginDetailsForm;
 import com.basic.proto.form.UserLoginSessionForm;
+import com.basic.proto.util.AppUtil;
 import com.basic.proto.util.OTPNumberGeneration;
 
 @Controller
@@ -90,7 +92,10 @@ public class RegistartionDetailsController {
 				LoginCodeForm usersLoginCodes = ApplicationSessionObject.getApplicationSessionObject()
 						.getUsersLoginCodes().get(loginDetailsForm.getUserName());
 				if(usersLoginCodes != null){
-					if ((loginDetailsForm.getOtp() == usersLoginCodes.getOtp())) {
+					if ((loginDetailsForm.getOtp() == usersLoginCodes.getOtp())
+							&&(AppUtil.otpVerifiedInTime(usersLoginCodes.getGeneratedTime()))) {
+						ApplicationSessionObject.getApplicationSessionObject()
+						.getUsersLoginCodes().put(loginDetailsForm.getUserName(), null);
 						 userLoginSessionForm.setUserLogin(true);
 						 httpSession.setAttribute("userLoginSessionForm",
 						 userLoginSessionForm);
@@ -117,7 +122,7 @@ public class RegistartionDetailsController {
 		// return "login";
 		Map<String, LoginCodeForm> usersLoginCodes = appSessionForm.getUsersLoginCodes();
 		LoginCodeForm loginCodeForm = new LoginCodeForm();
-		loginCodeForm.setGeneratedTime(Calendar.getInstance().getTimeInMillis());
+		loginCodeForm.setGeneratedTime(new Date(System.currentTimeMillis()));
 		int otp = generateOTPService.generateOTP(loginDetailsForm.getPhoneNumber());
 		loginCodeForm.setOtp(otp);
 		loginCodeForm.setPhoneNumber(loginDetailsForm.getPhoneNumber());
